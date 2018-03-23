@@ -1,0 +1,319 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B273FF0-436C-4503-9241-B0CEB233E72E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinalHotelProject</RootNamespace>
+    <AssemblyName>FinalHotelProject</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\css-img\Thumbs.db" />
+    <Content Include="debug.log" />
+    <Content Include="FeedbackForm.aspx" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome\FontAwesome.otf" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="checkboxes-radio-group-black.html" />
+    <Content Include="checkboxes-radio-group-blue.html" />
+    <Content Include="checkboxes-radio-group-green.html" />
+    <Content Include="checkboxes-radio-group-purple.html" />
+    <Content Include="checkboxes-radio-group-red.html" />
+    <Content Include="checkboxes-radio-group-yellow.html" />
+    <Content Include="form-hide-show-elements.html" />
+    <Content Include="js\additional-methods.min.js" />
+    <Content Include="js\jquery.formShowHide.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\smartforms-modal.min.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="ProblemReport.aspx" />
+    <Content Include="ProblemReport1.aspx" />
+    <Content Include="ProblemReport.html" />
+    <Content Include="widget-modal-basic.html" />
+    <Content Include="Yourstay.aspx" />
+    <Content Include="yourstay.html" />
+    <Content Include="checkout-black.html" />
+    <Content Include="checkout-blue.html" />
+    <Content Include="checkout-green.html" />
+    <Content Include="checkout-purple.html" />
+    <Content Include="checkout-red.html" />
+    <Content Include="checkout-yellow.html" />
+    <Content Include="checkout.html" />
+    <Content Include="comment-form-1.html" />
+    <Content Include="comment-form-2-black.html" />
+    <Content Include="comment-form-2-blue.html" />
+    <Content Include="comment-form-2-green.html" />
+    <Content Include="comment-form-2-purple.html" />
+    <Content Include="comment-form-2-red.html" />
+    <Content Include="comment-form-2-yellow.html" />
+    <Content Include="comment-form-2.html" />
+    <Content Include="contact-form-1-black.html" />
+    <Content Include="contact-form-1-blue.html" />
+    <Content Include="contact-form-1-green.html" />
+    <Content Include="contact-form-1-purple.html" />
+    <Content Include="contact-form-1-red.html" />
+    <Content Include="contact-form-1-yellow.html" />
+    <Content Include="contact-form-1.html" />
+    <Content Include="contact-form-2.html" />
+    <Content Include="contact-form-3.html" />
+    <Content Include="contact-form-labels-left.html" />
+    <Content Include="contact-form-with-google-map-black.html" />
+    <Content Include="contact-form-with-google-map-blue.html" />
+    <Content Include="contact-form-with-google-map-green.html" />
+    <Content Include="contact-form-with-google-map-purple.html" />
+    <Content Include="contact-form-with-google-map-red.html" />
+    <Content Include="contact-form-with-google-map-yellow.html" />
+    <Content Include="contact-form-with-google-map.html" />
+    <Content Include="css\css-img\flags%402x.png" />
+    <Content Include="css\css-img\flags.png" />
+    <Content Include="css\css-img\wink.png" />
+    <Content Include="css\css-img\wink.svg" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\smart-addons.css" />
+    <Content Include="css\smart-addons\dropzone.css" />
+    <Content Include="css\smart-addons\hideShowPassword.css" />
+    <Content Include="css\smart-addons\intlTelInput.css" />
+    <Content Include="css\smart-addons\jquery-ui-slider-pips.css" />
+    <Content Include="css\smart-addons\jquery.stepper.css" />
+    <Content Include="css\smart-addons\jquery.steps.css" />
+    <Content Include="css\smart-addons\select2.css" />
+    <Content Include="css\smart-addons\smartforms-custom.css" />
+    <Content Include="css\smart-addons\smartforms-modal.css" />
+    <Content Include="css\smart-addons\spectrum.css" />
+    <Content Include="css\smart-forms-ie8.css" />
+    <Content Include="css\smart-forms.css" />
+    <Content Include="css\smart-loader.css" />
+    <Content Include="css\smart-themes\black.css" />
+    <Content Include="css\smart-themes\blue.css" />
+    <Content Include="css\smart-themes\green.css" />
+    <Content Include="css\smart-themes\purple.css" />
+    <Content Include="css\smart-themes\red.css" />
+    <Content Include="css\smart-themes\yellow.css" />
+    <Content Include="feedback-form-black.html" />
+    <Content Include="feedback-form-blue.html" />
+    <Content Include="feedback-form-green.html" />
+    <Content Include="feedback-form-purple.html" />
+    <Content Include="feedback-form-red.html" />
+    <Content Include="feedback-form-yellow.html" />
+    <Content Include="feedback-form.html" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="header-style2-black.html" />
+    <Content Include="header-style2-blue.html" />
+    <Content Include="header-style2-green.html" />
+    <Content Include="header-style2-purple.html" />
+    <Content Include="header-style2-red.html" />
+    <Content Include="header-style2-yellow.html" />
+    <Content Include="header-style2.html" />
+    <Content Include="images\dark.png" />
+    <Content Include="images\foobg.png" />
+    <Content Include="images\wood.png" />
+    <Content Include="js\jquery-1.9.1.min.js" />
+    <Content Include="js\jquery-ui-custom.min.js" />
+    <Content Include="js\jquery.placeholder.min.js" />
+    <Content Include="login-black.html" />
+    <Content Include="login-green.html" />
+    <Content Include="login-purple.html" />
+    <Content Include="login-red.html" />
+    <Content Include="login-v2-black.html" />
+    <Content Include="login-v2-green.html" />
+    <Content Include="login-v2-purple.html" />
+    <Content Include="login-v2-red.html" />
+    <Content Include="login-v2-yellow.html" />
+    <Content Include="login-v2.html" />
+    <Content Include="login-yellow.html" />
+    <Content Include="login.html" />
+    <Content Include="modern-switches-black.html" />
+    <Content Include="modern-switches-blue.html" />
+    <Content Include="modern-switches-green.html" />
+    <Content Include="modern-switches-purple.html" />
+    <Content Include="modern-switches-red.html" />
+    <Content Include="modern-switches-yellow.html" />
+    <Content Include="modern-switches.html" />
+    <Content Include="order-form-black.html" />
+    <Content Include="order-form-blue.html" />
+    <Content Include="order-form-green.html" />
+    <Content Include="order-form-purple.html" />
+    <Content Include="order-form-red.html" />
+    <Content Include="order-form-v2-black.html" />
+    <Content Include="order-form-v2-blue.html" />
+    <Content Include="order-form-v2-green.html" />
+    <Content Include="order-form-v2-purple.html" />
+    <Content Include="order-form-v2-red.html" />
+    <Content Include="order-form-v2-yellow.html" />
+    <Content Include="order-form-v2.html" />
+    <Content Include="order-form-yellow.html" />
+    <Content Include="order-form.html" />
+    <Content Include="project-quote.html" />
+    <Content Include="registration-1-black.html" />
+    <Content Include="registration-1-blue.html" />
+    <Content Include="registration-1-green.html" />
+    <Content Include="registration-1-purple.html" />
+    <Content Include="registration-1-red.html" />
+    <Content Include="registration-1-yellow.html" />
+    <Content Include="registration-1.html" />
+    <Content Include="registration-2.html" />
+    <Content Include="simple-survey.html" />
+    <Content Include="social-buttons.html" />
+    <Content Include="ui-form-elements-markup.html" />
+    <Content Include="ui-form-grid.html" />
+    <Content Include="ui-form-tooltips+icons.html" />
+    <Content Include="places.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FeedbackForm.aspx.cs">
+      <DependentUpon>FeedbackForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeedbackForm.aspx.designer.cs">
+      <DependentUpon>FeedbackForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProblemReport.aspx.cs">
+      <DependentUpon>ProblemReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProblemReport.aspx.designer.cs">
+      <DependentUpon>ProblemReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProblemReport1.aspx.cs">
+      <DependentUpon>ProblemReport1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProblemReport1.aspx.designer.cs">
+      <DependentUpon>ProblemReport1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Yourstay.aspx.cs">
+      <DependentUpon>Yourstay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yourstay.aspx.designer.cs">
+      <DependentUpon>Yourstay.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelBusinessLayer\HotelBusinessLayer.csproj">
+      <Project>{c93379ad-014a-4353-af11-ff9abe011b70}</Project>
+      <Name>HotelBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\test\HotelDBApp.csproj">
+      <Project>{0522891c-2d10-4a63-8a08-11cb555d71df}</Project>
+      <Name>HotelDBApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50962</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50962/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
