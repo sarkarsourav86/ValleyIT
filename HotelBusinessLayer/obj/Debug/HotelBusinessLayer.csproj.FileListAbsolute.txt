@@ -6,3 +6,11 @@ C:\Users\sourav\source\repos\FinalHotelProject\HotelBusinessLayer\obj\Debug\Hote
 C:\Users\sourav\source\repos\FinalHotelProject\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csproj.CoreCompileInputs.cache
 C:\Users\sourav\source\repos\FinalHotelProject\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.dll
 C:\Users\sourav\source\repos\FinalHotelProject\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.pdb
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\bin\Debug\HotelBusinessLayer.dll
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\bin\Debug\HotelBusinessLayer.pdb
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\bin\Debug\test.dll
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\bin\Debug\test.pdb
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.dll
+C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.pdb

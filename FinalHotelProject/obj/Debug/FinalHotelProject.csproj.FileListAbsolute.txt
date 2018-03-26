@@ -11,3 +11,16 @@ C:\Users\sourav\source\repos\FinalHotelProject\FinalHotelProject\bin\test.dll
 C:\Users\sourav\source\repos\FinalHotelProject\FinalHotelProject\bin\test.pdb
 C:\Users\sourav\source\repos\FinalHotelProject\FinalHotelProject\bin\HotelBusinessLayer.dll
 C:\Users\sourav\source\repos\FinalHotelProject\FinalHotelProject\bin\HotelBusinessLayer.pdb
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\FinalHotelProject.dll.config
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\FinalHotelProject.dll
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\FinalHotelProject.pdb
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\HotelBusinessLayer.dll
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\test.dll
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\HotelBusinessLayer.pdb
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\test.pdb
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.csprojResolveAssemblyReference.cache
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.csproj.CoreCompileInputs.cache
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.dll
+C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.pdb

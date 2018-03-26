@@ -17,7 +17,7 @@
           jQuery(document).ready(function ($) {
 
               $("#TxtDate").datepicker({
-                  defaultDate: "+1w",
+                  
                   changeMonth: false,
                   numberOfMonths: 1,
                   prevText: '<i class="fa fa-chevron-left"></i>',
