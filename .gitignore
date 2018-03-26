@@ -1,2 +1,5 @@
 Database1/
 FinalHotelProject/Web.config
+.vs/config/applicationhost.config
+.vs/FinalHotelProject/v15/.suo
+Database1/bin/Debug/HotelAppDatabase.dacpac
