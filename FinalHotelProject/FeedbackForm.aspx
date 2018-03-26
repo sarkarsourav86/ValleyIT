@@ -24,7 +24,6 @@
             value = $("input:radio[name='breakfast']:checked").val();
             $('#HdnBreakfast').val(value);
             value = $("input:radio[name='wifi']:checked").val();
-            alert(value);
             $('#HdnWifi').val(value);
             value = $("input:radio[name='maintenance']:checked").val();
             $('#HdnMaintenance').val(value);
@@ -72,7 +71,7 @@
                 <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
                     
                             <p><asp:Label ID="LblStatus" runat="server"></asp:Label></p>
-                            <a href="#" class="close-btn">&times;</a>                                  
+                                                              
                         
                 </asp:Panel>
                 <asp:Panel ID="PnlFieldContainer" runat="server">
