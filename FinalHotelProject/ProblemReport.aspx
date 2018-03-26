@@ -26,7 +26,7 @@
             });
             $('.smartfm-ctrl').formShowHide();
             $("#from").datepicker({
-                defaultDate: "+1w",
+                
                 changeMonth: false,
                 numberOfMonths: 1,
                 prevText: '<i class="fa fa-chevron-left"></i>',
@@ -573,7 +573,7 @@
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                 <div class="form-footer">
                    
-                    <asp:Button ID="BtnSubmit" CssClass="button btn-primary" runat="server" Text="REPORT" />
+                    <asp:Button ID="BtnSubmit" OnClientClick="fillHiddenFields()" OnClick="Submit_Click" CssClass="button btn-primary" runat="server" Text="REPORT1" />
                     
                 </div><!-- end .form-footer section -->
                 </asp:Panel>

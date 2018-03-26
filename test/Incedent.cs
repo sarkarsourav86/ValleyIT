@@ -10,14 +10,7 @@ namespace HotelDBApp
 {
     public class Incedent
     {
-        enum IncedentTypes {
-            Housekeeping=1,
-            WiFiInternet,
-            Maintenance,
-            CommonArea,
-            Room,
-            FrontDesk
-        }
+        
         public String IncedentID { get; set; }
         public int IncedentType { get; set; }
         public String IncedentDescription { get; set; }
