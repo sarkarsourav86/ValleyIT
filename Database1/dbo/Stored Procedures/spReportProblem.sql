@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spReportProblem]
 	@IncedentType int,
-	@IncedentDescription int,
+	@IncedentDescription varchar(MAX),
 	@RoomNo varchar(50),
 	@HotelID varchar(50),
 	@IncedentTime datetime,

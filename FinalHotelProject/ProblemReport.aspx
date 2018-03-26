@@ -18,14 +18,14 @@
     <script type="text/javascript">
 		jQuery(document).ready(function($){
             $('[data-smartmodal-close]').on('click', function (e) {
-                console.log('in here')
+                
                 e.preventDefault();
                 var smartInactiveModal = $(this).attr('data-smartmodal-close');
                 $(smartInactiveModal).removeClass('smartforms-modal-visible');
                 $('body').removeClass('smartforms-modal-scroll');
             });
             $('.smartfm-ctrl').formShowHide();
-            $("#from").datepicker({
+            $("#TxtDate").datepicker({
                 
                 changeMonth: false,
                 numberOfMonths: 1,
@@ -39,6 +39,9 @@
 		});
     </script>
     <script type="text/javascript">
+        function fillUserHiddenFields() {
+            var 
+        }
         function fillHiddenFields() {
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
@@ -49,12 +52,27 @@
             $('#HdnHousekeeping').val(value);
             
             value = $("input:radio[name='internet']:checked").val();
-            $('#HdnWiFi').val(value);
+            $('#HdnWifi').val(value);
             value = $("input:radio[name='maintenance']:checked").val();
             $('#HdnMaintenance').val(value);
             
             value = $("input:radio[name='common']:checked").val();
             $('#HdnCommon').val(value);
+            value = $('#problemtypes').val()
+            $('#HdnProblemType').val(value);
+            value = $('#housekeeping_comment').val()
+            $('#Hdnhousekeeping_comment').val(value);
+            value = $('#internet_comment').val()
+            $('#Hdninternet_comment').val(value);
+            value = $('#maintain_comment').val()
+            $('#Hdnmaintain_comment').val(value);
+            value = $('#common_comment').val()
+            $('#Hdncommon_comment').val(value);
+            value = $('#room_comment').val()
+            $('#Hdnroom_comment').val(value);
+            value = $('#frontdesk_comment').val()
+            $('#Hdnfrontdesk_comment').val(value);
+            
             
         }
     </script>
@@ -77,6 +95,7 @@
 
             <form id="form1" runat="server">
                 <div id="smart-modal1" class="smartforms-modal" role="alert">
+                    <asp:HiddenField ID="HdnProblemType" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="HdnRoom" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="HdnFrontdesk" runat="server"></asp:HiddenField>
                     
@@ -86,6 +105,13 @@
                     <asp:HiddenField ID="HdnMaintenance" runat="server"></asp:HiddenField>
                     
                     <asp:HiddenField ID="HdnCommon" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnhousekeeping_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdninternet_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnmaintain_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdncommon_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnroom_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnfrontdesk_comment" runat="server"></asp:HiddenField>
+
                     
                     <div class="smartforms-modal-container">
                         <div class="smartforms-modal-header">
@@ -99,33 +125,37 @@
                                         
                                         <div class="section">
                                             <label class="field prepend-icon">
-                                                <input type="text" name="username" id="username" class="gui-input" placeholder="Enter username">
+                                                
+                                                <asp:TextBox ID="TxtUserLastName" runat="server" CssClass="gui-input" placeholder="Enter lastname"></asp:TextBox>
                                                 <span class="field-icon"><i class="fa fa-user"></i></span>
                                             </label>
                                         </div><!-- end section -->
 
                                         <div class="section">
                                             <label class="field prepend-icon">
-                                                <input type="text" name="room" id="roomno" class="gui-input" placeholder="Enter Room Number">
+                                                
+                                                <asp:TextBox ID="TxtRoom" runat="server" CssClass="gui-input" placeholder="Enter Room Number"></asp:TextBox>
                                                 <span class="field-icon"><i class="fa fa-bed"></i></span>
                                             </label>
                                         </div><!-- end section -->
                                         <div class="section">
                                             <label class="field prepend-icon">
-                                                <input type="text" id="from" name="from" placeholder="Enter Checkout date" class="gui-input">
+                                                
+                                                <asp:TextBox ID="TxtDate" runat="server" CssClass="gui-input" placeholder="Enter Checkout date"></asp:TextBox>
                                                 <span class="field-icon"><i class="fa fa-calendar"></i></span>
                                             </label>
                                         </div>
                                         <div class="section">
                                             <label class="field prepend-icon">
-                                                <input type="text" name="email" id="email" class="gui-input" placeholder="Your Email Address">
+                                                
+                                                <asp:TextBox ID="TxtEmail" runat="server" CssClass="gui-input" placeholder="Your Email Address"></asp:TextBox>
                                                 <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                             </label>
                                         </div>
                                             
                                             <div class="smartforms-modal-footer">
                                                 
-                                                <asp:Button OnClientClick="fillHiddenFields()" OnClick="Submit_Click" runat="server" ID="Submit" CssClass="button btn-primary" Text="Send" />
+                                                <asp:Button OnClientClick="fillUserHiddenFields()" OnClick="Submit_Click" runat="server" ID="NoLoginSubmit" CssClass="button btn-primary" Text="Send" />
                                                 
                                             </div><!-- end .form-footer section -->
                                         
@@ -148,7 +178,12 @@
                     <!-- .hiddenbox -->
 
                     <!-- .hiddenbox -->
-
+                    <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
+                    
+                            <p><asp:Label ID="LblStatus" runat="server"></asp:Label></p>
+                                                              
+                        
+                    </asp:Panel>
                     <div class="spacer-b10">
                         <p class="small-text fine-grey">Please select type of problem </p>
                     </div><!-- end section -->
@@ -156,13 +191,13 @@
                     <div class="section colm colm6">
                         <label class="field select">
                             <select name="problemtypes" id="problemtypes">
-                                <option value="" selected>--Select--</option>
-                                <option value="Credit Card" class="smartfm-ctrl" data-show-id="ctr_housekeeping" >Housekeeping</option>
-                                <option value="Check" class="smartfm-ctrl" data-show-id="ctr_internet">WiFi &amp; Internet</option>
-                                <option value="Other" class="smartfm-ctrl" data-show-id="ctr_maintain">Maintenance</option>
-                                <option value="Other" class="smartfm-ctrl" data-show-id="ctr_common">Common Area</option>
-                                <option value="Other" class="smartfm-ctrl" data-show-id="ctr_room">My Room</option>
-                                <option value="Other" class="smartfm-ctrl" data-show-id="ctr_frontdesk">Front Desk Staff</option>
+                                <option value="0" selected>--Select--</option>
+                                <option value="1" class="smartfm-ctrl" data-show-id="ctr_housekeeping" >Housekeeping</option>
+                                <option value="2" class="smartfm-ctrl" data-show-id="ctr_internet">WiFi &amp; Internet</option>
+                                <option value="3" class="smartfm-ctrl" data-show-id="ctr_maintain">Maintenance</option>
+                                <option value="4" class="smartfm-ctrl" data-show-id="ctr_common">Common Area</option>
+                                <option value="5" class="smartfm-ctrl" data-show-id="ctr_room">My Room</option>
+                                <option value="6" class="smartfm-ctrl" data-show-id="ctr_frontdesk">Front Desk Staff</option>
                             </select>
                             <i class="arrow double"></i>
                         </label>
@@ -573,7 +608,7 @@
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                 <div class="form-footer">
                    
-                    <asp:Button ID="BtnSubmit" OnClientClick="fillHiddenFields()" OnClick="Submit_Click" CssClass="button btn-primary" runat="server" Text="REPORT1" />
+                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="REPORT1" />
                     
                 </div><!-- end .form-footer section -->
                 </asp:Panel>

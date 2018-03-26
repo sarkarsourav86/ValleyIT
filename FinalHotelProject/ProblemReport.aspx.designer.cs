@@ -22,6 +22,15 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// HdnProblemType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnProblemType;
+        
+        /// <summary>
         /// HdnRoom control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,121 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.WebControls.HiddenField HdnCommon;
         
         /// <summary>
-        /// Submit control.
+        /// Hdnhousekeeping_comment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Submit;
+        protected global::System.Web.UI.WebControls.HiddenField Hdnhousekeeping_comment;
+        
+        /// <summary>
+        /// Hdninternet_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdninternet_comment;
+        
+        /// <summary>
+        /// Hdnmaintain_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnmaintain_comment;
+        
+        /// <summary>
+        /// Hdncommon_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdncommon_comment;
+        
+        /// <summary>
+        /// Hdnroom_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnroom_comment;
+        
+        /// <summary>
+        /// Hdnfrontdesk_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnfrontdesk_comment;
+        
+        /// <summary>
+        /// TxtUserLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtUserLastName;
+        
+        /// <summary>
+        /// TxtRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtRoom;
+        
+        /// <summary>
+        /// TxtDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDate;
+        
+        /// <summary>
+        /// TxtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
+        
+        /// <summary>
+        /// NoLoginSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button NoLoginSubmit;
+        
+        /// <summary>
+        /// PnlSuccessFailure control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlSuccessFailure;
+        
+        /// <summary>
+        /// LblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblStatus;
         
         /// <summary>
         /// PnlLoginBtnContainer control.
@@ -103,12 +220,12 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.WebControls.Panel PnlNoLoginBtnContainer;
         
         /// <summary>
-        /// BtnSubmit control.
+        /// LoginBtnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmit;
+        protected global::System.Web.UI.WebControls.Button LoginBtnSubmit;
     }
 }

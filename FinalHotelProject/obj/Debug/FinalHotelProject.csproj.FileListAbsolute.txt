@@ -24,3 +24,16 @@ C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject
 C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.csproj.CoreCompileInputs.cache
 C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.dll
 C:\Users\sourav\Documents\HotelApp\FinalHotelProject\obj\Debug\FinalHotelProject.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\FinalHotelProject.dll.config
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\FinalHotelProject.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\FinalHotelProject.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\HotelBusinessLayer.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\test.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\HotelBusinessLayer.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.csprojResolveAssemblyReference.cache
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.csproj.CoreCompileInputs.cache
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.pdb

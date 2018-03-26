@@ -14,3 +14,11 @@ C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLay
 C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csproj.CoreCompileInputs.cache
 C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.dll
 C:\Users\sourav\Documents\HotelApp\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.pdb
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\HotelBusinessLayer.dll
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\HotelBusinessLayer.pdb
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\test.dll
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.dll
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.pdb
