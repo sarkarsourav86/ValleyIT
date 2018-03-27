@@ -13,7 +13,7 @@ namespace FinalHotelProject
         User user;
         String additionalComments;
         Incedent problem;
-        enum IncedentTypes
+        public enum IncedentTypes
         {
             none=0,
             Housekeeping = 1,
