@@ -39,13 +39,11 @@
 		});
     </script>
     <script type="text/javascript">
-        function fillUserHiddenFields() {
-            var 
-        }
+        
         function fillHiddenFields() {
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
-            value = $("input:radio[name='frontdesk']:checked").val();
+            value = $("input:radio[name='helpdesk']:checked").val();
             $('#HdnFrontdesk').val(value);
             
             value = $("input:radio[name='housekeeping']:checked").val();
@@ -53,24 +51,25 @@
             
             value = $("input:radio[name='internet']:checked").val();
             $('#HdnWifi').val(value);
-            value = $("input:radio[name='maintenance']:checked").val();
+            value = $("input:radio[name='maintain']:checked").val();
             $('#HdnMaintenance').val(value);
             
             value = $("input:radio[name='common']:checked").val();
             $('#HdnCommon').val(value);
-            value = $('#problemtypes').val()
+            value = $('#problemtypes').val();
+           
             $('#HdnProblemType').val(value);
-            value = $('#housekeeping_comment').val()
+            value = $('#housekeeping_comment').val();
             $('#Hdnhousekeeping_comment').val(value);
-            value = $('#internet_comment').val()
+            value = $('#internet_comment').val();
             $('#Hdninternet_comment').val(value);
-            value = $('#maintain_comment').val()
+            value = $('#maintain_comment').val();
             $('#Hdnmaintain_comment').val(value);
-            value = $('#common_comment').val()
+            value = $('#common_comment').val();
             $('#Hdncommon_comment').val(value);
-            value = $('#room_comment').val()
+            value = $('#room_comment').val();
             $('#Hdnroom_comment').val(value);
-            value = $('#frontdesk_comment').val()
+            value = $('#frontdesk_comment').val();
             $('#Hdnfrontdesk_comment').val(value);
             
             
@@ -155,7 +154,7 @@
                                             
                                             <div class="smartforms-modal-footer">
                                                 
-                                                <asp:Button OnClientClick="fillUserHiddenFields()" OnClick="Submit_Click" runat="server" ID="NoLoginSubmit" CssClass="button btn-primary" Text="Send" />
+                                                <asp:Button OnClientClick="fillHiddenFields()" OnClick="Submit_Click" runat="server" ID="NoLoginSubmit" CssClass="button btn-primary" Text="Send" />
                                                 
                                             </div><!-- end .form-footer section -->
                                         
@@ -526,7 +525,7 @@
                                 <div class="option-group field">
                                     <div class="smart-option-group smart-option-list group-vertical">
                                         <label for="frontdesk_0" class="option">
-                                        <input type="radio" checked name="frontdesk" id="frontdesk_0" value="0">
+                                        <input type="radio" checked name="helpdesk" id="frontdesk_0" value="0">
                                         <span class="smart-option smart-radio">
                                             <span class="smart-option-ui"> 
                                             	<i class="iconc"></i> No Comments
@@ -608,7 +607,7 @@
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                 <div class="form-footer">
                    
-                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="REPORT1" />
+                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="REPORT" />
                     
                 </div><!-- end .form-footer section -->
                 </asp:Panel>

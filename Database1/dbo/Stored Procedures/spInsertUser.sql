@@ -13,10 +13,11 @@ IF @res>0
 		declare @newId varchar(50)
 		select @newId=@HotelID+'_'+trim(str(count(*)+1)) from [dbo].[Users] where [HotelID]=@HotelID
 		insert into [dbo].[Users] values (@newId,@LastName,@RoomNo,@CheckOutDate,@Email,@HotelID)
+		select @newId
 	End
 ELSE
 	Begin
 	
-		select @res as retcode
+		select ''
 	End
 End

@@ -17,7 +17,7 @@ namespace HotelDBApp
         public DateTime CheckOutDate { get; set; }
         public String Email { get; set; }
         public String HotelID { get; set; }
-        public static int InsertUserInfo(User user)
+        public static String InsertUserInfo(User user)
         {
             SqlCommand cmd = new SqlCommand("spInsertUser");
             
@@ -27,7 +27,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@HotelID", user.HotelID);
             cmd.CommandType = CommandType.StoredProcedure;
-            return DBOperations.UpdateOrInsert(cmd);
+            return DBOperations.InsertAndReturn(cmd);
         }
     }
 }

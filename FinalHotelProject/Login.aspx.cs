@@ -26,9 +26,10 @@ namespace FinalHotelProject
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
             user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = "AK032" };
-            if(HotelDBApp.User.InsertUserInfo(user)>0)
+            String userId = HotelDBApp.User.InsertUserInfo(user);
+            if (userId != String.Empty)
             {
-                SetSession();
+                SetSession(userId);
                 TogglePanels(true);
             }
         }
@@ -38,8 +39,9 @@ namespace FinalHotelProject
             DateTime.TryParse(value, out result);
             return result;
         }
-        private void SetSession()
+        private void SetSession(String userId)
         {
+            user.UserID = userId;
             Session["User"] = user;
         }
     }

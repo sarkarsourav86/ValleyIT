@@ -10,6 +10,7 @@ namespace FinalHotelProject
 {
     public partial class ProblemReport1 : System.Web.UI.Page
     {
+        User user;
         String additionalComments;
         Incedent problem;
         enum IncedentTypes
@@ -38,16 +39,17 @@ namespace FinalHotelProject
         private String GetUser()
         {
             //do some db operations
-            return "AK032_1";
+            return Session["User"]!=null? ((User)Session["User"]).UserID:String.Empty;
         }
         private String GetHotel()
         {
             //do some db operations
+            //return Session["User"] != null ? ((User)Session["User"]).HotelID : String.Empty;
             return "AK032";
         }
         private String GetRoomNo()
         {
-            return "102";
+            return Session["User"] != null ? ((User)Session["User"]).RoomNo : String.Empty;
         }
         private void LoadIncedentFromHiddenFields(IncedentTypes incedent,int feedbackValue)
         {
@@ -102,7 +104,7 @@ namespace FinalHotelProject
             else if (incedent == IncedentTypes.FrontDesk)
                 feedbackValue = HdnFrontdesk.Value;
             else if (incedent == IncedentTypes.Housekeeping)
-                feedbackValue=HdnFrontdesk.Value;
+                feedbackValue=HdnHousekeeping.Value;
             else if (incedent == IncedentTypes.Maintenance)
                 feedbackValue = HdnMaintenance.Value;
             else if (incedent == IncedentTypes.Room)
@@ -111,37 +113,68 @@ namespace FinalHotelProject
                 feedbackValue = HdnWifi.Value;
             return Convert.ToInt32(feedbackValue);
         }
+        private void SetSession(String ID)
+        {
+            user.UserID = ID;
+            Session["User"] = user;
+        }
+        private void InsertUserInfo()
+        {
+            user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text };
+            String userId=HotelDBApp.User.InsertUserInfo(user);
+            if (userId != String.Empty)
+            {
+                SetSession(userId);
+            }
+        }
         protected void Submit_Click(object sender, EventArgs e)
         {
-            
+            InsertUserInfo();
+            //send email
+            InsertIntoDatabase();
+            CheckUserAndSetForm();
+
+
+        }
+        private void InsertIntoDatabase()
+        {
             int feedbackValue = 0;
             int result = 0;
             IncedentTypes incedent = GetIncedentType();
-            if(incedent!=IncedentTypes.none)
+            if (incedent != IncedentTypes.none)
             {
-                feedbackValue= GetFeedbackValue(incedent);
-                LoadIncedentFromHiddenFields(incedent, feedbackValue);
-                result=Incedent.ReportProblem(problem);
-                if(result>0)
+                feedbackValue = GetFeedbackValue(incedent);
+                if(feedbackValue!=0)
                 {
-                    PnlSuccessFailure.Visible = true;
-                    PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
-                    LblStatus.Text = "Your Problem has been recorded!";
+                    LoadIncedentFromHiddenFields(incedent, feedbackValue);
+                    result = Incedent.ReportProblem(problem);
+                    if (result > 0)
+                    {
+                        PnlSuccessFailure.Visible = true;
+                        PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
+                        LblStatus.Text = "Your Problem has been recorded!";
+                    }
+                    else
+                    {
+
+                        PnlSuccessFailure.Visible = true;
+                        PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
+                        LblStatus.Text = "Something went wrong. Please try again!";
+                    }
                 }
                 else
                 {
-                    
                     PnlSuccessFailure.Visible = true;
-                    PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
-                    LblStatus.Text = "Something went wrong. Please try again!";
+                    PnlSuccessFailure.CssClass = "notification alert-warning spacer-t10";
+                    LblStatus.Text = "Please select an option!";
                 }
+                
             }
-            
         }
-
         protected void LoginBtnSubmit_Click(object sender, EventArgs e)
         {
-
+            //Send email
+            InsertIntoDatabase();
         }
     }
 }
