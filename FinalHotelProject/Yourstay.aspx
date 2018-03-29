@@ -15,8 +15,13 @@
     <script type="text/javascript" src="js/jquery.formShowHide.min.js"></script>
     <script src="js/smartforms-modal.min.js"></script>
     <script src="js/jquery-ui-custom.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/Validation.js"></script>
     <script type="text/javascript">
-		jQuery(document).ready(function($){
+        
+        jQuery(document).ready(function ($) {
+            validateForm();
             $('[data-smartmodal-close]').on('click', function (e) {
                 
                 e.preventDefault();
@@ -31,6 +36,7 @@
                 numberOfMonths: 1,
                 prevText: '<i class="fa fa-chevron-left"></i>',
                 nextText: '<i class="fa fa-chevron-right"></i>',
+                minDate: 0,
                 onClose: function (selectedDate) {
                     $("#to").datepicker("option", "minDate", selectedDate);
                 }
@@ -43,6 +49,7 @@
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
             value = $('#room_comment').val();
+            
             $('#Hdnroom_comment').val(value);
             
         }
@@ -115,7 +122,7 @@
                                             
                                             <div class="smartforms-modal-footer">
                                                 
-                                                <asp:Button OnClientClick="fillHiddenFields()"  runat="server" ID="NoLoginSubmit" CssClass="button btn-primary" Text="Send" />
+                                                <asp:Button OnClientClick="fillHiddenFields()"  runat="server" ID="LoginSubmit" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" Text="Send" />
                                                 
                                             </div><!-- end .form-footer section -->
                                         
@@ -202,15 +209,16 @@
                                                 </span>
                                             </span>
                                         </label>
-                                        <label for="room_comment" class="field-label">Additional Comments</label>
+                                        
+                                    </div><!--  smart-option-group -->
+                                    
+                                </div><!-- end .option-group section -->
+                                <label for="room_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="room_comment"></textarea>
                                             <span class="field-icon"><i class="fa fa-comments"></i></span>
                                             <span class="input-hint"> Please leave a comment to help us serve you better</span>
                                         </label>
-                                    </div><!--  smart-option-group -->
-                                </div><!-- end .option-group section -->
-
                             </div>
                         </div><!-- end frm-row section -->
                         <!-- end section -->
@@ -236,14 +244,15 @@
                 	
                     <asp:Panel ID="PnlLoginBtnContainer" runat="server">
                 <div class="form-footer">
-                    <a href="#" data-smart-modal="#smart-modal1" class="button btn-primary smartforms-modal-trigger">Report</a>
+                    <a href="#" onclick="validateForm()" data-smart-modal="#smart-modal1" class="button btn-primary smartforms-modal-trigger">Report</a>
+                    
                     
                 </div><!-- end .form-footer section -->
                 </asp:Panel>
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                 
                    <div class="form-footer">
-                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()"  CssClass="button btn-primary" runat="server" Text="REPORT" />
+                    <asp:Button ID="NoLoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="NoLoginSubmit_Click"  CssClass="button btn-primary" runat="server" Text="REPORT " />
                     </div>
                 
                 </asp:Panel>

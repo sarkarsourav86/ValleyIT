@@ -12,16 +12,69 @@
     <link rel="stylesheet" type="text/css"  href="css/font-awesome.min.css">
       <script src="js/jquery-1.9.1.min.js"></script>
       <script src="js/jquery-ui-custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
       <script type="text/javascript">
 
           jQuery(document).ready(function ($) {
+              $("#form1").validate({
+                  errorClass: "state-error",
+                  validClass: "state-success",
+                  errorElement: "em",
+                  rules: {
+                      TxtLastname: {
+                          required: true
+                      },
+                      TxtRoom: {
+                          required: true
+                      },
+                      TxtEmail: {
+                          required: true,
+                          email: true
+                      },
+                      TxtDate: {
+                          required: true
+                      }
 
+                  },
+                  messages: {
+
+                      TxtLastname: {
+                          required: 'Please enter your last name.'
+                      },
+                      TxtRoom: {
+                          required: 'Please enter your room number.'
+                      },
+                      TxtEmail: {
+                          required: 'Please enter your email id'
+
+                      },
+                      TxtDate: {
+                          required: 'Please enter checkout date'
+                      }
+                  },
+                  highlight: function (element, errorClass, validClass) {
+                      $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+                  },
+                  unhighlight: function (element, errorClass, validClass) {
+                      $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+                  },
+                  errorPlacement: function (error, element) {
+                      if (element.is(":radio") || element.is(":checkbox")) {
+                          element.closest('.option-group').after(error);
+                      }
+                      else {
+                          error.insertAfter(element.parent());
+                      }
+                  }
+              });
               $("#TxtDate").datepicker({
                   
                   changeMonth: false,
                   numberOfMonths: 1,
                   prevText: '<i class="fa fa-chevron-left"></i>',
                   nextText: '<i class="fa fa-chevron-right"></i>',
+                  minDate: 0,
                   onClose: function (selectedDate) {
                       $("#to").datepicker("option", "minDate", selectedDate);
                   }

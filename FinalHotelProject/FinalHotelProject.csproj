@@ -94,6 +94,7 @@
     <Content Include="js\jquery.formShowHide.min.js" />
     <Content Include="js\jquery.validate.min.js" />
     <Content Include="js\smartforms-modal.min.js" />
+    <Content Include="js\Validation.js" />
     <Content Include="Login.aspx" />
     <Content Include="ProblemReport.aspx" />
     <Content Include="ProblemReport1.aspx" />

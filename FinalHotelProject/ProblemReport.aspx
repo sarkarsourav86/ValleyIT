@@ -15,8 +15,10 @@
     <script type="text/javascript" src="js/jquery.formShowHide.min.js"></script>
     <script src="js/smartforms-modal.min.js"></script>
     <script src="js/jquery-ui-custom.min.js"></script>
+    <script src="js/Validation.js"></script>
     <script type="text/javascript">
-		jQuery(document).ready(function($){
+        jQuery(document).ready(function ($) {
+            validateForm();
             $('[data-smartmodal-close]').on('click', function (e) {
                 
                 e.preventDefault();
