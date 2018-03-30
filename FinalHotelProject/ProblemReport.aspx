@@ -15,10 +15,65 @@
     <script type="text/javascript" src="js/jquery.formShowHide.min.js"></script>
     <script src="js/smartforms-modal.min.js"></script>
     <script src="js/jquery-ui-custom.min.js"></script>
-    <script src="js/Validation.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            validateForm();
+           
+                $("#form1").validate({
+                    errorClass: "state-error",
+                    validClass: "state-success",
+                    errorElement: "em",
+                    rules: {
+                        TxtUserLastName: {
+                            required: true
+                        },
+                        TxtRoom: {
+                            required: true
+                        },
+                        TxtEmail: {
+                            required: true,
+                            email: true
+                        },
+                        TxtDate: {
+                            required: true
+                        },
+                        
+
+                    },
+                    messages: {
+
+                        TxtUserLastName: {
+                            required: 'Please enter your last name.'
+                        },
+                        TxtRoom: {
+                            required: 'Please enter your room number.'
+                        },
+                        TxtEmail: {
+                            required: 'Please enter your email id'
+
+                        },
+                        TxtDate: {
+                            required: 'Please enter checkout date'
+                        },
+                        
+                    },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+                    },
+                    errorPlacement: function (error, element) {
+                        if (element.is(":radio") || element.is(":checkbox")) {
+                            element.closest('.option-group').after(error);
+                        }
+                        else {
+                            error.insertAfter(element.parent());
+                        }
+                    }
+                });
+            
             $('[data-smartmodal-close]').on('click', function (e) {
                 
                 e.preventDefault();
@@ -43,6 +98,7 @@
     <script type="text/javascript">
         
         function fillHiddenFields() {
+            console.log('came here');
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
             value = $("input:radio[name='helpdesk']:checked").val();
@@ -113,8 +169,8 @@
                     <asp:HiddenField ID="Hdnroom_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdnfrontdesk_comment" runat="server"></asp:HiddenField>
 
+                    <asp:Panel runat="server" ID="PnlModalContainer" CssClass="smartforms-modal-container">
                     
-                    <div class="smartforms-modal-container">
                         <div class="smartforms-modal-header">
                             <h3>Please Fill in the Details</h3>
                             <a href="#" class="smartforms-modal-close">&times;</a>
@@ -164,7 +220,7 @@
                                 </div><!-- end .smart-forms section -->
                             </div><!-- end .smart-wrap section -->
                         </div><!-- .smartforms-modal-body -->
-                    </div><!-- .smartforms-modal-container -->
+                    </asp:Panel><!-- .smartforms-modal-container -->
                 </div>
                 <div class="form-body">
 
@@ -609,7 +665,7 @@
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                 <div class="form-footer">
                    
-                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="REPORT" />
+                    <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Gotodb" />
                     
                 </div><!-- end .form-footer section -->
                 </asp:Panel>
