@@ -54,6 +54,7 @@ namespace FinalHotelProject
         {
             if (Utilities.HasUserCheckedIn(Session["User"]))
             {
+                PnlModalContainer.Visible = false;
                 PnlNoLoginBtnContainer.Visible = true;
                 PnlLoginBtnContainer.Visible = false;
             }

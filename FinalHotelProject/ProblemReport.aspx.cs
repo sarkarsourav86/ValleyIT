@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 using HotelBusinessLayer;
 using HotelDBApp;
 namespace FinalHotelProject
@@ -132,7 +133,9 @@ namespace FinalHotelProject
         {
             InsertUserInfo();
             //send email
+            
             InsertIntoDatabase();
+            Utilities.SendEmail();
             CheckUserAndSetForm();
 
 
@@ -176,6 +179,7 @@ namespace FinalHotelProject
         {
             //Send email
             InsertIntoDatabase();
+            Utilities.SendEmail();
         }
     }
 }

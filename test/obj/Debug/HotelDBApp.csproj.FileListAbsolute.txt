@@ -10,3 +10,14 @@ C:\Users\sourav\Documents\HotelApp\test\obj\Debug\HotelDBApp.csprojResolveAssemb
 C:\Users\sourav\Documents\HotelApp\test\obj\Debug\HotelDBApp.csproj.CoreCompileInputs.cache
 C:\Users\sourav\Documents\HotelApp\test\obj\Debug\test.dll
 C:\Users\sourav\Documents\HotelApp\test\obj\Debug\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\test.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Debug\HotelDBApp.csprojResolveAssemblyReference.cache
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Debug\HotelDBApp.csproj.CoreCompileInputs.cache
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Debug\test.dll
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Debug\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\SendGrid.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\SendGrid.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Debug\SendGrid.xml

@@ -37,3 +37,8 @@ C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProjec
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.csproj.CoreCompileInputs.cache
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.dll
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Debug\FinalHotelProject.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\Newtonsoft.Json.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\SendGrid.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\Newtonsoft.Json.xml
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\SendGrid.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\SendGrid.xml

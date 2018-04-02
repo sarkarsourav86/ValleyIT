@@ -10,9 +10,5 @@ C:\Users\sourav\Documents\HotelApp\Database1\obj\Debug\Database1.pdb
 C:\Users\Valley1\Documents\ValleyIT\Database1\bin\Debug\HotelAppDatabase.dacpac
 C:\Users\Valley1\Documents\ValleyIT\Database1\bin\Debug\Database1.dll
 C:\Users\Valley1\Documents\ValleyIT\Database1\bin\Debug\Database1.pdb
-C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\Model.xml
-C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\refactor.xml
-C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\postdeploy.sql
-C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\predeploy.sql
 C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\Database1.dll
 C:\Users\Valley1\Documents\ValleyIT\Database1\obj\Debug\Database1.pdb

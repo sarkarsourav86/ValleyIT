@@ -80,7 +80,7 @@
                     
 
                     
-                    <div class="smartforms-modal-container">
+                    <asp:Panel runat="server" ID="PnlModalContainer" CssClass="smartforms-modal-container">
                         <div class="smartforms-modal-header">
                             <h3>Please Fill in the Details</h3>
                             <a href="#" class="smartforms-modal-close">&times;</a>
@@ -130,7 +130,7 @@
                                 </div><!-- end .smart-forms section -->
                             </div><!-- end .smart-wrap section -->
                         </div><!-- .smartforms-modal-body -->
-                    </div><!-- .smartforms-modal-container -->
+                    </asp:Panel><!-- .smartforms-modal-container -->
                     
                 </div><!-- end .form-body section -->
                 <div class="form-body">

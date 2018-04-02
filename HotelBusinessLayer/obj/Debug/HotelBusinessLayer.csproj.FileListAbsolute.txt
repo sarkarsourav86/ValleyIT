@@ -22,3 +22,8 @@ C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLa
 C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.csproj.CoreCompileInputs.cache
 C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.dll
 C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\obj\Debug\HotelBusinessLayer.pdb
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\SendGrid.dll
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\SendGrid.pdb
+C:\Users\Valley1\Documents\ValleyIT\HotelBusinessLayer\bin\Debug\SendGrid.xml

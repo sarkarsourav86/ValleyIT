@@ -120,7 +120,10 @@
                         <div class="spacer-t30 spacer-b30">
                     	    <div class="tagline"><span> OR  Login </span></div><!-- .tagline -->
                         </div>
-                    
+                        <div class="section">
+                            <asp:SqlDataSource ID="SqlDataSourceHotel" ConnectionString="Data Source=DESKTOP-8346GUH\SQLEXPRESS;Initial Catalog=ExperienceHotelApp;Integrated Security=True" SelectCommand="select [Property Name]+' ('+[Property State]+')' as text,[Property] as id from Hotel" runat="server"></asp:SqlDataSource>
+                            <asp:DropDownList DataTextField="text" DataValueField="id" ID="DdlHotels" DataSourceID="SqlDataSourceHotel" Width="200" runat="server"></asp:DropDownList>
+                        </div>
                         <div class="section">
                             <label class="field prepend-icon">
                             
