@@ -114,7 +114,8 @@
                 	<a href="yourstay.aspx" class="button btn-social  span-left"> <span><i class="fa fa-home"></i></span>How's Your Stay</a>
                     <a href="ProblemReport.aspx" class="button btn-social  span-left">  <span><i class="fa fa-ban"></i></span>Report a Problem</a>
                     <a href="places.html" class="button btn-social  span-left"> <span><i class="fa fa-location-arrow"></i></span>Nearby Restaurants</a>
-                        <a href="#" class="button btn-social  span-left"> <span><i class="fa fa-phone"></i></span>Call Frontdesk</a>
+                    
+                        <asp:HyperLink runat="server" ID="HypPhone" NavigateUrl="#" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span>Call Frontdesk</asp:HyperLink>
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">
                         <div class="spacer-t30 spacer-b30">
@@ -122,7 +123,7 @@
                         </div>
                         <div class="section">
                             <asp:SqlDataSource ID="SqlDataSourceHotel" ConnectionString="Data Source=DESKTOP-8346GUH\SQLEXPRESS;Initial Catalog=ExperienceHotelApp;Integrated Security=True" SelectCommand="select [Property Name]+' ('+[Property State]+')' as text,[Property] as id from Hotel" runat="server"></asp:SqlDataSource>
-                            <asp:DropDownList DataTextField="text" DataValueField="id" ID="DdlHotels" DataSourceID="SqlDataSourceHotel" Width="200" runat="server"></asp:DropDownList>
+                            <asp:DropDownList AutoPostBack="true" DataTextField="text" DataValueField="id" ID="DdlHotels" OnSelectedIndexChanged="DdlHotels_SelectedIndexChanged" DataSourceID="SqlDataSourceHotel" Width="200" runat="server"></asp:DropDownList>
                         </div>
                         <div class="section">
                             <label class="field prepend-icon">

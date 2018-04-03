@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,20 @@ namespace HotelDBApp
                 con.Open();
                 cmd.Connection = con;
                 return (String)cmd.ExecuteScalar();
+            }
+        }
+        public static DataSet FetchValues(SqlCommand cmd)
+        {
+            DataSet ds=new DataSet();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da;
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                
+                cmd.Connection = con;
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
             }
         }
         public static int UpdateOrInsert(SqlCommand cmd)

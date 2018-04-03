@@ -74,5 +74,6 @@
     <Build Include="dbo\Stored Procedures\spInsertUser.sql" />
     <Build Include="dbo\Stored Procedures\spInsertFeedback.sql" />
     <Build Include="dbo\Stored Procedures\spReportProblem.sql" />
+    <Build Include="dbo\Stored Procedures\spfetchHotel.sql" />
   </ItemGroup>
 </Project>

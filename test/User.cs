@@ -28,6 +28,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@HotelID", user.HotelID);
             cmd.CommandType = CommandType.StoredProcedure;
             return DBOperations.InsertAndReturn(cmd);
+            
         }
     }
 }
