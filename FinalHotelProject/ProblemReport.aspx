@@ -153,15 +153,19 @@
             <form id="form1" runat="server">
                 <div id="smart-modal1" class="smartforms-modal" role="alert">
                     <asp:HiddenField ID="HdnProblemType" runat="server"></asp:HiddenField>
+                    
                     <asp:HiddenField ID="HdnRoom" runat="server"></asp:HiddenField>
+                    
                     <asp:HiddenField ID="HdnFrontdesk" runat="server"></asp:HiddenField>
                     
                     <asp:HiddenField ID="HdnHousekeeping" runat="server"></asp:HiddenField>
                     
                     <asp:HiddenField ID="HdnWifi" runat="server"></asp:HiddenField>
+                    
                     <asp:HiddenField ID="HdnMaintenance" runat="server"></asp:HiddenField>
                     
                     <asp:HiddenField ID="HdnCommon" runat="server"></asp:HiddenField>
+                    
                     <asp:HiddenField ID="Hdnhousekeeping_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdninternet_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdnmaintain_comment" runat="server"></asp:HiddenField>

@@ -14,10 +14,40 @@ namespace FinalHotelProject
         Hotel hotel=null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetHotelFromUrl();
             SetPhoneNumber();
+            SetUrl();
+
             if (Session["user"]!=null)
             {
                 TogglePanels(true);
+            }
+        }
+        private void SetHotelFromUrl()
+        {
+            String id;
+            if (Session["Hotel"] != null) return;
+            else if (Request.QueryString["hotelid"] != null)
+            {
+                id = Request.QueryString["hotelid"];
+            }
+
+            else
+            {
+                id = "AK032";
+
+            }
+
+            hotel = Hotel.GetHotel(id);
+            SetHotelInfo();
+        }
+        private void SetUrl()
+        {
+            String ID = String.Empty;
+            if((ID=Request.QueryString["hotelid"]) != null)
+            {
+                HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);
+                HypStay.NavigateUrl= String.Format(HypStay.NavigateUrl + "?hotelid={0}", ID);
             }
         }
         private void SetPhoneNumber()
@@ -71,8 +101,7 @@ namespace FinalHotelProject
         protected void DdlHotels_SelectedIndexChanged(object sender, EventArgs e)
         {
             String id = DdlHotels.SelectedValue;
-            hotel = Hotel.GetHotel(id);
-            SetHotelInfo();
+            
             string url = String.Format(Request.Url.GetLeftPart(UriPartial.Path) + "?hotelid={0}",id);
             Response.Redirect(url, true);
             

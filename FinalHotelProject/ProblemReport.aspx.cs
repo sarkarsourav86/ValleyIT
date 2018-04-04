@@ -14,6 +14,7 @@ namespace FinalHotelProject
         User user;
         String additionalComments;
         Incedent problem;
+        Hotel hotel;
         public enum IncedentTypes
         {
             none=0,
@@ -27,7 +28,30 @@ namespace FinalHotelProject
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetHotelFromUrl();
             CheckUserAndSetForm();
+        }
+        private void SetHotelFromUrl()
+        {
+            String id;
+            if (Session["Hotel"] != null) return;
+            else if (Request.QueryString["hotelid"] != null)
+            {
+                id = Request.QueryString["hotelid"];
+            }
+            
+            else
+            {
+                id = "AK032";
+                
+            }
+
+            hotel = Hotel.GetHotel(id);
+            SetHotelInfo();
+        }
+        private void SetHotelInfo()
+        {
+            Session["Hotel"] = hotel;
         }
         private void CheckUserAndSetForm()
         {
@@ -43,11 +67,15 @@ namespace FinalHotelProject
             //do some db operations
             return Session["User"]!=null? ((User)Session["User"]).UserID:String.Empty;
         }
+        private User GetUserObject()
+        {
+            return Session["User"] != null ? ((User)Session["User"]) : null;
+        }
         private String GetHotel()
         {
             //do some db operations
-            //return Session["User"] != null ? ((User)Session["User"]).HotelID : String.Empty;
-            return "AK032";
+            return Session["Hotel"] != null ? ((Hotel)Session["Hotel"]).ID : String.Empty;
+            //return "AK032";
         }
         private String GetRoomNo()
         {
@@ -127,6 +155,14 @@ namespace FinalHotelProject
             if (userId != String.Empty)
             {
                 SetSession(userId);
+            }
+        }
+        private void PrepareEmail()
+        {
+            user = GetUserObject();
+            if(problem!=null)
+            {
+                
             }
         }
         protected void Submit_Click(object sender, EventArgs e)

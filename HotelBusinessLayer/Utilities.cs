@@ -14,6 +14,24 @@ namespace HotelBusinessLayer
 {
     public class Utilities
     {
+        public static Dictionary<int, String> ProblemTypesList = new Dictionary<int, string>()
+        {
+            {1,"Housekeeping" },
+            {2,"WiFi & Internet" },
+            {3,"Maintenance" },
+            {4,"Common Area" },
+            {5,"Room" },
+            {6,"Front Desk Staff" }
+        };
+        public static Dictionary<int, String> FeedbackOptionsList = new Dictionary<int, string>()
+        {
+            {0,"No Comments" },
+            {1,"Works Great/ Satisfied with it" },
+            {2,"Not Satisfied with it" },
+            {3,"Something is broken" },
+            
+            {4,"Needs Immediate Attention" }
+        };
         public static Boolean HasUserCheckedIn(Object session)
         {
             
@@ -40,6 +58,7 @@ namespace HotelBusinessLayer
             //smtpClient.Send(mail);
             Execute();
         }
+        
         static void Execute()
         {
             

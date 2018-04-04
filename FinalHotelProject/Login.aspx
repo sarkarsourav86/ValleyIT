@@ -111,10 +111,10 @@
                     </div>                 
                 
                 	<div class="section">
-                	<a href="yourstay.aspx" class="button btn-social  span-left"> <span><i class="fa fa-home"></i></span>How's Your Stay</a>
-                    <a href="ProblemReport.aspx" class="button btn-social  span-left">  <span><i class="fa fa-ban"></i></span>Report a Problem</a>
-                    <a href="places.html" class="button btn-social  span-left"> <span><i class="fa fa-location-arrow"></i></span>Nearby Restaurants</a>
-                    
+                	
+                        <asp:HyperLink runat="server" ID="HypStay" NavigateUrl="yourstay.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-home"></i></span>How's Your Stay</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="HypProblemReport" NavigateUrl="ProblemReport.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-ban"></i></span>Report a Problem</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="HypPlaces" NavigateUrl="places.html" CssClass="button btn-social  span-left"><span><i class="fa fa-location-arrow"></i></span>Nearby Restaurants</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypPhone" NavigateUrl="#" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span>Call Frontdesk</asp:HyperLink>
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">

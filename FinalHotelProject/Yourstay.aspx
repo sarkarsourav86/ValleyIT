@@ -133,7 +133,13 @@
                     </asp:Panel><!-- .smartforms-modal-container -->
                     
                 </div><!-- end .form-body section -->
-                <div class="form-body">
+                <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
+                    
+                            <p><asp:Label ID="LblStatus" runat="server"></asp:Label></p>
+                                                              
+                        
+                    </asp:Panel>
+                <asp:Panel runat="server" ID="FormBody" CssClass="form-body">
 
                     <!-- end .frm-row section -->
 
@@ -146,12 +152,7 @@
                     <!-- .hiddenbox -->
 
                     <!-- .hiddenbox -->
-                    <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
                     
-                            <p><asp:Label ID="LblStatus" runat="server"></asp:Label></p>
-                                                              
-                        
-                    </asp:Panel>
                     
 
                     <!-- end section -->
@@ -239,7 +240,7 @@
 
                     <!-- end .notification section -->
 
-                </div>
+                </asp:Panel>
                 
                 	
                     <asp:Panel ID="PnlLoginBtnContainer" runat="server">

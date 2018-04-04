@@ -15,11 +15,26 @@ namespace FinalHotelProject
     {
         Incedent problem;
         User user;
+        Hotel hotel;
         ProblemReport1.IncedentTypes incedent = ProblemReport1.IncedentTypes.Room;
        
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckUserAndSetForm();
+            FetchHotelinfoFromDB();
+        }
+        private void FetchHotelinfoFromDB()
+        {
+            String ID = String.Empty;
+            if(Session["Hotel"]!=null)
+            {
+                hotel = (Hotel)Session["Hotel"];
+            }
+            else if((ID = Request.QueryString["hotelid"]) != null)
+            {
+                hotel = Hotel.GetHotel(ID);
+            }
+            
         }
         private String GetUser()
         {
@@ -28,9 +43,16 @@ namespace FinalHotelProject
         }
         private String GetHotel()
         {
+            String ID = String.Empty;
             //do some db operations
             //return Session["User"] != null ? ((User)Session["User"]).HotelID : String.Empty;
-            return "AK032";
+            if(Session["Hotel"]!=null)
+            {
+                ID = ((Hotel)Session["Hotel"]).ID;
+            }
+            else if((ID=Request.QueryString["hotelid"])==null)
+                ID= "AK032";
+            return ID;
         }
         private String GetRoomNo()
         {
@@ -77,6 +99,7 @@ namespace FinalHotelProject
                     PnlSuccessFailure.Visible = true;
                     PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
                     LblStatus.Text = "Your Problem has been recorded!";
+                    FormBody.Visible = false;
                 }
                 else
                 {
