@@ -68,10 +68,12 @@
     	<div class="smart-forms smart-container wrap-2">
         
         	<div class="form-header header-primary">
-            	<h4><i class="fa fa-pencil-square"></i>My Room Feedback </h4>
+            	<h4><i class="fa fa-pencil-square"></i>My Room Feedback - <asp:Label ID="LblHotelName" runat="server"></asp:Label> </h4>
+                
             </div><!-- end .form-header section -->
             
             <form id="form1" runat="server">
+                
             	<div id="smart-modal1" class="smartforms-modal" role="alert">
                     
                     <asp:HiddenField ID="HdnRoom" runat="server"></asp:HiddenField>

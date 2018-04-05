@@ -147,7 +147,8 @@
         <div class="smart-forms smart-container wrap-2">
 
             <div class="form-header header-primary">
-                <h4><i class="fa fa-eye-slash"></i>Report A Problem</h4>
+                <h4><i class="fa fa-eye-slash"></i>Report A Problem - <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
+                
             </div><!-- end .form-header section -->
 
             <form id="form1" runat="server">

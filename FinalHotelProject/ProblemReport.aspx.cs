@@ -30,20 +30,31 @@ namespace FinalHotelProject
         {
             SetHotelFromUrl();
             CheckUserAndSetForm();
+            SetHotelName();
+        }
+        private void SetHotelName()
+        {
+            if (Session["Hotel"] != null)
+            {
+                LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
+            }
         }
         private void SetHotelFromUrl()
         {
             String id;
-            if (Session["Hotel"] != null) return;
-            else if (Request.QueryString["hotelid"] != null)
+            if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
+            {
+                if (((Hotel)Session["Hotel"]).ID == Request.QueryString["hotelid"]) return;
+            }
+            if (Request.QueryString["hotelid"] != null)
             {
                 id = Request.QueryString["hotelid"];
             }
-            
+
             else
             {
                 id = "AK032";
-                
+
             }
 
             hotel = Hotel.GetHotel(id);
@@ -52,6 +63,10 @@ namespace FinalHotelProject
         private void SetHotelInfo()
         {
             Session["Hotel"] = hotel;
+        }
+        private Hotel GetHotelObject()
+        {
+            return (Hotel)Session["Hotel"];
         }
         private void CheckUserAndSetForm()
         {
@@ -157,12 +172,22 @@ namespace FinalHotelProject
                 SetSession(userId);
             }
         }
-        private void PrepareEmail()
+        private void SendEmail()
         {
+            Dictionary<int, String> FeedbackOptn = Utilities.ProblemTypesList;
+            Dictionary<int, String> FeedbackValue = Utilities.FeedbackOptionsList;
+            Email email = new Email();
             user = GetUserObject();
             if(problem!=null)
             {
-                
+                hotel = GetHotelObject();
+                email.ToAddress = hotel.Email;
+                email.CustName = user.LastName;
+                email.RoomNo = user.RoomNo;
+                email.ProblemType = FeedbackOptn[problem.IncedentType];
+                email.ProblemValue = FeedbackValue[problem.FeedbackValue];
+                email.CheckoutDate = user.CheckOutDate;
+                Utilities.SendEmail(email);
             }
         }
         protected void Submit_Click(object sender, EventArgs e)
@@ -171,7 +196,7 @@ namespace FinalHotelProject
             //send email
             
             InsertIntoDatabase();
-            Utilities.SendEmail();
+            SendEmail();
             CheckUserAndSetForm();
 
 
@@ -215,7 +240,7 @@ namespace FinalHotelProject
         {
             //Send email
             InsertIntoDatabase();
-            Utilities.SendEmail();
+            SendEmail();
         }
     }
 }

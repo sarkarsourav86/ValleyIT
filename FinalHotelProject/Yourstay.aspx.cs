@@ -22,6 +22,14 @@ namespace FinalHotelProject
         {
             CheckUserAndSetForm();
             FetchHotelinfoFromDB();
+            SetHotelName();
+        }
+        private void SetHotelName()
+        {
+            if (Session["Hotel"] != null)
+            {
+                LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
+            }
         }
         private void FetchHotelinfoFromDB()
         {
@@ -71,6 +79,32 @@ namespace FinalHotelProject
             
             int.TryParse(HdnRoom.Value, out int res);
             return res;
+        }
+        private Hotel GetHotelObject()
+        {
+            return (Hotel)Session["Hotel"];
+        }
+        private User GetUserObject()
+        {
+            return Session["User"] != null ? ((User)Session["User"]) : null;
+        }
+        private void SendEmail()
+        {
+            Dictionary<int, String> FeedbackOptn = Utilities.ProblemTypesList;
+            Dictionary<int, String> FeedbackValue = Utilities.FeedbackOptionsList;
+            Email email = new Email();
+            user = GetUserObject();
+            if (problem != null)
+            {
+                hotel = GetHotelObject();
+                email.ToAddress = hotel.Email;
+                email.CustName = user.LastName;
+                email.RoomNo = user.RoomNo;
+                email.ProblemType = FeedbackOptn[problem.IncedentType];
+                email.ProblemValue = FeedbackValue[problem.FeedbackValue];
+                email.CheckoutDate = user.CheckOutDate;
+                Utilities.SendEmail(email);
+            }
         }
         private void CheckUserAndSetForm()
         {
@@ -127,13 +161,17 @@ namespace FinalHotelProject
         }
         protected void NoLoginSubmit_Click(object sender, EventArgs e)
         {
+            
             InsertIntoDatabase();
+            SendEmail();
         }
 
         protected void LoginBtnSubmit_Click(object sender, EventArgs e)
         {
             InsertUserInfo();
+            
             InsertIntoDatabase();
+            SendEmail();
             CheckUserAndSetForm();
         }
     }

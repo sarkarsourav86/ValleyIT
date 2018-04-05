@@ -32,7 +32,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@hotelID", id);
             DataRow row = DBOperations.FetchValues(cmd).Tables[0].Rows[0];
             //SqlDataReader reader= cmd.ExecuteReader();
-            Hotel hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString() };
+            Hotel hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(),Brand= row["Property Name"].ToString() };
 
             return hotel;
         }

@@ -17,17 +17,27 @@ namespace FinalHotelProject
             SetHotelFromUrl();
             SetPhoneNumber();
             SetUrl();
-
+            SetHotelName();
             if (Session["user"]!=null)
             {
                 TogglePanels(true);
             }
         }
+        private void SetHotelName()
+        {
+            if(Session["Hotel"]!=null)
+            {
+                LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
+            }
+        }
         private void SetHotelFromUrl()
         {
             String id;
-            if (Session["Hotel"] != null) return;
-            else if (Request.QueryString["hotelid"] != null)
+            if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
+            {
+                if(((Hotel)Session["Hotel"]).ID== Request.QueryString["hotelid"]) return;
+            }
+            if (Request.QueryString["hotelid"] != null)
             {
                 id = Request.QueryString["hotelid"];
             }
@@ -46,8 +56,14 @@ namespace FinalHotelProject
             String ID = String.Empty;
             if((ID=Request.QueryString["hotelid"]) != null)
             {
-                HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);
-                HypStay.NavigateUrl= String.Format(HypStay.NavigateUrl + "?hotelid={0}", ID);
+                HypProblemReport.NavigateUrl = String.Format("{0}?hotelid={1}",HypProblemReport.NavigateUrl.Split('?')[0],ID);
+                HypStay.NavigateUrl = String.Format("{0}?hotelid={1}", HypStay.NavigateUrl.Split('?')[0], ID);
+                //Uri uri = new Uri("@"+HypProblemReport.NavigateUrl);
+                //HypProblemReport.NavigateUrl=String.Format("{0}?hotelid={1}",uri.OriginalString.Replace(uri.Query, String.Empty),ID);
+                //HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);
+                //Request.Url.GetLeftPart(UriPartial.Path) + "?hotelid={0}",id
+                //uri = new Uri(HypStay.NavigateUrl);
+               // HypStay.NavigateUrl= String.Format("{0}?hotelid={1}", uri.OriginalString.Replace(uri.Query, String.Empty), ID);
             }
         }
         private void SetPhoneNumber()

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBOperations.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Feedback.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="Incedent.cs" />

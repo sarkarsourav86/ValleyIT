@@ -100,7 +100,8 @@
     	<div class="smart-forms smart-container wrap-3">
         
         	<div class="form-header header-primary">
-            	<h4><i class="fa fa-sign-in"></i>Check In</h4>
+            	<h4><i class="fa fa-sign-in"></i>Check In - <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
+                
           </div><!-- end .form-header section -->
             
             <form id="form1" runat="server">

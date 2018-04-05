@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Mail;
 using System.Configuration;
 
+
 namespace HotelBusinessLayer
 {
     public class Utilities
@@ -37,7 +38,7 @@ namespace HotelBusinessLayer
             
             return session != null;
         }
-        public static void SendEmail()
+        public static void SendEmail(Email email)
         {
             //SmtpClient smtpClient = new SmtpClient("localhost")
             //{
@@ -56,19 +57,19 @@ namespace HotelBusinessLayer
             ////mail.CC.Add(new MailAddress("MyEmailID@gmail.com"));
 
             //smtpClient.Send(mail);
-            Execute();
+            Execute(email);
         }
         
-        static void Execute()
+        static void Execute(Email email)
         {
             
             var apiKey = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("interns@valleyit.us", "Example User");
-            var subject = "Sending with SendGrid is Fun";
-            var to = new EmailAddress("sarkarsourav86@gmail.com", "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var subject = "A Problem has been Reported";
+            var to = new EmailAddress(email.ToAddress.Trim(), "Example User");
+            var plainTextContent = email.Comments;
+            var htmlContent = String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p>", email.ProblemType,email.ProblemValue,email.RoomNo,email.CustName,email.CheckoutDate);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);
         }
