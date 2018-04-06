@@ -1015,7 +1015,7 @@ html, body{
 .smart-forms .button:active{ color: #1d2938; background: #a1a6a9; }
 .smart-forms a.button, 
 .smart-forms span.button, 
-.smart-forms label.button { line-height: 42px; text-decoration: none; }
+.smart-forms label.button { line-height: 42px; text-decoration: none; width: 100%; }
 .smart-forms .button i{ font-size:14px; }
 .smart-forms .button-list .button{ margin-bottom:5px; }
 

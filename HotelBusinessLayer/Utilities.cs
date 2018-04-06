@@ -69,7 +69,7 @@ namespace HotelBusinessLayer
             var subject = "A Problem has been Reported";
             var to = new EmailAddress(email.ToAddress.Trim(), "Example User");
             var plainTextContent = email.Comments;
-            var htmlContent = String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p>", email.ProblemType,email.ProblemValue,email.RoomNo,email.CustName,email.CheckoutDate);
+            var htmlContent = String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType,email.ProblemValue,email.RoomNo,email.CustName,email.CheckoutDate,email.Comments);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);
         }

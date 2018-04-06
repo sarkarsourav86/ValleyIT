@@ -103,6 +103,7 @@ namespace FinalHotelProject
                 email.ProblemType = FeedbackOptn[problem.IncedentType];
                 email.ProblemValue = FeedbackValue[problem.FeedbackValue];
                 email.CheckoutDate = user.CheckOutDate;
+                email.Comments = problem.IncedentDescription;
                 Utilities.SendEmail(email);
             }
         }

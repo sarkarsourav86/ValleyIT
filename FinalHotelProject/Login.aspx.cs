@@ -14,14 +14,19 @@ namespace FinalHotelProject
         Hotel hotel=null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetHotelFromUrl();
-            SetPhoneNumber();
-            SetUrl();
-            SetHotelName();
+            
+                
+
+
             if (Session["user"]!=null)
             {
                 TogglePanels(true);
             }
+            SetHotelFromUrl();
+
+            SetUrl();
+            SetHotelName();
+            SetPhoneNumber();
         }
         private void SetHotelName()
         {
@@ -32,17 +37,19 @@ namespace FinalHotelProject
         }
         private void SetHotelFromUrl()
         {
-            String id;
+            String id=String.Empty;
             if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
             {
-                if(((Hotel)Session["Hotel"]).ID== Request.QueryString["hotelid"]) return;
+                if (((Hotel)Session["Hotel"]).ID == Request.QueryString["hotelid"]) return;
+                else id = Request.QueryString["hotelid"]; 
             }
-            if (Request.QueryString["hotelid"] != null)
+            else if (Session["Hotel"] != null && Request.QueryString["hotelid"] == null) return;
+            else if (Session["Hotel"] == null && Request.QueryString["hotelid"] != null)
             {
                 id = Request.QueryString["hotelid"];
             }
 
-            else
+            else if(Session["Hotel"] == null && Request.QueryString["hotelid"] == null)
             {
                 id = "AK032";
 
@@ -72,6 +79,7 @@ namespace FinalHotelProject
             {
                 String number = ((Hotel)Session["Hotel"]).Phone;
                 HypPhone.NavigateUrl = String.Format("tel://{0}", number);
+                
             }
         }
         private void TogglePanels(bool ShouldHide)
@@ -85,7 +93,7 @@ namespace FinalHotelProject
             if (Session["Hotel"] != null)
             {
                 HotelID = ((Hotel)Session["Hotel"]).ID;
-                HypPhone.NavigateUrl = String.Format("tel://{0}", HotelID);
+                //HypPhone.NavigateUrl = String.Format("tel://{0}", HotelID);
             }
             return HotelID;
         }
