@@ -97,6 +97,7 @@
     <Content Include="checkboxes-radio-group-red.html" />
     <Content Include="checkboxes-radio-group-yellow.html" />
     <Content Include="form-hide-show-elements.html" />
+    <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="js\additional-methods.min.js" />
     <Content Include="js\jquery.formShowHide.min.js" />
@@ -104,6 +105,7 @@
     <Content Include="js\smartforms-modal.min.js" />
     <Content Include="js\Validation.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MyDummyPage.aspx" />
     <Content Include="ProblemReport.aspx" />
     <Content Include="ProblemReport1.aspx" />
     <Content Include="ProblemReport.html" />
@@ -246,6 +248,9 @@
     <Compile Include="FeedbackForm.aspx.designer.cs">
       <DependentUpon>FeedbackForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,6 +264,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyDummyPage.aspx.cs">
+      <DependentUpon>MyDummyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyDummyPage.aspx.designer.cs">
+      <DependentUpon>MyDummyPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProblemReport.aspx.cs">
       <DependentUpon>ProblemReport.aspx</DependentUpon>
