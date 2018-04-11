@@ -48,7 +48,7 @@ namespace FinalHotelProject
         }
         public void myTimer_Elapsed(object source, System.Timers.ElapsedEventArgs e)
         {
-           DoSomeEmailSendStuff();
+           //DoSomeEmailSendStuff();
         }
         private void RegisterCacheEntry()
         {

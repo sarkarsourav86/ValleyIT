@@ -30,5 +30,19 @@ namespace HotelDBApp
             return DBOperations.InsertAndReturn(cmd);
             
         }
+        public static User GetUserInfo(String ID)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchUsers");
+            cmd.Parameters.AddWithValue("@id", ID);
+            DataSet ds=DBOperations.FetchValues(cmd);
+            DataRow row = null;
+            User user = null;
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                row = ds.Tables[0].Rows[0];
+                user = new User() { UserID = ID, LastName = row["LastName"].ToString(), RoomNo = row["RoomNo"].ToString(), CheckOutDate = Convert.ToDateTime(row["CheckOutDate"]),Email=row["Email"].ToString(),HotelID=row["HotelID"].ToString() };
+            }
+            return user;
+        }
     }
 }

@@ -30,9 +30,17 @@ namespace HotelDBApp
             SqlCommand cmd = new SqlCommand("spfetchHotel");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@hotelID", id);
-            DataRow row = DBOperations.FetchValues(cmd).Tables[0].Rows[0];
+            DataTable table = DBOperations.FetchValues(cmd).Tables[0];
+            DataRow row = null;
+            Hotel hotel = null;
+            if (table.Rows.Count==1)
+            {
+                row = table.Rows[0];
+                hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString() };
+            }
+               
             //SqlDataReader reader= cmd.ExecuteReader();
-            Hotel hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(),Brand= row["Property Name"].ToString() };
+
 
             return hotel;
         }

@@ -71,7 +71,11 @@
             	<h4><i class="fa fa-pencil-square"></i>My Room Feedback - <asp:Label ID="LblHotelName" runat="server"></asp:Label> </h4>
                 
             </div><!-- end .form-header section -->
-            
+            <ul class="breadcrumb">
+                <li><a href="/Login.aspx">Home</a></li>
+                
+                <li>Your Stay</li>
+            </ul>
             <form id="form1" runat="server">
                 
             	<div id="smart-modal1" class="smartforms-modal" role="alert">

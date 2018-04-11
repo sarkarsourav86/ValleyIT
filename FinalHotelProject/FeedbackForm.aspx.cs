@@ -12,9 +12,19 @@ namespace FinalHotelProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(!(HasValidUserId() && HasValidHotelId()))
+            {
+                PnlFieldContainer.Visible = false;
+            }
         }
-
+        private bool HasValidUserId()
+        {
+            return Request.QueryString["hotelid"] != null;
+        }
+        private bool HasValidHotelId()
+        {
+            return Request.QueryString["user"] != null;
+        }
         protected void Submit_Click(object sender, EventArgs e)
         {
             Submit.Text = HdnRating.Value;
@@ -34,22 +44,34 @@ namespace FinalHotelProject
             }
             
         }
-        private String GetUser()
+        private String GetUserId()
         {
-            //do some db operations
-            return "AK032_1";
+            return Request.QueryString["user"];
         }
-        private String GetHotel()
+        private String GetHotelId()
         {
+            return Request.QueryString["hotelid"];
+        }
+        private User GetUser()
+        {
+            String userID = GetUserId();
+            return HotelDBApp.User.GetUserInfo(userID);
             //do some db operations
-            return "AK032";
+            //return Request.QueryString["user"];
+        }
+        private Hotel GetHotel()
+        {
+            String hotelId = GetHotelId();
+            return Hotel.GetHotel(hotelId);
+            //do some db operations
+            //return Request.QueryString["hotelid"];
         }
         private Feedback CreateFeedback()
         {
             return new Feedback()
             {
-                UserID = GetUser(),
-                HotelID = GetHotel(),
+                UserID = GetUserId(),
+                HotelID = GetHotelId(),
                 BreakfastFeedback = Convert.ToInt16(HdnBreakfast.Value),
                 CommonFeedback= Convert.ToInt16(HdnCommon.Value),
                 FrontDeskFeedback=Convert.ToInt16(HdnFrontdesk.Value),
