@@ -10,12 +10,24 @@ namespace FinalHotelProject
 {
     public partial class FeedbackForm : System.Web.UI.Page
     {
+        Hotel hotel;
+        User user;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!(HasValidUserId() && HasValidHotelId()))
             {
                 PnlFieldContainer.Visible = false;
             }
+            else
+            {
+                hotel = GetHotel();
+                //user = GetUser();
+                SetSearchCriteria();
+            }
+        }
+        private void SetSearchCriteria()
+        {
+           if(hotel!=null) HdnPlacetoSearch.Value = String.Format("{0},{1},{2},{3}", hotel.Brand, hotel.City, hotel.State, hotel.PostalCode);
         }
         private bool HasValidUserId()
         {

@@ -39,7 +39,33 @@
             $('#HdnAddComments').val(value);
         }
     </script>
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 0%;
+         }
+         /* Optional: Makes the sample page fill the window. */
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
 
+         #floating-panel {
+             position: absolute;
+             top: 10px;
+             left: 25%;
+             z-index: 5;
+             background-color: #fff;
+             padding: 5px;
+             border: 1px solid #999;
+             text-align: center;
+             font-family: 'Roboto','sans-serif';
+             line-height: 30px;
+             padding-left: 10px;
+         }
+    </style>
     <!--[if lte IE 9]>
     	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>    
         <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
@@ -58,8 +84,9 @@
                 <h4><i class="fa fa-rocket"></i>Your feedback</h4>
             </div>
             <!-- end .form-header section -->
-
+            <div id="map"></div>
             <form id="feedback" runat="server">
+                <asp:HiddenField ID="HdnPlacetoSearch" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnRoom" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnFrontdesk" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnReservation" runat="server"></asp:HiddenField>
@@ -82,536 +109,7 @@
                 <asp:Panel ID="PnlFieldContainer" runat="server">
                     <div class="form-body">
 
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Your Room</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="room_1" class="option">
-                                            <input type="radio" name="room" id="room_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="room_2" class="option">
-                                            <input type="radio" name="room" id="room_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="room_3" class="option">
-                                            <input type="radio" name="room" id="room_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="room_4" class="option">
-                                            <input type="radio" name="room" id="room_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end frm-row section -->
-
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Frondesk Staff</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="frontdesk_1" class="option">
-                                            <input type="radio" name="frontdesk" id="frontdesk_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="frontdesk_2" class="option">
-                                            <input type="radio" name="frontdesk" id="frontdesk_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="frontdesk_3" class="option">
-                                            <input type="radio" name="frontdesk" id="frontdesk_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="frontdesk_4" class="option">
-                                            <input type="radio" name="frontdesk" id="frontdesk_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end section -->
-
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Reservations</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="reservation_1" class="option">
-                                            <input type="radio" name="reservation" id="reservation_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="reservation_2" class="option">
-                                            <input type="radio" name="reservation" id="reservation_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="reservation_3" class="option">
-                                            <input type="radio" name="reservation" id="reservation_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="reservation_4" class="option">
-                                            <input type="radio" name="reservation" id="reservation_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end section -->
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Housekeeping</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="housekeeping_1" class="option">
-                                            <input type="radio" name="housekeeping" id="housekeeping_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="housekeeping_2" class="option">
-                                            <input type="radio" name="housekeeping" id="housekeeping_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="housekeeping_3" class="option">
-                                            <input type="radio" name="housekeeping" id="housekeeping_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="housekeeping_4" class="option">
-                                            <input type="radio" name="housekeeping" id="housekeeping_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Breakfast</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="breakfast_1" class="option">
-                                            <input type="radio" name="breakfast" id="breakfast_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="breakfast_2" class="option">
-                                            <input type="radio" name="breakfast" id="breakfast_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="breakfast_3" class="option">
-                                            <input type="radio" name="breakfast" id="breakfast_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="breakfast_4" class="option">
-                                            <input type="radio" name="breakfast" id="breakfast_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end section -->
-
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>WiFi & Internet</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="wifi_1" class="option">
-                                            <input type="radio" name="wifi" id="wifi_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="wifi_2" class="option">
-                                            <input type="radio" name="wifi" id="wifi_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="wifi_3" class="option">
-                                            <input type="radio" name="wifi" id="wifi_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="wifi_4" class="option">
-                                            <input type="radio" name="wifi" id="wifi_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end section -->
-
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Maintenance</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="maintenance_1" class="option">
-                                            <input type="radio" name="maintenance" id="maintenance_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="maintenance_2" class="option">
-                                            <input type="radio" name="maintenance" id="maintenance_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="maintenance_3" class="option">
-                                            <input type="radio" name="maintenance" id="maintenance_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="maintenance_4" class="option">
-                                            <input type="radio" name="maintenance" id="maintenance_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <!-- end section -->
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Pool</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="pool_1" class="option">
-                                            <input type="radio" name="pool" id="pool_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="pool_2" class="option">
-                                            <input type="radio" name="pool" id="pool_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="pool_3" class="option">
-                                            <input type="radio" name="pool" id="pool_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="pool_4" class="option">
-                                            <input type="radio" name="pool" id="pool_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Common Area</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="common_1" class="option">
-                                            <input type="radio" name="common" id="common_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="common_2" class="option">
-                                            <input type="radio" name="common" id="common_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="common_3" class="option">
-                                            <input type="radio" name="common" id="common_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="common_4" class="option">
-                                            <input type="radio" name="common" id="common_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
-                        <div class="frm-row">
-                            <div class="spacer-b30">
-                                <div class="tagline"><span>Security & Parking</span></div>
-                                <!-- .tagline -->
-                            </div>
-                            <div class="section">
-                                <div class="option-group field">
-                                    <div class="smart-option-group smart-option-list group-vertical">
-
-                                        <label for="parking_1" class="option">
-                                            <input type="radio" name="parking" id="parking_1" value="1">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="parking_2" class="option">
-                                            <input type="radio" name="parking" id="parking_2" value="2">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
-                                                </span>
-                                            </span>
-                                        </label>
-
-                                        <label for="parking_3" class="option">
-                                            <input type="radio" name="parking" id="parking_3" value="3">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Something is broken
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <label for="parking_4" class="option">
-                                            <input type="radio" name="parking" id="parking_4" value="4">
-                                            <span class="smart-option smart-radio">
-                                                <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Needs Immediate Attention
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!--  smart-option-group -->
-                                </div>
-                            </div>
-                            <!-- end section -->
-
-                            <!-- end section -->
-
-                        </div>
+                        
                         <div class="spacer spacer-b20"></div>
 
                         <div class="section">
@@ -620,11 +118,11 @@
 
                                 <span class="lbl-text" style="font-size: x-large">Rate Your Hotel</span>
 
-                                <input class="rating-input" id="five-stars" type="radio" value="5" name="product-rate">
+                                <input class="rating-input" onclick="generateReviewLink()" id="five-stars" type="radio" value="5" name="product-rate">
 
                                 <label class="rating-star" for="five-stars"><i class="fa fa-star"></i></label>
 
-                                <input class="rating-input" value="4" id="four-stars" type="radio" name="product-rate">
+                                <input class="rating-input" value="4" onclick="generateReviewLink()" id="four-stars" type="radio" name="product-rate">
                                 <label class="rating-star" for="four-stars"><i class="fa fa-star"></i></label>
 
                                 <input class="rating-input" id="three-stars" value="3" type="radio" name="product-rate">
@@ -638,12 +136,12 @@
 
                             </span>
 
-                            <label for="additional_comment" class="field-label">Additional Comments</label>
+                            <!--<label for="additional_comment" class="field-label">Additional Comments</label>
                             <label class="field prepend-icon">
                                 <textarea class="gui-textarea" id="additional_comment"></textarea>
                                 <span class="field-icon"><i class="fa fa-comments"></i></span>
                                 <span class="input-hint">Please leave a comment to help us serve you better</span>
-                            </label>
+                            </label>-->
 
 
 
@@ -672,6 +170,40 @@
 
     <div></div>
     <!-- end section -->
+<script>
+    var placeId;
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
 
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        //document.getElementById('submit').addEventListener('click', function () {
+           // geocodeAddress(geocoder, map);
+        //});
+        geocodeAddress(geocoder, map);
+    }
+    function generateReviewLink() {
+        var link = 'https://search.google.com/local/writereview?placeid=' + placeId;
+        window.location=link;
+    }
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('HdnPlacetoSearch').value;
+        
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+                placeId=results[0].place_id;
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcW22Axg0u70M3Pobv9NtFCPXJacfcT8o&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>

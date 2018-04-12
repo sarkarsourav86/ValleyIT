@@ -36,7 +36,7 @@ namespace HotelDBApp
             if (table.Rows.Count==1)
             {
                 row = table.Rows[0];
-                hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString() };
+                hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString() };
             }
                
             //SqlDataReader reader= cmd.ExecuteReader();
