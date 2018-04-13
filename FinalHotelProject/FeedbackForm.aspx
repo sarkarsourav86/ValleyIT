@@ -125,7 +125,7 @@
                                 <input class="rating-input" value="4" onclick="generateReviewLink()" id="four-stars" type="radio" name="product-rate">
                                 <label class="rating-star" for="four-stars"><i class="fa fa-star"></i></label>
 
-                                <input class="rating-input" id="three-stars" value="3" type="radio" name="product-rate">
+                                <input class="rating-input" id="three-stars" data-target="#myModal" value="3" type="radio" name="product-rate">
                                 <label class="rating-star" for="three-stars"><i class="fa fa-star"></i></label>
 
                                 <input class="rating-input" id="two-stars" value="2" type="radio" name="product-rate">
@@ -136,12 +136,13 @@
 
                             </span>
 
-                            <!--<label for="additional_comment" class="field-label">Additional Comments</label>
-                            <label class="field prepend-icon">
-                                <textarea class="gui-textarea" id="additional_comment"></textarea>
+                            <label for="TxtComments" class="field-label">Additional Comments</label>
+                            <label id="myModal" class="field prepend-icon">
+                                
+                                <asp:TextBox CssClass="gui-textarea" TextMode="MultiLine" runat="server" ID="TxtComments"></asp:TextBox>
                                 <span class="field-icon"><i class="fa fa-comments"></i></span>
                                 <span class="input-hint">Please leave a comment to help us serve you better</span>
-                            </label>-->
+                            </label>
 
 
 
@@ -192,11 +193,11 @@
         
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === 'OK') {
-                resultsMap.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                });
+                //resultsMap.setCenter(results[0].geometry.location);
+                //var marker = new google.maps.Marker({
+                  //  map: resultsMap,
+                    //position: results[0].geometry.location
+                //});
                 placeId=results[0].place_id;
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);

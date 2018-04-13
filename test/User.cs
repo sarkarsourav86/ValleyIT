@@ -34,6 +34,7 @@ namespace HotelDBApp
         {
             SqlCommand cmd = new SqlCommand("spFetchUsers");
             cmd.Parameters.AddWithValue("@id", ID);
+            cmd.CommandType = CommandType.StoredProcedure;
             DataSet ds=DBOperations.FetchValues(cmd);
             DataRow row = null;
             User user = null;

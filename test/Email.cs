@@ -17,6 +17,7 @@ namespace HotelDBApp
         public String ProblemValue { get; set; }
         public String Comments { get; set; }
         public DateTime CheckoutDate { get; set; }
+        public String UserEmail { get; set; }
         public static DataSet FetchEmails()
         {
             SqlCommand cmd = new SqlCommand("SpFetchUserstoSendEmail");
