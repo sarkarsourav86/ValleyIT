@@ -107,9 +107,7 @@
             <form id="form1" runat="server">
             	<div class="form-body">
                 
-                    <div class="spacer-b30">
-                    	<div class="tagline"><span>Sign in  With </span></div><!-- .tagline -->
-                    </div>                 
+                                    
                 
                 	<div class="section">
                 	
@@ -120,7 +118,7 @@
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">
                         <div class="spacer-t30 spacer-b30">
-                    	    <div class="tagline"><span> OR  Login </span></div><!-- .tagline -->
+                    	    <div class="tagline"><span> Check In </span></div><!-- .tagline -->
                         </div>
                         <div class="section">
                             <asp:SqlDataSource ID="SqlDataSourceHotel" ConnectionString="Data Source=DESKTOP-8346GUH\SQLEXPRESS;Initial Catalog=ExperienceHotelApp;Integrated Security=True" SelectCommand="select [Property Name]+' ('+[Property State]+')' as text,[Property] as id from Hotel" runat="server"></asp:SqlDataSource>

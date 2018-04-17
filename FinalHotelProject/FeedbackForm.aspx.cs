@@ -81,7 +81,7 @@ namespace FinalHotelProject
         }
         private void Sendemail()
         {
-            Email email = new Email() { Comments=TxtComments.Text,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email };
+            Email email = new Email() { Subject="A Review Has Been Submitted", Comments=TxtComments.Text, CheckoutDate=user.CheckOutDate,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email };
             HotelBusinessLayer.Utilities.SendEmail(email,true);
         }
         private Feedback CreateFeedback()

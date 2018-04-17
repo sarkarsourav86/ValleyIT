@@ -709,7 +709,7 @@
                 <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
                     <div class="form-footer">
 
-                        <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Gotodb" />
+                        <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Report" />
 
                     </div>
                     <!-- end .form-footer section -->

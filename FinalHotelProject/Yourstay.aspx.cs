@@ -134,7 +134,7 @@ namespace FinalHotelProject
                     PnlSuccessFailure.Visible = true;
                     PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
                     LblStatus.Text = "Your Problem has been recorded!";
-                    FormBody.Visible = false;
+                    //FormBody.Visible = false;
                 }
                 else
                 {

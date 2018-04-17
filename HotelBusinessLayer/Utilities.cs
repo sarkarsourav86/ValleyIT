@@ -1,14 +1,8 @@
-﻿using System;
+﻿using HotelDBApp;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HotelDBApp;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using System.Net.Http;
+using System.Diagnostics;
 using System.Net.Mail;
-using System.Configuration;
 
 
 namespace HotelBusinessLayer
@@ -62,8 +56,8 @@ namespace HotelBusinessLayer
         
         static void Execute(Email email,bool isRating)
         {
-            
-            var apiKey = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
+
+            /*var apiKey = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("interns@valleyit.us", "Example User");
             var subject = "A Problem has been Reported";
@@ -71,7 +65,40 @@ namespace HotelBusinessLayer
             var plainTextContent = email.Comments;
             var htmlContent = !isRating? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType,email.ProblemValue,email.RoomNo,email.CustName,email.CheckoutDate,email.Comments): String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Checkout Date {3}</p><p>Description: {4}</p>", email.ProblemValue,email.CustName, email.UserEmail, email.CheckoutDate, email.Comments);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = client.SendEmailAsync(msg);
+            var response = client.SendEmailAsync(msg);*/
+            try
+            {
+                using (System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage())
+                {
+                    mail.From = new System.Net.Mail.MailAddress("interns@valleyit.us");
+
+                    // The important part -- configuring the SMTP client
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Port = 587;   // [1] You can try with 465 also, I always used 587 and got success
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
+                    smtp.UseDefaultCredentials = false; // [3] Changed this
+                    smtp.Credentials = new System.Net.NetworkCredential(mail.From.ToString(), "Intern@123");  // [4] Added this. Note, first parameter is NOT string.
+                    smtp.Host = "smtp.gmail.com";
+
+                    //recipient address
+                    mail.To.Add(new MailAddress(email.ToAddress));
+
+                    //Formatted mail body
+                    mail.IsBodyHtml = true;
+                    mail.Subject= String.IsNullOrEmpty(email.Subject) ? "A Problem has been Reported": email.Subject;
+                    //String link = String.Format("FeedbackForm.aspx?hotelid={0}", item["HotelID"].ToString());
+                    string st = !isRating ? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType, email.ProblemValue, email.RoomNo, email.CustName, email.CheckoutDate, email.Comments) : String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Checkout Date {3}</p><p>Description: {4}</p>", email.ProblemValue, email.CustName, email.UserEmail, email.CheckoutDate, email.Comments);
+
+                    mail.Body = st;
+                    smtp.Send(mail);
+                }
+            }
+            catch (Exception x)
+            {
+                Debug.WriteLine(x);
+            }
         }
+        
     }
 }

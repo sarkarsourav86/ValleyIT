@@ -97,6 +97,7 @@
     <Content Include="checkboxes-radio-group-red.html" />
     <Content Include="checkboxes-radio-group-yellow.html" />
     <Content Include="form-hide-show-elements.html" />
+    <Content Include="GetID.html" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="js\additional-methods.min.js" />
