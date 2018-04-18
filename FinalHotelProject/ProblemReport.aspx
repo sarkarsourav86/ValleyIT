@@ -7,7 +7,7 @@
     <title>Smart Forms - Contact Form </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="plugins/dropify/css/dropify.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link href="css/smart-addons.css" rel="stylesheet" />
@@ -17,6 +17,7 @@
     <script src="js/jquery-ui-custom.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
+    <script src="plugins/dropify/js/dropify.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
 
@@ -94,6 +95,7 @@
             });
 
         });
+
     </script>
     <script type="text/javascript">
 
@@ -141,7 +143,7 @@
     <![endif]-->
 
 </head>
-<body class="woodbg">
+<body class="darkbg">
 
     <div class="smart-wrap">
         <div class="smart-forms smart-container wrap-2">
@@ -154,10 +156,10 @@
             <!-- end .form-header section -->
             <ul class="breadcrumb">
                 <li><a href="/Login.aspx">Home</a></li>
-                
+
                 <li>Report a Problem</li>
             </ul>
-            <form id="form1" runat="server">
+            <form id="form1" enctype="multipart/form-data"  runat="server">
                 <div id="smart-modal1" class="smartforms-modal" role="alert">
                     <asp:HiddenField ID="HdnProblemType" runat="server"></asp:HiddenField>
 
@@ -258,7 +260,8 @@
                     <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
 
                         <p>
-                            <asp:Label ID="LblStatus" runat="server"></asp:Label></p>
+                            <asp:Label ID="LblStatus" runat="server"></asp:Label>
+                        </p>
 
 
                     </asp:Panel>
@@ -331,6 +334,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file"  name="housekeeping_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="housekeeping_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="housekeeping_comment"></textarea>
@@ -397,6 +405,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="internet_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="internet_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="internet_comment"></textarea>
@@ -463,6 +476,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="maintain_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="maintain_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="maintain_comment"></textarea>
@@ -531,6 +549,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="common_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="common_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="common_comment"></textarea>
@@ -598,6 +621,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="room_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="room_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="room_comment"></textarea>
@@ -664,6 +692,11 @@
                                                 </span>
                                             </span>
                                         </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="frontdesk_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                         <label for="frontdesk_comment" class="field-label">Additional Comments</label>
                                         <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="frontdesk_comment"></textarea>
@@ -723,6 +756,15 @@
 
     <div></div>
     <!-- end section -->
-
+    <script type="text/javascript">
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
+        });
+    </script>
 </body>
 </html>

@@ -15,6 +15,8 @@ namespace FinalHotelProject
         String additionalComments;
         Incedent problem;
         Hotel hotel;
+        System.IO.Stream uploadedFile=null;
+        HotelDBApp.Image image;
         public enum IncedentTypes
         {
             none=0,
@@ -145,17 +147,41 @@ namespace FinalHotelProject
         {
             String feedbackValue = String.Empty;
             if (incedent == IncedentTypes.CommonArea)
+            {
                 feedbackValue = HdnCommon.Value;
+                image = GetImage("common_file");
+            }
+                
             else if (incedent == IncedentTypes.FrontDesk)
+            {
                 feedbackValue = HdnFrontdesk.Value;
+                image = GetImage("frontdesk_file");
+            }
+                
             else if (incedent == IncedentTypes.Housekeeping)
-                feedbackValue=HdnHousekeeping.Value;
+            {
+                feedbackValue = HdnHousekeeping.Value;
+                image = GetImage("housekeeping_file");
+            }
+                
             else if (incedent == IncedentTypes.Maintenance)
+            {
                 feedbackValue = HdnMaintenance.Value;
+                image = GetImage("maintain_file");
+            }
+                
             else if (incedent == IncedentTypes.Room)
+            {
                 feedbackValue = HdnRoom.Value;
+                image = GetImage("room_file");
+            }
+                
             else if (incedent == IncedentTypes.WiFiInternet)
+            {
                 feedbackValue = HdnWifi.Value;
+                image = GetImage("internet_file");
+            }
+                
             return Convert.ToInt32(feedbackValue);
         }
         private void SetSession(String ID)
@@ -174,6 +200,7 @@ namespace FinalHotelProject
         }
         private void SendEmail()
         {
+            
             Dictionary<int, String> FeedbackOptn = Utilities.ProblemTypesList;
             Dictionary<int, String> FeedbackValue = Utilities.FeedbackOptionsList;
             Email email = new Email();
@@ -188,7 +215,7 @@ namespace FinalHotelProject
                 email.ProblemValue = FeedbackValue[problem.FeedbackValue];
                 email.CheckoutDate = user.CheckOutDate;
                 email.Comments = problem.IncedentDescription;
-                Utilities.SendEmail(email);
+                Utilities.SendEmail(email,false,image);
             }
         }
         protected void Submit_Click(object sender, EventArgs e)
@@ -236,6 +263,17 @@ namespace FinalHotelProject
                 }
                 
             }
+        }
+        private HotelDBApp.Image GetImage(String name)
+        {
+            System.IO.Stream upload = null;
+            if((upload= Request.Files[name].InputStream)!=null && Request.Files[name].ContentLength>0)
+            {
+                
+                image = new HotelDBApp.Image() { UploadedImage=upload,Name= Request.Files[name].FileName};
+            }
+                
+            return image;
         }
         protected void LoginBtnSubmit_Click(object sender, EventArgs e)
         {

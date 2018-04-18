@@ -20,7 +20,10 @@ html, body{
 
 /* @backgrounds :: modify or add yours below 
 ------------------------------------------------------------------- */
-.darkbg{ background:#6C82A2 url(../images/dark.png) repeat fixed; }
+/*.darkbg{ background:#6C82A2 url(../images/dark.png) repeat fixed; }*/
+.darkbg {
+    background: #6C82A2 url(../images/background.jpg) repeat fixed;
+}
 .woodbg{ background:#E6CCA6 url(../images/wood.png) repeat fixed; }
 
 /* @form wrappers 

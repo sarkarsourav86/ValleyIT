@@ -82,6 +82,9 @@
     <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome\FontAwesome.otf" />
     <None Include="packages.config" />
+    <Content Include="plugins\dropify\fonts\dropify.eot" />
+    <Content Include="plugins\dropify\fonts\dropify.ttf" />
+    <Content Include="plugins\dropify\fonts\dropify.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -99,6 +102,8 @@
     <Content Include="form-hide-show-elements.html" />
     <Content Include="GetID.html" />
     <Content Include="Global.asax" />
+    <Content Include="images\background.jpg" />
+    <Content Include="images\online.png" />
     <Content Include="index.aspx" />
     <Content Include="js\additional-methods.min.js" />
     <Content Include="js\jquery.formShowHide.min.js" />
@@ -107,6 +112,12 @@
     <Content Include="js\Validation.js" />
     <Content Include="Login.aspx" />
     <Content Include="MyDummyPage.aspx" />
+    <Content Include="plugins\dropify\css\demo.css" />
+    <Content Include="plugins\dropify\css\dropify.css" />
+    <Content Include="plugins\dropify\css\dropify.min.css" />
+    <Content Include="plugins\dropify\fonts\dropify.svg" />
+    <Content Include="plugins\dropify\js\dropify.js" />
+    <Content Include="plugins\dropify\js\dropify.min.js" />
     <Content Include="ProblemReport.aspx" />
     <Content Include="ProblemReport1.aspx" />
     <Content Include="ProblemReport.html" />

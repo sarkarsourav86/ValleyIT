@@ -32,7 +32,7 @@ namespace HotelBusinessLayer
             
             return session != null;
         }
-        public static void SendEmail(Email email,bool isRating=false)
+        public static void SendEmail(Email email,bool isRating=false,HotelDBApp.Image image=null)
         {
             //SmtpClient smtpClient = new SmtpClient("localhost")
             //{
@@ -51,10 +51,10 @@ namespace HotelBusinessLayer
             ////mail.CC.Add(new MailAddress("MyEmailID@gmail.com"));
 
             //smtpClient.Send(mail);
-            Execute(email,isRating);
+            Execute(email,isRating,image);
         }
         
-        static void Execute(Email email,bool isRating)
+        static void Execute(Email email,bool isRating, HotelDBApp.Image image)
         {
 
             /*var apiKey = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
@@ -89,7 +89,13 @@ namespace HotelBusinessLayer
                     mail.Subject= String.IsNullOrEmpty(email.Subject) ? "A Problem has been Reported": email.Subject;
                     //String link = String.Format("FeedbackForm.aspx?hotelid={0}", item["HotelID"].ToString());
                     string st = !isRating ? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType, email.ProblemValue, email.RoomNo, email.CustName, email.CheckoutDate, email.Comments) : String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Checkout Date {3}</p><p>Description: {4}</p>", email.ProblemValue, email.CustName, email.UserEmail, email.CheckoutDate, email.Comments);
-
+                    if (image != null)
+                    {
+                        System.Net.Mail.Attachment attachment;
+                        attachment = new System.Net.Mail.Attachment(image.UploadedImage,image.Name);
+                        mail.Attachments.Add(attachment);
+                    }
+                    
                     mail.Body = st;
                     smtp.Send(mail);
                 }

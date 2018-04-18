@@ -32,7 +32,7 @@ namespace FinalHotelProject
         {
             if(Session["Hotel"]!=null)
             {
-                LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
+               // LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
             }
         }
         private void SetHotelFromUrl()

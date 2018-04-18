@@ -13,6 +13,7 @@ namespace FinalHotelProject
    
     public partial class Yourstay : System.Web.UI.Page
     {
+        HotelDBApp.Image image;
         Incedent problem;
         User user;
         Hotel hotel;
@@ -30,6 +31,17 @@ namespace FinalHotelProject
             {
                 LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
             }
+        }
+        private HotelDBApp.Image GetImage(String name)
+        {
+            System.IO.Stream upload = null;
+            if ((upload = Request.Files[name].InputStream) != null && Request.Files[name].ContentLength > 0)
+            {
+
+                image = new HotelDBApp.Image() { UploadedImage = upload, Name = Request.Files[name].FileName };
+            }
+
+            return image;
         }
         private void FetchHotelinfoFromDB()
         {
@@ -104,7 +116,8 @@ namespace FinalHotelProject
                 email.ProblemValue = FeedbackValue[problem.FeedbackValue];
                 email.CheckoutDate = user.CheckOutDate;
                 email.Comments = problem.IncedentDescription;
-                Utilities.SendEmail(email);
+                image = GetImage("file");
+                Utilities.SendEmail(email,false,image);
             }
         }
         private void CheckUserAndSetForm()

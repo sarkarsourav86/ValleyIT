@@ -7,7 +7,7 @@
     <title> Smart Forms </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="plugins/dropify/css/dropify.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link href="css/smart-addons.css" rel="stylesheet" />
@@ -18,6 +18,7 @@
     <script src="js/additional-methods.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/Validation.js"></script>
+    <script src="plugins/dropify/js/dropify.min.js"></script>
     <script type="text/javascript">
         
         jQuery(document).ready(function ($) {
@@ -62,7 +63,7 @@
         <link type="text/css" rel="stylesheet" href="css/smart-forms-ie8.css">
     <![endif]-->
 </head>
-<body class="woodbg">
+<body class="darkbg">
 
 	<div class="smart-wrap">
     	<div class="smart-forms smart-container wrap-2">
@@ -76,7 +77,7 @@
                 
                 <li>Your Stay</li>
             </ul>
-            <form id="form1" runat="server">
+            <form id="form1" runat="server" enctype="multipart/form-data">
                 
             	<div id="smart-modal1" class="smartforms-modal" role="alert">
                     
@@ -216,7 +217,11 @@
                                                 </span>
                                             </span>
                                         </label>
-                                        
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
                                     </div><!--  smart-option-group -->
                                     
                                 </div><!-- end .option-group section -->
@@ -270,6 +275,15 @@
     </div><!-- end .smart-wrap section -->
     
     <div></div><!-- end section -->
-
+    <script type="text/javascript">
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
+        });
+    </script>
 </body>
 </html>

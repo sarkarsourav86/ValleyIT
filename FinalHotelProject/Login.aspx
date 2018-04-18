@@ -85,6 +85,16 @@
           });
 
       </script>
+    <style>
+        .links {
+            color:black;
+            text-decoration: none;
+        }
+        .links:hover {
+            color:white;
+            
+        }
+    </style>
     <!--[if lte IE 9]>
     	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>    
         <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
@@ -94,13 +104,15 @@
         <link type="text/css" rel="stylesheet" href="css/smart-forms-ie8.css">
     <![endif]-->
 </head>
-<body class="woodbg">
+<body class="darkbg">
 
 	<div class="smart-wrap">
     	<div class="smart-forms smart-container wrap-3">
         
         	<div class="form-header header-primary">
-            	<h4><i class="fa fa-sign-in"></i>Check In - <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
+
+            	<h4><img src="images/online.png" /><span style="margin-left:5px;margin-top:-5px;">You Are Online</span><%--<asp:Label runat="server" ID="LblHotelName"></asp:Label>--%></h4>
+                <a class="links" href="http:/www.choicehotels.com">choicehotels.com</a>/ <a class="links" href="http:/www.wyndham.com">wyndham.com</a>
                 
           </div><!-- end .form-header section -->
             
@@ -118,7 +130,7 @@
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">
                         <div class="spacer-t30 spacer-b30">
-                    	    <div class="tagline"><span> Check In </span></div><!-- .tagline -->
+                    	    <div class="tagline"><span>Tell Us About Your Experience</span></div><!-- .tagline -->
                         </div>
                         <div class="section">
                             <asp:SqlDataSource ID="SqlDataSourceHotel" ConnectionString="Data Source=DESKTOP-8346GUH\SQLEXPRESS;Initial Catalog=ExperienceHotelApp;Integrated Security=True" SelectCommand="select [Property Name]+' ('+[Property State]+')' as text,[Property] as id from Hotel" runat="server"></asp:SqlDataSource>
@@ -159,7 +171,7 @@
                 </div><!-- end .form-body section -->
                 <div class="form-footer">
                 	
-                    <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Check In" />
+                    <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Submit" />
                 </div><!-- end .form-footer section -->
             </form>
             

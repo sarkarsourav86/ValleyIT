@@ -76,5 +76,6 @@
     <Build Include="dbo\Stored Procedures\spReportProblem.sql" />
     <Build Include="dbo\Stored Procedures\spfetchHotel.sql" />
     <Build Include="dbo\Stored Procedures\SpFetchUserstoSendEmail.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchUsers.sql" />
   </ItemGroup>
 </Project>
