@@ -22,6 +22,8 @@
     [Property Contact Postal Code]    VARCHAR (MAX) NULL,
     [Email]                           VARCHAR (MAX) NULL,
     [DummyEmail] VARCHAR(MAX) NULL, 
+    [Id] VARBINARY(MAX) NULL, 
+    [Status] VARCHAR(50) NULL DEFAULT 'Active', 
     CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED ([Property] ASC)
 );
 

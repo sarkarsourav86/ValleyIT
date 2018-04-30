@@ -100,7 +100,7 @@
     <script type="text/javascript">
 
         function fillHiddenFields() {
-            console.log('came here');
+            
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
             value = $("input:radio[name='helpdesk']:checked").val();

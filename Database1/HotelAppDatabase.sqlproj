@@ -77,5 +77,12 @@
     <Build Include="dbo\Stored Procedures\spfetchHotel.sql" />
     <Build Include="dbo\Stored Procedures\SpFetchUserstoSendEmail.sql" />
     <Build Include="dbo\Stored Procedures\spFetchUsers.sql" />
+    <Build Include="dbo\Stored Procedures\spRegisterHotel.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="HotelAppDatabase.refactorlog" />
   </ItemGroup>
 </Project>

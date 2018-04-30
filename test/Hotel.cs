@@ -12,6 +12,7 @@ namespace HotelDBApp
     {
         public String ID { get; set; }
         public String Brand { get; set; }
+        public String BrandName { get; set; }
         public String Address_Line1 { get; set; }
         public String Address_Line2 { get; set; }
         public String City { get; set; }
@@ -24,6 +25,8 @@ namespace HotelDBApp
         public String ContactDescription { get; set; }
         public String ContactName { get; set; }
         public String Email { get; set; }
+        public String Country { get; set; }
+        public String GMEmail { get; set; }
         public static Hotel GetHotel(String id)
         {
             //SqlCommand cmd = new SqlCommand("SELECT [Brand],[Property Name],[Property Address Line 1],[Property Address Line 2],[Property City],[Property State],[Property  Postal Code],[Property Telephone],[Property Fax],[Property Number of Rooms],[Property General Manager],[Property Contact Description],[Property Contact Name],[DummyEmail] from Hotel where [Property] = '"+ id+"'");
@@ -43,6 +46,24 @@ namespace HotelDBApp
 
 
             return hotel;
+        }
+        public static int RegisterHotel(Hotel hotel)
+        {
+            SqlCommand cmd = new SqlCommand("spRegisterHotel");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@brand", hotel.BrandName);
+            cmd.Parameters.AddWithValue("@hotelname", hotel.Brand);
+            cmd.Parameters.AddWithValue("@hotelemail", hotel.Email);
+            cmd.Parameters.AddWithValue("@hotelphone", hotel.Phone);
+            cmd.Parameters.AddWithValue("@address1", hotel.Address_Line1);
+            cmd.Parameters.AddWithValue("@address2", hotel.Address_Line2);
+            cmd.Parameters.AddWithValue("@country", hotel.Country);
+            cmd.Parameters.AddWithValue("@zip", hotel.PostalCode);
+            cmd.Parameters.AddWithValue("@city", hotel.City);
+            cmd.Parameters.AddWithValue("@state", hotel.State);
+            cmd.Parameters.AddWithValue("@managername", hotel.GeneralManager);
+            return Convert.ToInt16(DBOperations.InsertAndReturn(cmd));
+             
         }
     }
 }

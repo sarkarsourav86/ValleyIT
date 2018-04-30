@@ -27,7 +27,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@HotelID", user.HotelID);
             cmd.CommandType = CommandType.StoredProcedure;
-            return DBOperations.InsertAndReturn(cmd);
+            return (String)DBOperations.InsertAndReturn(cmd);
             
         }
         public static User GetUserInfo(String ID)

@@ -110,7 +110,7 @@
     	<div class="smart-forms smart-container wrap-3">
         
         	<div class="form-header header-primary">
-
+                <img src="images/logohotel.png" />
             	<h4><img src="images/online.png" /><span style="margin-left:5px;margin-top:-5px;">You Are Online</span><%--<asp:Label runat="server" ID="LblHotelName"></asp:Label>--%></h4>
                 <a class="links" href="http:/www.choicehotels.com">choicehotels.com</a>/ <a class="links" href="http:/www.wyndham.com">wyndham.com</a>
                 
