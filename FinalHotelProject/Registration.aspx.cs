@@ -27,10 +27,17 @@ namespace FinalHotelProject
             if (result == 0)
             {
                 //email already exists
+                //PnlMain.Visible = false;
+                PnlSuccess.CssClass = "notification alert-error spacer-t10";
+                PnlSuccess.Visible = true;
+                LblSuccess.Text = "Email already exists";
             }
             else
             {
-                //you are registered
+                PnlMain.Visible = false;
+                PnlSuccess.CssClass = "notification alert-success spacer-t10";
+                PnlSuccess.Visible = true;
+                LblSuccess.Text = "Registration Successful";
             }
         }
     }

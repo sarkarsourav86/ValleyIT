@@ -11,6 +11,7 @@ namespace HotelDBApp
     public class Hotel
     {
         public String ID { get; set; }
+        public String StringID { get; set; }
         public String Brand { get; set; }
         public String BrandName { get; set; }
         public String Address_Line1 { get; set; }
@@ -39,7 +40,7 @@ namespace HotelDBApp
             if (table.Rows.Count==1)
             {
                 row = table.Rows[0];
-                hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString() };
+                hotel = new Hotel() { Email = row["DummyEmail"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString() };
             }
                
             //SqlDataReader reader= cmd.ExecuteReader();

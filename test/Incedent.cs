@@ -12,6 +12,7 @@ namespace HotelDBApp
     {
         
         public String IncedentID { get; set; }
+        public String HashedHotelID { get; set; }
         public int IncedentType { get; set; }
         public String IncedentDescription { get; set; }
         public String RoomNo { get; set; }

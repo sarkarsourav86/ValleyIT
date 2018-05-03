@@ -42,6 +42,11 @@
             </div><!-- end .form-header section -->
             
             <form id="form1" runat="server">
+                <asp:Panel ID="PnlSuccess" runat="server" Visible="false">
+                    <p><asp:Label runat="server" ID="LblSuccess" ></asp:Label></p>
+                            <a href="#" class="close-btn">&times;</a>
+                    
+                </asp:Panel>
                 <asp:Panel runat="server" ID="PnlMain">
                 <asp:HiddenField ID="HdnCountry" runat="server" />
                 <asp:HiddenField ID="HdnState" runat="server" />
@@ -411,6 +416,7 @@
                     <asp:Button runat="server" CssClass="button btn-primary" Text="Submit" OnClientClick="loadHiddenFields()" OnClick="BtnSubmit_Click" ID="BtnSubmit" />
                 </div><!-- end .form-footer section -->
                     </asp:Panel>
+                
             </form>
             
         </div><!-- end .smart-forms section -->

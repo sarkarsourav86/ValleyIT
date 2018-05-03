@@ -21,11 +21,11 @@ AS
 	BEGIN
 		declare @numofhotels varchar(50)
 		declare @id varchar(50)
-		declare @hashedid varbinary(MAX)
-		select @numofhotels= MAX(SUBSTRING([Property],3,LEN([Property])))+1 from Hotel where [Property] like UPPER(@state)+'%'
+		declare @hashedid varchar(MAX)
+		select @numofhotels= dbo.NoofHotels(@state)
 		set @id=UPPER(@state)+@numofhotels
-		set @hashedid=HASHBYTES('SHA2_256',@id)
+		set @hashedid=Convert(varchar(MAX),HASHBYTES('SHA2_256',@id),2)
 		insert into Hotel ([Property],[Brand],[Property Name],[Property Address Line 1],[Property Address Line 2],[Property City],[Property State],
-		[Property  Postal Code],[Property Country],[Property Telephone],[Email],Id,[Status]) values (@id,@brand,@hotelname,@address1,@address2,@city,@state,@zip,@country,@hotelphone,@hotelemail,@hashedid,'Active')
+		[Property  Postal Code],[Property Country],[Property Telephone],[Email],[Status],[Property1]) values (@hashedid,@brand,@hotelname,@address1,@address2,@city,@state,@zip,@country,@hotelphone,@hotelemail,'Active',@id)
 		select 1
 	END

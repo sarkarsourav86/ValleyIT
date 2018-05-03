@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Hotel] (
-    [Property]                        VARCHAR (50)  NOT NULL,
+    [Property]                        VARCHAR (MAX)  NOT NULL,
     [Brand]                           VARCHAR (MAX) NULL,
     [Property Name]                   VARCHAR (MAX) NULL,
     [Property Address Line 1]         VARCHAR (MAX) NULL,
@@ -22,9 +22,10 @@
     [Property Contact Postal Code]    VARCHAR (MAX) NULL,
     [Email]                           VARCHAR (MAX) NULL,
     [DummyEmail] VARCHAR(MAX) NULL, 
-    [Id] VARBINARY(MAX) NULL, 
+    [Id] VARCHAR(MAX) NULL, 
     [Status] VARCHAR(50) NULL DEFAULT 'Active', 
-    CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED ([Property] ASC)
+    [Property1] VARCHAR(50) NOT NULL, 
+    CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED ([Property1] ASC)
 );
 
 

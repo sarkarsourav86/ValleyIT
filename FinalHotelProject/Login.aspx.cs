@@ -51,7 +51,7 @@ namespace FinalHotelProject
 
             else if(Session["Hotel"] == null && Request.QueryString["hotelid"] == null)
             {
-                id = "AK032";
+                id = "EDF5189B07131AEED2449E8AAADE84CE4D828FD2A78E25FA7CD7DB8C26B8DB83";
 
             }
 
@@ -92,14 +92,14 @@ namespace FinalHotelProject
             String HotelID = null;
             if (Session["Hotel"] != null)
             {
-                HotelID = ((Hotel)Session["Hotel"]).ID;
+                HotelID = ((Hotel)Session["Hotel"]).StringID;
                 //HypPhone.NavigateUrl = String.Format("tel://{0}", HotelID);
             }
             return HotelID;
         }
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
-            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "AK032": GetHotelID() };
+            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID() };
             String userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != String.Empty)
             {

@@ -15,7 +15,7 @@
     [Rating]       NCHAR (10)   NULL,
     [Comments] VARCHAR(MAX) NULL, 
     CONSTRAINT [PK_FeedbackTable] PRIMARY KEY CLUSTERED ([FeedbackId] ASC),
-    CONSTRAINT [FK_FeedbackTable_Hotel] FOREIGN KEY ([HotelId]) REFERENCES [dbo].[Hotel] ([Property]),
+    CONSTRAINT [FK_FeedbackTable_Hotel] FOREIGN KEY ([HotelId]) REFERENCES [dbo].[Hotel] ([Property1]),
     CONSTRAINT [FK_FeedbackTable_UsersTable] FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([UserID])
 );
 
