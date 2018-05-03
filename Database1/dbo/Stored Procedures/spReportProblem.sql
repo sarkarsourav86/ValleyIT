@@ -8,7 +8,7 @@
 	@FeedbackValue int
 AS
 	declare @checkKey int
-	select @checkKey= count(*) from [dbo].[Hotel] where [Property]=@HotelId
+	select @checkKey= count(*) from [dbo].[Hotel] where [Property1]=@HotelId
 	IF @checkKey =1
 	begin
 		declare @countRows int

@@ -68,10 +68,10 @@ namespace FinalHotelProject
             //return Session["User"] != null ? ((User)Session["User"]).HotelID : String.Empty;
             if(Session["Hotel"]!=null)
             {
-                ID = ((Hotel)Session["Hotel"]).ID;
+                ID = ((Hotel)Session["Hotel"]).StringID;
             }
             else if((ID=Request.QueryString["hotelid"])==null)
-                ID= "AK032";
+                ID= "ND1";
             return ID;
         }
         private String GetRoomNo()
