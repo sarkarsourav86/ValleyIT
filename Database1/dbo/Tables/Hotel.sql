@@ -25,6 +25,8 @@
     [Id] VARCHAR(MAX) NULL, 
     [Status] VARCHAR(50) NULL DEFAULT 'Active', 
     [Property1] VARCHAR(50) NOT NULL, 
+    [PlaceId] VARCHAR(MAX) NULL, 
+    [LatLong] VARCHAR(MAX) NULL, 
     CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED ([Property1] ASC)
 );
 

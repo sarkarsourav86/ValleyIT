@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterHotel.aspx.cs" Inherits="FinalHotelProject.RegisterHotel" %>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
   	<title> Smart Forms - Contact Form </title>
@@ -17,10 +19,10 @@
     <!--[if lte IE 8]>
         <link type="text/css" rel="stylesheet" href="css/smart-forms-ie8.css">
     <![endif]-->
-    
+      <script src="js/jquery-1.9.1.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcW22Axg0u70M3Pobv9NtFCPXJacfcT8o&libraries=places&callback=initialize" async defer></script>
 	<script type="text/javascript">
-	
+        
 		function initialize() {
 				var mapOptions = {
 							zoom: 10,
@@ -38,6 +40,7 @@
                 var place = document.getElementById('place');
                 var autocomplete = new google.maps.places.Autocomplete(place);
                 autocomplete.bindTo('bounds', map);
+                autocomplete.setTypes(['establishment']);
                 var infowindow = new google.maps.InfoWindow();
                 var infowindowContent = document.getElementById('infowindow-content');
                 infowindow.setContent(infowindowContent);
@@ -75,6 +78,11 @@
                     ].join(' ');
                 }
                 console.log(place);
+                $('#HdnPlaceName').val(place.name);
+                $('#HdnLatLong').val(place.geometry.location.lat() + ',' + place.geometry.location.lng());
+                $('#HdnAddress').val(place.formatted_address);
+                $('#HdnPlaceId').val(place.place_id);
+                $('#HdnId').val(place.id);
                 infowindowContent.children['place-icon'].src = place.icon;
                 infowindowContent.children['place-name'].textContent = place.name;
                 infowindowContent.children['place-address'].textContent = address;
@@ -97,7 +105,14 @@
             	<h4><i class="fa fa-comments"></i>Get in touch</h4>
           </div><!-- end .form-header section -->
             
-            <form method="post" action="/" id="contact">
+            <form id="form1" runat="server">
+                <asp:HiddenField runat="server" ID="HdnEmail" />
+                <asp:HiddenField runat="server" ID="HdnAddress" />
+                <asp:HiddenField runat="server" ID="HdnId" />
+                <asp:HiddenField runat="server" ID="HdnPlaceId" />
+                <asp:HiddenField runat="server" ID="HdnLatLong" />
+                <asp:HiddenField runat="server" ID="HdnPlaceName" />
+                <asp:Panel ID="PnlMain" runat="server">
             	<div class="form-body">
                 
                 	<div class="frm-row">
@@ -106,28 +121,32 @@
                         
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="text" name="names" id="place" class="gui-input" placeholder="Enter name...">
+                                    
+                                    <asp:TextBox ID="place" placeholder="Enter Place Name..." CssClass="gui-input" runat="server"></asp:TextBox>
                                     <span class="field-icon"><i class="fa fa-user"></i></span>  
                                 </label>
                             </div><!-- end section -->
                             
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="email" name="email" id="email" class="gui-input" placeholder="example@domain.com...">
+                                    
+                                    <asp:TextBox ID="TxtEmail" runat="server" CssClass="gui-input" placeholder="example@domain.com..."></asp:TextBox>
                                     <span class="field-icon"><i class="fa fa-envelope"></i></span>  
                                 </label>
                             </div><!-- end section -->
                             
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="tel" name="telephone" id="telephone" class="gui-input" placeholder="Enter telephone or mobile...">
+                                    
+                                    <asp:TextBox runat="server" ID="TxtPhone" CssClass="gui-input" placeholder="Enter telephone or mobile..."></asp:TextBox>
                                     <span class="field-icon"><i class="fa fa-phone-square"></i></span>  
                                 </label>
                             </div><!-- end section -->
                             
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="text" name="gmname" id="gmname" class="gui-input" placeholder="Enter Manager's Name'...">
+                                    
+                                    <asp:TextBox runat="server" ID="TxtGm" CssClass="gui-input" placeholder="Enter Manager's Name'..."></asp:TextBox>
                                     <span class="field-icon"><i class="fa fa-user"></i></span>
                                 </label>
                             </div><!-- end section -->
@@ -149,8 +168,10 @@
                     
                 </div><!-- end .form-body section -->
                 <div class="form-footer">
-                	<button type="submit" class="button btn-primary">Submit</button>
+                	
+                    <asp:Button runat="server" ID="BtnSubmit" CssClass="button btn-primary" OnClick="BtnSubmit_Click" />
                 </div><!-- end .form-footer section -->
+                </asp:Panel>
             </form>
             
         </div><!-- end .smart-forms section -->
@@ -160,3 +181,4 @@
 
 </body>
 </html>
+

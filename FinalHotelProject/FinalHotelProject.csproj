@@ -83,6 +83,7 @@
     <Content Include="fonts\fontawesome\FontAwesome.otf" />
     <None Include="packages.config" />
     <Content Include="images\logohotel.png" />
+    <Content Include="Payment.aspx" />
     <Content Include="plugins\dropify\fonts\dropify.eot" />
     <Content Include="plugins\dropify\fonts\dropify.ttf" />
     <Content Include="plugins\dropify\fonts\dropify.woff" />
@@ -122,6 +123,7 @@
     <Content Include="ProblemReport.aspx" />
     <Content Include="ProblemReport1.aspx" />
     <Content Include="ProblemReport.html" />
+    <Content Include="RegisterHotel.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="widget-modal-basic.html" />
     <Content Include="Yourstay.aspx" />
@@ -286,6 +288,13 @@
     <Compile Include="MyDummyPage.aspx.designer.cs">
       <DependentUpon>MyDummyPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProblemReport.aspx.cs">
       <DependentUpon>ProblemReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,6 +310,13 @@
       <DependentUpon>ProblemReport1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterHotel.aspx.cs">
+      <DependentUpon>RegisterHotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterHotel.aspx.designer.cs">
+      <DependentUpon>RegisterHotel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

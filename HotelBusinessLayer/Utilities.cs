@@ -96,7 +96,7 @@ namespace HotelBusinessLayer
                         mail.Attachments.Add(attachment);
                     }
                     
-                    mail.Body = st;
+                    mail.Body = String.IsNullOrEmpty(email.Body)? st : email.Body;
                     smtp.Send(mail);
                 }
             }

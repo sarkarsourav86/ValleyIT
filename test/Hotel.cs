@@ -28,6 +28,8 @@ namespace HotelDBApp
         public String Email { get; set; }
         public String Country { get; set; }
         public String GMEmail { get; set; }
+        public String LatLong { get; set; }
+        public String PlaceId { get; set; }
         public static Hotel GetHotel(String id)
         {
             //SqlCommand cmd = new SqlCommand("SELECT [Brand],[Property Name],[Property Address Line 1],[Property Address Line 2],[Property City],[Property State],[Property  Postal Code],[Property Telephone],[Property Fax],[Property Number of Rooms],[Property General Manager],[Property Contact Description],[Property Contact Name],[DummyEmail] from Hotel where [Property] = '"+ id+"'");
@@ -48,21 +50,30 @@ namespace HotelDBApp
 
             return hotel;
         }
+        public static String ValidateHotelRegistration(String id)
+        {
+            SqlCommand cmd = new SqlCommand("spValidateHotelRegistration");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            return (String)DBOperations.InsertAndReturn(cmd);
+        }
         public static int RegisterHotel(Hotel hotel)
         {
             SqlCommand cmd = new SqlCommand("spRegisterHotel");
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@brand", hotel.BrandName);
+            cmd.Parameters.AddWithValue("@hotelid", hotel.ID);
             cmd.Parameters.AddWithValue("@hotelname", hotel.Brand);
             cmd.Parameters.AddWithValue("@hotelemail", hotel.Email);
             cmd.Parameters.AddWithValue("@hotelphone", hotel.Phone);
             cmd.Parameters.AddWithValue("@address1", hotel.Address_Line1);
-            cmd.Parameters.AddWithValue("@address2", hotel.Address_Line2);
+            
             cmd.Parameters.AddWithValue("@country", hotel.Country);
             cmd.Parameters.AddWithValue("@zip", hotel.PostalCode);
             cmd.Parameters.AddWithValue("@city", hotel.City);
             cmd.Parameters.AddWithValue("@state", hotel.State);
             cmd.Parameters.AddWithValue("@managername", hotel.GeneralManager);
+            cmd.Parameters.AddWithValue("@placeid", hotel.PlaceId);
+            cmd.Parameters.AddWithValue("@coordinates", hotel.LatLong);
             return Convert.ToInt16(DBOperations.InsertAndReturn(cmd));
              
         }
