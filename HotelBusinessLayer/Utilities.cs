@@ -70,7 +70,7 @@ namespace HotelBusinessLayer
             {
                 using (System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage())
                 {
-                    mail.From = new System.Net.Mail.MailAddress("interns@valleyit.us");
+                    mail.From = new System.Net.Mail.MailAddress("interns@valleyit.com");
 
                     // The important part -- configuring the SMTP client
                     SmtpClient smtp = new SmtpClient();

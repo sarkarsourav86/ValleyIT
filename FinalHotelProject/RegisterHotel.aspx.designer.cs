@@ -13,6 +13,24 @@ namespace FinalHotelProject {
     public partial class RegisterHotel {
         
         /// <summary>
+        /// PnlError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlError;
+        
+        /// <summary>
+        /// LblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblError;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
