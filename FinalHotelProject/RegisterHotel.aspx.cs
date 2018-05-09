@@ -11,15 +11,19 @@ namespace FinalHotelProject
     {
         String PaymentId;
         String PaymentEmail;
+        private void MakeMainPanelInvisible(String message,String cssClass)
+        {
+            PnlMain.Visible = false;
+            PnlError.Visible = true;
+            PnlError.CssClass = cssClass;
+            LblError.Text = message;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!ValidateID())
             {
-                PnlMain.Visible = false;
-                PnlError.Visible = true;
-                PnlError.CssClass = "notification alert-error spacer-t10";
-                LblError.Text = "Your link has expired or you have already registered.";
-                
+
+                MakeMainPanelInvisible("Your link has expired or you have already registered.", "notification alert-error spacer-t10");
             }
             else
             {
@@ -86,7 +90,7 @@ namespace FinalHotelProject
                     PnlError.Visible = true;
                     PnlError.CssClass = "notification alert-success spacer-t10";
                     LblError.Text = "Your hotel has been registered!";
-                    
+                    PnlMain.Visible = false;
                 }
                 else
                 {
