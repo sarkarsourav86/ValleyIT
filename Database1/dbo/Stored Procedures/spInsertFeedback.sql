@@ -21,7 +21,7 @@ Begin
 	begin
 		declare @countRows int
 		select @countRows=count(*)+1 from [dbo].[FeedbackTable] where [HotelId]=@HotelId
-		declare @FeedbackId varchar(50)
+		declare @FeedbackId varchar(MAX)
 		set @FeedbackId=@HotelId+'_'+trim(str(@countRows))
 		insert into [dbo].[FeedbackTable] values(@FeedbackId,@HotelId,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments)
 	end

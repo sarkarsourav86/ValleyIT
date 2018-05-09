@@ -27,7 +27,7 @@
     [Property1] VARCHAR(50) NOT NULL, 
     [PlaceId] VARCHAR(MAX) NULL, 
     [LatLong] VARCHAR(MAX) NULL, 
-    CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED ([Property1] ASC)
+    CONSTRAINT [PK_Hotel] PRIMARY KEY ([Property]) 
 );
 
 

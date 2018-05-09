@@ -8,11 +8,11 @@
 Begin
 declare @res int
 
-select @res =count(*) from [dbo].[Hotel] where Property1=@HotelID
+select @res =count(*) from [dbo].[Hotel] where Property=@HotelID
 IF @res>0
 	Begin
-		declare @newId varchar(50)
-		select @newId=Property1 from Hotel where Property1=@HotelID
+		declare @newId varchar(MAX)
+		select @newId=Property from Hotel where Property=@HotelID
 		select @newId=@newId+'_'+trim(str(count(*)+1)) from [dbo].[Users] where [HotelID]=@HotelID
 		insert into [dbo].[Users] values (@newId,@LastName,@RoomNo,@CheckOutDate,@Email,@HotelID)
 		select @newId
