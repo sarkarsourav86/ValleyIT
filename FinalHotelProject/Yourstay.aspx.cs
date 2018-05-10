@@ -56,10 +56,10 @@ namespace FinalHotelProject
             }
             
         }
-        private String GetUser()
+        private Decimal GetUser()
         {
             //do some db operations
-            return Session["User"] != null ? ((User)Session["User"]).UserID : String.Empty;
+            return Session["User"] != null ? ((User)Session["User"]).UserID : -100;
         }
         private String GetHotel()
         {
@@ -68,7 +68,7 @@ namespace FinalHotelProject
             //return Session["User"] != null ? ((User)Session["User"]).HotelID : String.Empty;
             if(Session["Hotel"]!=null)
             {
-                ID = ((Hotel)Session["Hotel"]).StringID;
+                ID = ((Hotel)Session["Hotel"]).ID;
             }
             else if((ID=Request.QueryString["hotelid"])==null)
                 ID= "ND1";
@@ -129,7 +129,7 @@ namespace FinalHotelProject
                 PnlLoginBtnContainer.Visible = false;
             }
         }
-        private void SetSession(String ID)
+        private void SetSession(Decimal ID)
         {
             user.UserID = ID;
             Session["User"] = user;
@@ -167,8 +167,8 @@ namespace FinalHotelProject
         private void InsertUserInfo()
         {
             user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text };
-            String userId = HotelDBApp.User.InsertUserInfo(user);
-            if (userId != String.Empty)
+            Decimal userId = HotelDBApp.User.InsertUserInfo(user);
+            if (userId != -100)
             {
                 SetSession(userId);
             }

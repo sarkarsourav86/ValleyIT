@@ -84,6 +84,7 @@
     <None Include="packages.config" />
     <Content Include="images\logohotel.png" />
     <Content Include="Payment.aspx" />
+    <Content Include="Places.aspx" />
     <Content Include="plugins\dropify\fonts\dropify.eot" />
     <Content Include="plugins\dropify\fonts\dropify.ttf" />
     <Content Include="plugins\dropify\fonts\dropify.woff" />
@@ -294,6 +295,13 @@
     </Compile>
     <Compile Include="Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Places.aspx.cs">
+      <DependentUpon>Places.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Places.aspx.designer.cs">
+      <DependentUpon>Places.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProblemReport.aspx.cs">
       <DependentUpon>ProblemReport.aspx</DependentUpon>

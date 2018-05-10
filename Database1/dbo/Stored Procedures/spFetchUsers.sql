@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spFetchUsers]
 	
-	@id varchar(50)
+	@id int
 AS
 	SELECT [LastName],[RoomNo],[CheckOutDate],[Email],[HotelID] from Users where [UserID]=@id
 

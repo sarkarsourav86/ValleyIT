@@ -117,6 +117,7 @@
           </div><!-- end .form-header section -->
             
             <form id="form1" runat="server">
+                <asp:Panel ID="PnlMain" runat="server" Visible="true">
             	<div class="form-body">
                 
                                     
@@ -173,6 +174,7 @@
                 	
                     <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Submit" />
                 </div><!-- end .form-footer section -->
+                </asp:Panel>
             </form>
             
         </div><!-- end .smart-forms section -->

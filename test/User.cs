@@ -11,13 +11,13 @@ namespace HotelDBApp
 {
     public class User
     {
-        public String UserID { get; set; }
+        public Decimal UserID { get; set; }
         public String LastName { get; set; }
         public String RoomNo { get; set; }
         public DateTime CheckOutDate { get; set; }
         public String Email { get; set; }
         public String HotelID { get; set; }
-        public static String InsertUserInfo(User user)
+        public static Decimal InsertUserInfo(User user)
         {
             SqlCommand cmd = new SqlCommand("spInsertUser");
             
@@ -27,10 +27,10 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@HotelID", user.HotelID);
             cmd.CommandType = CommandType.StoredProcedure;
-            return (String)DBOperations.InsertAndReturn(cmd);
+            return (System.Decimal)DBOperations.InsertAndReturn(cmd);
             
         }
-        public static User GetUserInfo(String ID)
+        public static User GetUserInfo(Decimal ID)
         {
             SqlCommand cmd = new SqlCommand("spFetchUsers");
             cmd.Parameters.AddWithValue("@id", ID);

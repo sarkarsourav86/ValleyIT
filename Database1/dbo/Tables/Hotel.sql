@@ -22,12 +22,12 @@
     [Property Contact Postal Code]    VARCHAR (MAX) NULL,
     [Email]                           VARCHAR (MAX) NULL,
     [DummyEmail] VARCHAR(MAX) NULL, 
-    [Id] VARCHAR(MAX) NULL, 
+    [Id] INT IDENTITY(1,1) NOT NULL, 
     [Status] VARCHAR(50) NULL DEFAULT 'Active', 
     [Property1] VARCHAR(50) NOT NULL, 
     [PlaceId] VARCHAR(MAX) NULL, 
     [LatLong] VARCHAR(MAX) NULL, 
-    CONSTRAINT [PK_Hotel] PRIMARY KEY ([Property]) 
+    CONSTRAINT [PK_Hotel] PRIMARY KEY ([Id]) 
 );
 
 

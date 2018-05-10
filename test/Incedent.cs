@@ -18,7 +18,7 @@ namespace HotelDBApp
         public String RoomNo { get; set; }
         public String HotelID { get; set; }
         public DateTime IncedentTime { get; set; }
-        public String UserID { get; set; }
+        public Decimal UserID { get; set; }
         public int FeedbackValue { get; set; }
         public static int ReportProblem(Incedent incedent)
         {

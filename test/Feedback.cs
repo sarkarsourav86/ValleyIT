@@ -13,7 +13,7 @@ namespace HotelDBApp
     {
         public String FeedbackID { get; set; }
         public String HotelID { get; set; }
-        public String UserID { get; set; }
+        public Decimal UserID { get; set; }
         public int RoomFeedback { get; set; }
         public int FrontDeskFeedback { get; set; }
         public int ReservationFeedback { get; set; }

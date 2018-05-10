@@ -7,19 +7,17 @@
 
 Begin
 declare @res int
-
+declare @id int
 select @res =count(*) from [dbo].[Hotel] where Property=@HotelID
 IF @res>0
 	Begin
-		declare @newId varchar(MAX)
-		select @newId=Property from Hotel where Property=@HotelID
-		select @newId=@newId+'_'+trim(str(count(*)+1)) from [dbo].[Users] where [HotelID]=@HotelID
-		insert into [dbo].[Users] values (@newId,@LastName,@RoomNo,@CheckOutDate,@Email,@HotelID)
-		select @newId
+		select @id=Id from Hotel where Property=@HotelID
+		insert into [dbo].[Users] values (@LastName,@RoomNo,@CheckOutDate,@Email,@id)
+		SELECT SCOPE_IDENTITY()
 	End
 ELSE
 	Begin
 	
-		select ''
+		select -100
 	End
 End

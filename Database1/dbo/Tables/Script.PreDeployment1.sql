@@ -9,4 +9,4 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-update Hotel set id=Convert(varchar(MAX),HASHBYTES('SHA2_256',Hotel.Property),2)
+

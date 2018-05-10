@@ -14,16 +14,11 @@ namespace FinalHotelProject
         Hotel hotel=null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-                
-
-
             if (Session["user"]!=null)
             {
                 TogglePanels(true);
             }
             SetHotelFromUrl();
-
             SetUrl();
             SetHotelName();
             SetPhoneNumber();
@@ -37,26 +32,31 @@ namespace FinalHotelProject
         }
         private void SetHotelFromUrl()
         {
-            String id=String.Empty;
-            if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
+            if (Session["Hotel"] == null)
             {
-                if (((Hotel)Session["Hotel"]).ID == Request.QueryString["hotelid"]) return;
-                else id = Request.QueryString["hotelid"]; 
-            }
-            else if (Session["Hotel"] != null && Request.QueryString["hotelid"] == null) return;
-            else if (Session["Hotel"] == null && Request.QueryString["hotelid"] != null)
-            {
-                id = Request.QueryString["hotelid"];
-            }
+                String id = Request.QueryString["hotelid"] != null ? Request.QueryString["hotelid"] : String.Empty;
+                /*if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
+                {
+                    if (((Hotel)Session["Hotel"]).ID == Request.QueryString["hotelid"]) return;
+                    else id = Request.QueryString["hotelid"]; 
+                }
+                else if (Session["Hotel"] != null && Request.QueryString["hotelid"] == null) return;
+                else if (Session["Hotel"] == null && Request.QueryString["hotelid"] != null)
+                {
+                    id = Request.QueryString["hotelid"];
+                }
 
-            else if(Session["Hotel"] == null && Request.QueryString["hotelid"] == null)
-            {
-                id = "EDF5189B07131AEED2449E8AAADE84CE4D828FD2A78E25FA7CD7DB8C26B8DB83";
+                else if(Session["Hotel"] == null && Request.QueryString["hotelid"] == null)
+                {
+                    id = "EDF5189B07131AEED2449E8AAADE84CE4D828FD2A78E25FA7CD7DB8C26B8DB83";
 
+                }*/
+
+                hotel = Hotel.GetHotel(id);
+                if (hotel == null)
+                    PnlMain.Visible = false;
+                else SetHotelInfo();
             }
-
-            hotel = Hotel.GetHotel(id);
-            SetHotelInfo();
         }
         private void SetUrl()
         {
@@ -92,7 +92,7 @@ namespace FinalHotelProject
             String HotelID = null;
             if (Session["Hotel"] != null)
             {
-                HotelID = ((Hotel)Session["Hotel"]).StringID;
+                HotelID = ((Hotel)Session["Hotel"]).ID;
                 //HypPhone.NavigateUrl = String.Format("tel://{0}", HotelID);
             }
             return HotelID;
@@ -100,8 +100,8 @@ namespace FinalHotelProject
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
             user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID() };
-            String userId = HotelDBApp.User.InsertUserInfo(user);
-            if (userId != String.Empty)
+            Decimal userId = HotelDBApp.User.InsertUserInfo(user);
+            if (userId != -100)
             {
                 SetSession(userId);
                 TogglePanels(true);
@@ -113,7 +113,7 @@ namespace FinalHotelProject
             DateTime.TryParse(value, out result);
             return result;
         }
-        private void SetSession(String userId)
+        private void SetSession(Decimal userId)
         {
             user.UserID = userId;
             Session["User"] = user;
