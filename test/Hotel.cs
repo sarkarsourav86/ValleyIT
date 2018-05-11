@@ -28,8 +28,8 @@ namespace HotelDBApp
         public String Email { get; set; }
         public String Country { get; set; }
         public String GMEmail { get; set; }
-        public Double Lat { get; set; }
-        public Double Long { get; set; }
+        
+        public String LatLong { get; set; }
         public String PlaceId { get; set; }
         public String PaymentId { get; set; }
         public static Hotel GetHotel(String id)
@@ -44,8 +44,8 @@ namespace HotelDBApp
             if (table.Rows.Count==1)
             {
                 row = table.Rows[0];
-                String temp = row["LatLong"].ToString();
-                hotel = new Hotel() { Email = row["Email"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),Lat=Convert.ToDouble(temp.Split(',')[0].Trim()),Long=Convert.ToDouble(temp.Split(',')[1].Trim()) };
+                
+                hotel = new Hotel() { Email = row["Email"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),LatLong=row["LatLong"].ToString() };
             }
                
             //SqlDataReader reader= cmd.ExecuteReader();

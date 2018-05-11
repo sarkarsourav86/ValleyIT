@@ -22,13 +22,14 @@
 
       <script src="js/jquery-1.9.1.min.js"></script>
       <script>
-        var map;
-        var infowindow;
+        
 
         function initMap() {
             var pyrmont;
-            navigator.geolocation.getCurrentPosition(function (location) {
-                pyrmont = { lat: location.coords.latitude, lng: location.coords.longitude }
+            var map;
+            var infowindow;
+            console.log($('#HdnLong').val());
+            pyrmont = { lat: parseFloat($('#HdnLat').val()), lng: parseFloat($('#HdnLong').val()) }
                 map = new google.maps.Map(document.getElementById('map_canvas'), {
                     center: pyrmont,
                     zoom: 15
@@ -72,7 +73,7 @@
                         infowindow.open(map, this);
                     });
                 }
-            });
+            
 
 
         }
@@ -103,13 +104,15 @@
          <div class="form-header header-custom">
             	<h4><i class="fa fa-cutlery"></i>Restaurants Nearby</h4>
              <ul class="breadcrumb">
-                 <li><a href="/Login.aspx">Home</a></li>
+                 <li><asp:HyperLink runat="server" ID="HypHome">Home</asp:HyperLink></li>
 
                  <li>Nearby Restaurants</li>
              </ul>
           </div><!-- end .form-header section -->
             
             <form runat="server" id="contact">
+                <asp:HiddenField ID="HdnLat" runat="server" />
+                <asp:HiddenField ID="HdnLong" runat="server" />
             	<div class="form-body-custom">
                 
                 	<div class="frm-row">

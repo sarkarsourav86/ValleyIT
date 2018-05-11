@@ -43,8 +43,8 @@ namespace FinalHotelProject
         }
         private void SetHotelFromUrl()
         {
-            String id;
-            if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
+            String id=String.Empty;
+            /*if (Session["Hotel"] != null && Request.QueryString["hotelid"] != null)
             {
                 if (((Hotel)Session["Hotel"]).ID == Request.QueryString["hotelid"]) return;
             }
@@ -57,10 +57,19 @@ namespace FinalHotelProject
             {
                 id = "EDF5189B07131AEED2449E8AAADE84CE4D828FD2A78E25FA7CD7DB8C26B8DB83";
 
-            }
+            }*/
+            if (Session["Hotel"] == null)
+            {
+                id = Request.QueryString["hotelid"] != null ? Request.QueryString["hotelid"] : String.Empty;
 
-            hotel = Hotel.GetHotel(id);
-            SetHotelInfo();
+                hotel = Hotel.GetHotel(id);
+                if(hotel!=null)
+                    SetHotelInfo();
+                else
+                {
+                    //throw error
+                }
+            }
         }
         private void SetHotelInfo()
         {

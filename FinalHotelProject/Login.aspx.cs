@@ -65,12 +65,13 @@ namespace FinalHotelProject
             {
                 HypProblemReport.NavigateUrl = String.Format("{0}?hotelid={1}",HypProblemReport.NavigateUrl.Split('?')[0],ID);
                 HypStay.NavigateUrl = String.Format("{0}?hotelid={1}", HypStay.NavigateUrl.Split('?')[0], ID);
+                HypPlaces.NavigateUrl= String.Format("{0}?hotelid={1}", HypPlaces.NavigateUrl.Split('?')[0], ID);
                 //Uri uri = new Uri("@"+HypProblemReport.NavigateUrl);
                 //HypProblemReport.NavigateUrl=String.Format("{0}?hotelid={1}",uri.OriginalString.Replace(uri.Query, String.Empty),ID);
                 //HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);
                 //Request.Url.GetLeftPart(UriPartial.Path) + "?hotelid={0}",id
                 //uri = new Uri(HypStay.NavigateUrl);
-               // HypStay.NavigateUrl= String.Format("{0}?hotelid={1}", uri.OriginalString.Replace(uri.Query, String.Empty), ID);
+                // HypStay.NavigateUrl= String.Format("{0}?hotelid={1}", uri.OriginalString.Replace(uri.Query, String.Empty), ID);
             }
         }
         private void SetPhoneNumber()
