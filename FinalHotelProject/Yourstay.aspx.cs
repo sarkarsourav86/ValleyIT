@@ -24,6 +24,11 @@ namespace FinalHotelProject
             CheckUserAndSetForm();
             FetchHotelinfoFromDB();
             SetHotelName();
+            SetHomeURL();
+        }
+        private void SetHomeURL()
+        {
+            HypHome.NavigateUrl = String.Format("/Login.aspx?hotelid={0}", hotel.ID);
         }
         private void SetHotelName()
         {

@@ -123,13 +123,6 @@ namespace FinalHotelProject
         {
             Session["Hotel"] = hotel;
         }
-        protected void DdlHotels_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String id = DdlHotels.SelectedValue;
-            
-            string url = String.Format(Request.Url.GetLeftPart(UriPartial.Path) + "?hotelid={0}",id);
-            Response.Redirect(url, true);
-            
-        }
+       
     }
 }

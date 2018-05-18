@@ -33,6 +33,12 @@ namespace FinalHotelProject
             SetHotelFromUrl();
             CheckUserAndSetForm();
             SetHotelName();
+            SetHomeURL();
+        }
+        private void SetHomeURL()
+        {
+            
+            HypHome.NavigateUrl = String.Format("/Login.aspx?hotelid={0}", hotel.ID);
         }
         private void SetHotelName()
         {
@@ -69,6 +75,10 @@ namespace FinalHotelProject
                 {
                     //throw error
                 }
+            }
+            else
+            {
+                hotel = (Hotel)Session["Hotel"];
             }
         }
         private void SetHotelInfo()

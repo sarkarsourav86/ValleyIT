@@ -155,8 +155,8 @@
             </div>
             <!-- end .form-header section -->
             <ul class="breadcrumb">
-                <li><a href="/Login.aspx">Home</a></li>
-
+                
+                <li><asp:HyperLink runat="server" ID="HypHome">Home</asp:HyperLink></li>
                 <li>Report a Problem</li>
             </ul>
             <form id="form1" enctype="multipart/form-data"  runat="server">
