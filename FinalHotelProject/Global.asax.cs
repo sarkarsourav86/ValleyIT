@@ -25,6 +25,7 @@ namespace FinalHotelProject
         private System.ComponentModel.IContainer components = null;
         private const string DummyPageUrl = @"C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\MyDummyPage.aspx";
         private const string DummyCacheItemKey = "GagaGuguGigi";
+        
         public Global()
         {
             //InitializeComponent();
@@ -39,6 +40,7 @@ namespace FinalHotelProject
             //TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific SA Standard Time");
 
             //DateTime newDateTime = TimeZoneInfo.ConvertTime(existingDateTime, timeZoneInfo);
+            
             DateTime startDate = DateTime.Now;
             DateTime endDate = startDate.AddMinutes(1);
             System.Timers.Timer myTimer = new System.Timers.Timer();
@@ -124,10 +126,12 @@ namespace FinalHotelProject
 
                         //Formatted mail body
                         mail.IsBodyHtml = true;
-                        String link = String.Format("FeedbackForm.aspx?hotelid={0}",item["Property"].ToString());
+                        String URL= "http://localhost:50962/";
+                        //String URL = host;
+                         String link = String.Format("{0}FeedbackForm.aspx?hotelid={1}&user={2}", URL,item["Property"].ToString(),item["UserID"].ToString());
                         //string st = String.Format("<p>Hi {0}. Thanks for staying with {1}.</p><p>Your feedback is valuable to us. Please spare a moment to provide your feedback for your stay at{2}</p><p>Please provide your feedback <a href={3}>here</a></p>",item["LastName"].ToString(), item["Property Name"].ToString(), item["Property Name"].ToString(),link);
                         //String st="< !doctype html >< html >< head >< meta http - equiv = \"Content-Type\" content = \"text/html; charset=utf-8\" >< title > Reliable WiFi </ title >< style > a:link {color: #0a79ea;text-decoration: none;}a:visited {color: #000000;text-decoration: none;}a:link#tops {color: #000000;text-decoration: none;}body, td, th {font-family: Arial, "Helvetica Neue", Helvetica, Gotham, sans-serif;font-style: normal;font-weight: normal;font-size: 14px;color: #000000;}body {margin-left: 10px;margin-top: 10px;margin-right: 10px;margin-bottom: 10px;background-color: #FFFFFF;}.BODY {border-bottom: 1px solid #e8eef2;border-left: 1px solid #e8eef2;border-right: 1px solid #e8eef2;border-top: 1px solid #e8eef2;}.tableu {border-bottom: 2px solid #F4CC1F;border-left: 2px solid #F4CC1F;border-right: 2px solid #F4CC1F;border-top: 2px solid #F4CC1F;}</style></head><body><table bgcolor="#ffffff" cellpadding="0" cellspacing="0" align="center" border="0" class="BODY" width="600"> <tr> <td align="center"><table cellpadding="0" cellspacing="0" border="0"> <tr> <td valign="top"><a href="http://na414-41ac69.pages.infusionsoft.net/"><img src="images/banner.jpg" alt="Banner" width="600" height="407" style="display:block" title="Banner"></a></td> </tr> </table> <table background="#FAF9F7" cellpadding="0" cellspacing="0" border="0" width="600" bgcolor="#FAF9F7"> <tbody> <tr> <td bgcolor="#FAFAF8" style="padding: 10px 25px 10px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;">For staying with us. Your feedback is important to help us serve you better next time. <br />Please rate your stay.<br /></td> </tr> </tbody> </table><table cellpadding="0" cellspacing="0" border="0"> <tr> <td bgcolor="#FAFAF8" valign="top"><a href="http://na414-41ac69.pages.infusionsoft.net/"><img src="images/stars.gif" alt="stars" width="600" height="67" style="display:block" title="stars"></a></td> </tr> </table> <table background="#FAF9F7" cellpadding="0" cellspacing="0" border="0" width="600" bgcolor="#FAF9F7"> <tbody> <tr> <td bgcolor="#FAFAF8" style="padding: 15px 25px 20px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;">Thank you!<br />From Management.<br /></td> </tr> </tbody> </table> <table cellpadding="0" cellspacing="0" border="0" width="600" bgcolor="#1F4691"> <tbody> <tr> <td bgcolor="#1F4691" style="padding:10px 10px 10px 10px;text-align:center; line-height:22px; color: #FFFFFF"> &copy; Copyright 2017 - Reliable WiFi <br /></td> </tr> </tbody> </table></td> </tr></table></body></html>"
-                        String st = String.Format("<!doctype html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>Reliable WiFi </title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\"><style> .checked { color: orange;}a:link {color: #0a79ea;text-decoration: none;}a:visited {color: #000000;text-decoration: none;}a:link#tops {color: #000000;text-decoration: none;}body, td, th {font-family: Arial, \"Helvetica Neue\", Helvetica, Gotham, sans-serif;font-style: normal;font-weight: normal;font-size: 14px;color: #000000;}body {margin-left: 10px;margin-top: 10px;margin-right: 10px;margin-bottom: 10px;background-color: #FFFFFF;}.BODY {border-bottom: 1px solid #e8eef2;border-left: 1px solid #e8eef2;border-right: 1px solid #e8eef2;border-top: 1px solid #e8eef2;}.tableu {border-bottom: 2px solid #F4CC1F;border-left: 2px solid #F4CC1F;border-right: 2px solid #F4CC1F;border-top: 2px solid #F4CC1F;}</style></head><body><table bgcolor=\"#ffffff\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" border=\"0\" class=\"BODY\" width=\"600\"> <tr> <td align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"> <tr> <td valign=\"top\"><a href=\"http://na414-41ac69.pages.infusionsoft.net/\"><img src=\"http://bisoncomputing.com/images/banner.jpg\" alt=\"Banner\" width=\"600\" height=\"407\" style=\"display:block\" title=\"Banner\"></a></td> </tr> </table> <table background=\"#FAF9F7\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#FAF9F7\"> <tbody> <tr> <td bgcolor=\"#FAFAF8\" style=\"padding: 10px 25px 10px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;\">For staying with us, {0}. Your feedback is important to help us serve you better next time. <br />Please rate your stay at {1}.<br /></td> </tr> </tbody> </table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"> <tr> <td bgcolor=\"#FAFAF8\" valign=\"top\"> <a href=\"{3}\"><span class=\"fa fa-star checked\"></span></a> <span href=\"{3}\" class=\"fa fa-star checked\"></span> <span href=\"{3}\" class=\"fa fa-star checked\"></span> <span href=\"{3}\" class=\"fa fa-star checked\"></span> <span href=\"{3}\" class=\"fa fa-star checked\"></span> </td> </tr> </table> <table background=\"#FAF9F7\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#FAF9F7\"> <tbody> <tr> <td bgcolor=\"#FAFAF8\" style=\"padding: 15px 25px 20px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;\">Thank you!<br />From Management.<br /></td> </tr> </tbody> </table> <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#1F4691\"> <tbody> <tr> <td bgcolor=\"#1F4691\" style=\"padding:10px 10px 10px 10px;text-align:center; line-height:22px; color: #FFFFFF\"> &copy; Copyright 2017 - Reliable WiFi <br /></td> </tr> </tbody> </table></td> </tr></table></body></html>", item["LastName"].ToString(), item["Property Name"].ToString(), item["Property Name"].ToString(), link);
+                        String st = String.Format("<!doctype html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>Reliable WiFi </title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\"><style> .checked {{ color: orange;}}a:link {{color: #0a79ea;text-decoration: none;}}a:visited {{color: #000000;text-decoration: none;}}a:link#tops {{color: #000000;text-decoration: none;}}body, td, th {{font-family: Arial, \"Helvetica Neue\", Helvetica, Gotham, sans-serif;font-style: normal;font-weight: normal;font-size: 14px;color: #000000;}}body {{margin-left: 10px;margin-top: 10px;margin-right: 10px;margin-bottom: 10px;background-color: #FFFFFF;}}.BODY {{border-bottom: 1px solid #e8eef2;border-left: 1px solid #e8eef2;border-right: 1px solid #e8eef2;border-top: 1px solid #e8eef2;}}.tableu {{border-bottom: 2px solid #F4CC1F;border-left: 2px solid #F4CC1F;border-right: 2px solid #F4CC1F;border-top: 2px solid #F4CC1F;}}</style></head><body><table bgcolor=\"#ffffff\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" border=\"0\" class=\"BODY\" width=\"600\"> <tr> <td align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"> <tr> <td valign=\"top\"><a href=\"http://na414-41ac69.pages.infusionsoft.net/\"><img src=\"http://bisoncomputing.com/images/banner.jpg\" alt=\"Banner\" width=\"600\" height=\"407\" style=\"display:block\" title=\"Banner\"></a></td> </tr> </table> <table background=\"#FAF9F7\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#FAF9F7\"> <tbody> <tr> <td bgcolor=\"#FAFAF8\" style=\"padding: 10px 25px 10px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;\">For staying with us, {0}. Your feedback is important to help us serve you better next time. <br />Please rate your stay at {1}.<br /></td> </tr> </tbody> </table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"> <tr> <td bgcolor=\"#FAFAF8\" valign=\"top\"> <a href={5}><img src=\"http://bisoncomputing.com/images/stars.gif\" alt=\"stars\" width=\"600\" height=\"67\" style=\"display:block\" title=\"stars\"></a> </td> </tr> </table> <table background=\"#FAF9F7\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#FAF9F7\"> <tbody> <tr> <td bgcolor=\"#FAFAF8\" style=\"padding: 15px 25px 20px 25px; text-align: center; color: #000000; font-size: 24px; background-color: #FAFAF8;\">Thank you!<br />From Management.<br /></td> </tr> </tbody> </table> <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" bgcolor=\"#1F4691\"> <tbody> <tr> <td bgcolor=\"#1F4691\" style=\"padding:10px 10px 10px 10px;text-align:center; line-height:22px; color: #FFFFFF\"> &copy; Copyright 2017 - Reliable WiFi <br /></td> </tr> </tbody> </table></td> </tr></table></body></html>", item["LastName"].ToString(), item["Property Name"].ToString(), item["Property Name"].ToString(), link, link, link, link);
                         mail.Body = st;
                         smtp.Send(mail);
                     }
@@ -181,6 +185,30 @@ namespace FinalHotelProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+        }
+    }
+    class FirstRequestInitialisation
+    {
+        private static string host = null;
+
+        private static Object s_lock = new Object();
+
+        // Initialise only on the first request
+        public static string Initialise(HttpContext context)
+        {
+            if (string.IsNullOrEmpty(host))
+            {
+                lock (s_lock)
+                {
+                    if (string.IsNullOrEmpty(host))
+                    {
+                        Uri uri = HttpContext.Current.Request.Url;
+                        host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+                    }
+                }
+            }
+
+            return host;
         }
     }
 }

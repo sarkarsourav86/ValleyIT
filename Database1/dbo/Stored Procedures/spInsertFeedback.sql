@@ -1,5 +1,5 @@
 ﻿CREATE proc [dbo].[spInsertFeedback] 
-@HotelId int,
+@HotelId varchar(MAX),
 @UserId int,
 @RoomFeedback int,
 @FrontDeskFeedback int,
@@ -19,9 +19,8 @@ Begin
 	select @checkKey= count(*) from [dbo].[Hotel] where [Property]=@HotelId
 	IF @checkKey =1
 	begin
-		declare @countRows int
-		select @countRows=count(*)+1 from [dbo].[FeedbackTable] where [HotelId]=@HotelId
-		
-		insert into [dbo].[FeedbackTable] values(@HotelId,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments)
+		declare @id int
+		select @id=  Id from Hotel where Property=@HotelId
+		insert into [dbo].[FeedbackTable] values(@Id,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments)
 	end
 End

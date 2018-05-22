@@ -45,7 +45,7 @@ namespace HotelDBApp
             {
                 row = table.Rows[0];
                 
-                hotel = new Hotel() { Email = row["Email"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),LatLong=row["LatLong"].ToString() };
+                hotel = new Hotel() { Email = row["Email"].ToString(),PlaceId= row["PlaceId"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),LatLong=row["LatLong"].ToString() };
             }
                
             //SqlDataReader reader= cmd.ExecuteReader();

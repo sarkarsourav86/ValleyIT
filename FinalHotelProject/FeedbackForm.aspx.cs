@@ -27,15 +27,15 @@ namespace FinalHotelProject
         }
         private void SetSearchCriteria()
         {
-           if(hotel!=null) HdnPlacetoSearch.Value = String.Format("{0},{1},{2},{3}", hotel.Brand, hotel.City, hotel.State, hotel.PostalCode);
+            if (hotel != null) HdnPlacetoSearch.Value = hotel.PlaceId;
         }
         private bool HasValidUserId()
         {
-            return Request.QueryString["hotelid"] != null;
+            return Request.QueryString["user"] != null;
         }
         private bool HasValidHotelId()
         {
-            return Request.QueryString["user"] != null;
+            return Request.QueryString["hotelid"] != null;
         }
         protected void Submit_Click(object sender, EventArgs e)
         {

@@ -185,6 +185,7 @@
         geocodeAddress(geocoder, map);
     }
     function generateReviewLink() {
+        placeId = document.getElementById('HdnPlacetoSearch').value;
         var link = 'https://search.google.com/local/writereview?placeid=' + placeId;
         window.location=link;
     }
@@ -205,6 +206,6 @@
         });
     }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcW22Axg0u70M3Pobv9NtFCPXJacfcT8o&libraries=places&callback=initMap" async defer></script>
+    
 </body>
 </html>
