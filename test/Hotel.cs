@@ -32,6 +32,8 @@ namespace HotelDBApp
         public String LatLong { get; set; }
         public String PlaceId { get; set; }
         public String PaymentId { get; set; }
+        public String FranchiseName { get; set; }
+        public String RewardsLink { get; set; }
         public static Hotel GetHotel(String id)
         {
             //SqlCommand cmd = new SqlCommand("SELECT [Brand],[Property Name],[Property Address Line 1],[Property Address Line 2],[Property City],[Property State],[Property  Postal Code],[Property Telephone],[Property Fax],[Property Number of Rooms],[Property General Manager],[Property Contact Description],[Property Contact Name],[DummyEmail] from Hotel where [Property] = '"+ id+"'");
@@ -45,7 +47,7 @@ namespace HotelDBApp
             {
                 row = table.Rows[0];
                 
-                hotel = new Hotel() { Email = row["Email"].ToString(),PlaceId= row["PlaceId"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),LatLong=row["LatLong"].ToString() };
+                hotel = new Hotel() { Email = row["Email"].ToString(),PlaceId= row["PlaceId"].ToString(), Phone = row["Property Telephone"].ToString(), ID = row["Property"].ToString(), Brand = row["Property Name"].ToString(), City = row["Property City"].ToString(), State = row["Property State"].ToString(), PostalCode = row["PostalCode"].ToString(),StringID= row["Property1"].ToString(),LatLong=row["LatLong"].ToString(),FranchiseName=row["Name"].ToString(),RewardsLink=row["RewardsLink"].ToString() };
             }
                
             //SqlDataReader reader= cmd.ExecuteReader();

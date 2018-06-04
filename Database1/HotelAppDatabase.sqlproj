@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{32ce5fd8-1064-4afa-b387-46e94032480d}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -82,11 +82,16 @@
     <Build Include="dbo\Tables\Payment.sql" />
     <Build Include="dbo\Stored Procedures\spInsertPayment.sql" />
     <Build Include="dbo\Stored Procedures\spValidateHotelRegistration.sql" />
+    <Build Include="dbo\Tables\FranchiseTable.sql" />
+    <Build Include="dbo\Tables\BrandTable.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HotelAppDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

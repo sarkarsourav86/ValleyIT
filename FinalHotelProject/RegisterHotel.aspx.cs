@@ -5,18 +5,28 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HotelDBApp;
+using HotelBusinessLayer;
 namespace FinalHotelProject
 {
     public partial class RegisterHotel : System.Web.UI.Page
     {
         String PaymentId;
         String PaymentEmail;
+        
         private void MakeMainPanelInvisible(String message,String cssClass)
         {
             PnlMain.Visible = false;
             PnlError.Visible = true;
             PnlError.CssClass = cssClass;
             LblError.Text = message;
+        }
+        private String CreateLink(String id)
+        {
+            return String.Format("{0}Login.aspx?hotelid={1}",System.Configuration.ConfigurationManager.AppSettings["serverName"],id);
+        }
+        private Email CreateEmail(String subject,String toEmail,String body)
+        {
+            return new Email() { Body=body, Subject=subject, ToAddress=toEmail };
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -80,6 +90,12 @@ namespace FinalHotelProject
                 PaymentId=PaymentId
             };
         }
+        private void SendEmail(String linkId,String toAddress)
+        {
+            String body = String.Format("Your hotel link is <a href={0}>{0}</a>",CreateLink(linkId));
+            String subject = "Your Hotel Link";
+            Utilities.SendEmail(CreateEmail(subject, toAddress, body));
+        }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             if(ValidateEmail())
@@ -91,6 +107,8 @@ namespace FinalHotelProject
                     PnlError.CssClass = "notification alert-success spacer-t10";
                     LblError.Text = "Your hotel has been registered!";
                     PnlMain.Visible = false;
+                    //Utilities.SendEmail()
+                    SendEmail(hotel.ID,hotel.Email);
                 }
                 else
                 {

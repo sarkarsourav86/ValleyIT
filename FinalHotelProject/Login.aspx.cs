@@ -66,6 +66,8 @@ namespace FinalHotelProject
                 HypProblemReport.NavigateUrl = String.Format("{0}?hotelid={1}",HypProblemReport.NavigateUrl.Split('?')[0],ID);
                 HypStay.NavigateUrl = String.Format("{0}?hotelid={1}", HypStay.NavigateUrl.Split('?')[0], ID);
                 HypPlaces.NavigateUrl= String.Format("{0}?hotelid={1}", HypPlaces.NavigateUrl.Split('?')[0], ID);
+                HypRewards.NavigateUrl = hotel.RewardsLink;
+                HypRewards.Text = hotel.FranchiseName;
                 //Uri uri = new Uri("@"+HypProblemReport.NavigateUrl);
                 //HypProblemReport.NavigateUrl=String.Format("{0}?hotelid={1}",uri.OriginalString.Replace(uri.Query, String.Empty),ID);
                 //HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);

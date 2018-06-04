@@ -27,6 +27,7 @@
     [Property1] VARCHAR(50) NOT NULL, 
     [PlaceId] VARCHAR(MAX) NULL, 
     [LatLong] VARCHAR(MAX) NULL, 
+    [Franchise] INT NULL, 
     CONSTRAINT [PK_Hotel] PRIMARY KEY ([Id]) 
 );
 

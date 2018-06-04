@@ -21,8 +21,8 @@ namespace HotelBusinessLayer
         public static Dictionary<int, String> FeedbackOptionsList = new Dictionary<int, string>()
         {
             {0,"No Comments" },
-            {1,"Works Great/ Satisfied with it" },
-            {2,"Not Satisfied with it" },
+            {1,"Everything is Great/ Very Satisfied" },
+            {2,"Not Satisfied" },
             {3,"Something is broken" },
             
             {4,"Needs Immediate Attention" }
@@ -66,11 +66,13 @@ namespace HotelBusinessLayer
             var htmlContent = !isRating? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType,email.ProblemValue,email.RoomNo,email.CustName,email.CheckoutDate,email.Comments): String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Checkout Date {3}</p><p>Description: {4}</p>", email.ProblemValue,email.CustName, email.UserEmail, email.CheckoutDate, email.Comments);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = client.SendEmailAsync(msg);*/
+            String from = System.Configuration.ConfigurationManager.AppSettings["emailId"];
+            String password= System.Configuration.ConfigurationManager.AppSettings["password"];
             try
             {
                 using (System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage())
                 {
-                    mail.From = new System.Net.Mail.MailAddress("interns@valleyit.com");
+                    mail.From = new System.Net.Mail.MailAddress(from);
 
                     // The important part -- configuring the SMTP client
                     SmtpClient smtp = new SmtpClient();
@@ -78,7 +80,7 @@ namespace HotelBusinessLayer
                     smtp.EnableSsl = true;
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
                     smtp.UseDefaultCredentials = false; // [3] Changed this
-                    smtp.Credentials = new System.Net.NetworkCredential(mail.From.ToString(), "Intern@123");  // [4] Added this. Note, first parameter is NOT string.
+                    smtp.Credentials = new System.Net.NetworkCredential(mail.From.ToString(), password);  // [4] Added this. Note, first parameter is NOT string.
                     smtp.Host = "smtp.gmail.com";
 
                     //recipient address

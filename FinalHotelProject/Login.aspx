@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <title> Smart Forms - Login </title>
+  <title> Welcome Page - MyGuestXp </title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -127,6 +128,7 @@
                         <asp:HyperLink runat="server" ID="HypStay" NavigateUrl="yourstay.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-home"></i></span>How's Your Stay</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypProblemReport" NavigateUrl="ProblemReport.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-ban"></i></span>Report a Problem</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypPlaces" NavigateUrl="Places.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-location-arrow"></i></span>Nearby Restaurants</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="HypRewards" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span></asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypPhone" NavigateUrl="~/Web.config" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span>Call Frontdesk</asp:HyperLink>
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">

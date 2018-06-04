@@ -1,0 +1,11 @@
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\test.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\test.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\Newtonsoft.Json.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\SendGrid.dll
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\Newtonsoft.Json.xml
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\SendGrid.pdb
+C:\Users\Valley1\Documents\ValleyIT\test\bin\Release\SendGrid.xml
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Release\HotelDBApp.csprojResolveAssemblyReference.cache
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Release\HotelDBApp.csproj.CoreCompileInputs.cache
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Release\test.dll
+C:\Users\Valley1\Documents\ValleyIT\test\obj\Release\test.pdb

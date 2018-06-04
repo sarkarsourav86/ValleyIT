@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Smart Forms - Contact Form </title>
+    <title>Report Problem - MyGuestXp</title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="plugins/dropify/css/dropify.min.css" rel="stylesheet" />
@@ -149,7 +150,8 @@
         <div class="smart-forms smart-container wrap-2">
 
             <div class="form-header header-primary">
-                <h4><i class="fa fa-eye-slash"></i>Report A Problem -
+                <img src="images/logohotel.png" />
+                <h4>Report A Problem -
                     <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
 
             </div>
@@ -304,7 +306,7 @@
                                             <input type="radio" name="housekeeping" id="housekeeping_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -313,7 +315,7 @@
                                             <input type="radio" name="housekeeping" id="housekeeping_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -375,7 +377,7 @@
                                             <input type="radio" name="internet" id="internet_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -384,7 +386,7 @@
                                             <input type="radio" name="internet" id="internet_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -446,7 +448,7 @@
                                             <input type="radio" name="maintain" id="maintain_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -455,7 +457,7 @@
                                             <input type="radio" name="maintain" id="maintain_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -519,7 +521,7 @@
                                             <input type="radio" name="common" id="common_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -528,7 +530,7 @@
                                             <input type="radio" name="common" id="common_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -591,7 +593,7 @@
                                             <input type="radio" name="room" id="room_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -600,7 +602,7 @@
                                             <input type="radio" name="room" id="room_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -662,7 +664,7 @@
                                             <input type="radio" name="helpdesk" id="frontdesk_1" value="1">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Works Great/ Satisfied with it
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -671,7 +673,7 @@
                                             <input type="radio" name="helpdesk" id="frontdesk_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>

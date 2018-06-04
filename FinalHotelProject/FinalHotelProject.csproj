@@ -82,12 +82,14 @@
     <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome\FontAwesome.otf" />
     <None Include="packages.config" />
+    <Content Include="images\favicon.ico" />
     <Content Include="images\logohotel.png" />
     <Content Include="Payment.aspx" />
     <Content Include="Places.aspx" />
     <Content Include="plugins\dropify\fonts\dropify.eot" />
     <Content Include="plugins\dropify\fonts\dropify.ttf" />
     <Content Include="plugins\dropify\fonts\dropify.woff" />
+    <None Include="Properties\PublishProfiles\FinalHotelProject20180523071047 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
