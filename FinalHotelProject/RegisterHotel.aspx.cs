@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HotelDBApp;
 using HotelBusinessLayer;
+using System.Data;
 namespace FinalHotelProject
 {
     public partial class RegisterHotel : System.Web.UI.Page
@@ -38,9 +39,25 @@ namespace FinalHotelProject
             else
             {
                 HdnEmail.Value = TxtEmail.Text;
+                if(!IsPostBack)
+                    LoadFranchiseDdl();
             }
             
            
+        }
+        private void LoadFranchiseDdl()
+        {
+            DataSet ds = Hotel.FetchFranchise();
+
+            DdlFranchise.DataSource = ds;
+            DdlFranchise.DataBind();
+        }
+        private void LoadFranchiseBrandDdl(int id)
+        {
+            DataSet ds=Hotel.FetchFranchiseBrand(id);
+            
+            DdlFranchise.DataSource = ds;
+            DdlFranchise.DataBind();
         }
         private bool ValidateID()
         {
@@ -127,6 +144,13 @@ namespace FinalHotelProject
                 LblError.Text = "Please use the email address you used for making the payment!";
                 place.Text = String.Empty;
             }
+        }
+
+        protected void DdlFranchise_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            int.TryParse(DdlFranchise.SelectedValue, out int selectedVal);
+            LoadFranchiseBrandDdl(selectedVal);
         }
     }
 }

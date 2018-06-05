@@ -62,6 +62,19 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@id", id);
             return (String)DBOperations.InsertAndReturn(cmd);
         }
+        public static DataSet FetchFranchise()
+        {
+            SqlCommand cmd = new SqlCommand("spFetchFranchise");
+            cmd.CommandType = CommandType.StoredProcedure;
+            return DBOperations.FetchValues(cmd);
+        }
+        public static DataSet FetchFranchiseBrand(int id)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchFranchiseBrands");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@franchiseId",id);
+            return DBOperations.FetchValues(cmd);
+        }
         public static int RegisterHotel(Hotel hotel)
         {
             SqlCommand cmd = new SqlCommand("spRegisterHotel");

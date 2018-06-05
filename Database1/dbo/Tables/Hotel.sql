@@ -28,6 +28,8 @@
     [PlaceId] VARCHAR(MAX) NULL, 
     [LatLong] VARCHAR(MAX) NULL, 
     [Franchise] INT NULL, 
+	
+    [FranchiseBrand] INT NULL, 
     CONSTRAINT [PK_Hotel] PRIMARY KEY ([Id]) 
 );
 

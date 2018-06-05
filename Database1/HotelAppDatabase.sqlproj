@@ -84,6 +84,8 @@
     <Build Include="dbo\Stored Procedures\spValidateHotelRegistration.sql" />
     <Build Include="dbo\Tables\FranchiseTable.sql" />
     <Build Include="dbo\Tables\BrandTable.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchFranchise.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchFranchiseBrands.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

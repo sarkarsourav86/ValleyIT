@@ -103,6 +103,24 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.WebControls.Panel PnlMain;
         
         /// <summary>
+        /// DdlFranchise control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlFranchise;
+        
+        /// <summary>
+        /// DdlFranchiseBrands control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlFranchiseBrands;
+        
+        /// <summary>
         /// place control.
         /// </summary>
         /// <remarks>
