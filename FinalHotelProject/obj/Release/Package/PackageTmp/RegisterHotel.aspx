@@ -218,7 +218,31 @@
                         <div class="frm-row">
 
                             <div class="colm colm6">
+                                <div class="section">
+                                    <label class="field prepend-icon">
 
+                                       Select Franchise
+                                    </label>
+                                    <label class="field prepend-icon">
+
+                                        <asp:DropDownList CssClass="gui-input" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" ID="DdlFranchise" OnSelectedIndexChanged="DdlFranchise_SelectedIndexChanged"></asp:DropDownList>
+                                        <span class="field-icon"><i class="fa fa-envelope"></i></span>
+                                    </label>
+                                </div>
+                                <asp:Panel ID="PnlBrand" runat="server" Visible="false">
+                                    <div class="section">
+                                    <label class="field prepend-icon">
+
+                                       Select Franchise Brand
+                                    </label>
+                                    <label class="field prepend-icon">
+
+                                        <asp:DropDownList CssClass="gui-input" AutoPostBack="true" DataTextField="BrandName" DataValueField="Id" runat="server" ID="DdlFranchiseBrands" ></asp:DropDownList>
+                                        <span class="field-icon"><i class="fa fa-envelope"></i></span>
+                                    </label>
+                                </div>
+                                </asp:Panel>
+                                
                                 <div class="section">
                                     <label class="field prepend-icon">
 

@@ -84,6 +84,7 @@
     <None Include="packages.config" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\logohotel.png" />
+    <Content Include="images\SuccessCheck.png" />
     <Content Include="Payment.aspx" />
     <Content Include="Places.aspx" />
     <Content Include="plugins\dropify\fonts\dropify.eot" />

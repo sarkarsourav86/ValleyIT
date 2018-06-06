@@ -21,13 +21,23 @@ namespace FinalHotelProject
             SetHotelFromUrl();
             SetUrl();
             SetHotelName();
+            SetRewards();
             SetPhoneNumber();
+
         }
         private void SetHotelName()
         {
             if(Session["Hotel"]!=null)
             {
                // LblHotelName.Text = ((Hotel)Session["Hotel"]).Brand;
+            }
+        }
+        private void SetRewards()
+        {
+            if (Session["Hotel"] != null)
+            {
+                HypRewards.NavigateUrl = hotel != null ? hotel.RewardsLink : ((Hotel)Session["Hotel"]).RewardsLink;
+                LitRewards.Text = hotel != null ? hotel.RewardsName : ((Hotel)Session["Hotel"]).RewardsName;
             }
         }
         private void SetHotelFromUrl()
@@ -63,11 +73,11 @@ namespace FinalHotelProject
             String ID = String.Empty;
             if((ID=Request.QueryString["hotelid"]) != null)
             {
+                
                 HypProblemReport.NavigateUrl = String.Format("{0}?hotelid={1}",HypProblemReport.NavigateUrl.Split('?')[0],ID);
                 HypStay.NavigateUrl = String.Format("{0}?hotelid={1}", HypStay.NavigateUrl.Split('?')[0], ID);
                 HypPlaces.NavigateUrl= String.Format("{0}?hotelid={1}", HypPlaces.NavigateUrl.Split('?')[0], ID);
-                HypRewards.NavigateUrl = hotel.RewardsLink;
-                HypRewards.Text = hotel.FranchiseName;
+                
                 //Uri uri = new Uri("@"+HypProblemReport.NavigateUrl);
                 //HypProblemReport.NavigateUrl=String.Format("{0}?hotelid={1}",uri.OriginalString.Replace(uri.Query, String.Empty),ID);
                 //HypProblemReport.NavigateUrl = String.Format(HypProblemReport.NavigateUrl + "?hotelid={0}", ID);

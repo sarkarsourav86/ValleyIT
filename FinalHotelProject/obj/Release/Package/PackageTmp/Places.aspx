@@ -133,7 +133,7 @@
                     
                 </div><!-- end .form-body section -->
                 <div class="form-footer-custom">
-                	<button type="submit" class="button btn-primary">Submit</button>
+                	
                 </div><!-- end section -->
             </form>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcW22Axg0u70M3Pobv9NtFCPXJacfcT8o&libraries=places&callback=initMap" async defer></script>

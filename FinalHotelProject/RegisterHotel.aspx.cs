@@ -51,13 +51,16 @@ namespace FinalHotelProject
 
             DdlFranchise.DataSource = ds;
             DdlFranchise.DataBind();
+            DdlFranchise.SelectedValue = "0";
         }
         private void LoadFranchiseBrandDdl(int id)
         {
+            PnlBrand.Visible = true;
             DataSet ds=Hotel.FetchFranchiseBrand(id);
             
-            DdlFranchise.DataSource = ds;
-            DdlFranchise.DataBind();
+            DdlFranchiseBrands.DataSource = ds;
+            DdlFranchiseBrands.DataBind();
+            DdlFranchiseBrands.SelectedValue = "0";
         }
         private bool ValidateID()
         {
@@ -104,7 +107,9 @@ namespace FinalHotelProject
                 GeneralManager = TxtGm.Text,
                 Phone = TxtPhone.Text,
                 Brand = HdnPlaceName.Value,
-                PaymentId=PaymentId
+                PaymentId = PaymentId,
+                Franchise = int.Parse(DdlFranchise.SelectedValue),
+                FranchiseBrand = DdlFranchiseBrands.Visible ? int.Parse(DdlFranchiseBrands.SelectedValue) : 0
             };
         }
         private void SendEmail(String linkId,String toAddress)
@@ -150,7 +155,10 @@ namespace FinalHotelProject
         {
             
             int.TryParse(DdlFranchise.SelectedValue, out int selectedVal);
-            LoadFranchiseBrandDdl(selectedVal);
+            if (selectedVal != 0)
+                LoadFranchiseBrandDdl(selectedVal);
+            else
+                PnlBrand.Visible = false;
         }
     }
 }

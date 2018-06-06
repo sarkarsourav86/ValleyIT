@@ -111,14 +111,17 @@
     	<div class="smart-forms smart-container wrap-3">
         
         	<div class="form-header header-primary">
-                <img src="images/logohotel.png" />
-            	<h4><img src="images/online.png" /><span style="margin-left:5px;margin-top:-5px;">You Are Online</span><%--<asp:Label runat="server" ID="LblHotelName"></asp:Label>--%></h4>
-                <a class="links" href="http:/www.choicehotels.com">choicehotels.com</a>/ <a class="links" href="http:/www.wyndham.com">wyndham.com</a>
+                
+            	<h4 style="text-align:center"><img src="images/online.png" /><span style="margin-left:5px;margin-top:-5px; ">You Are Online</span><%--<asp:Label runat="server" ID="LblHotelName"></asp:Label>--%></h4>
+                
                 
           </div><!-- end .form-header section -->
             
             <form id="form1" runat="server">
                 <asp:Panel ID="PnlMain" runat="server" Visible="true">
+                    <div class="spacer-t30">
+                    	    <div class="tagline"><span>Tell Us About Your Experience</span></div><!-- .tagline -->
+                        </div>
             	<div class="form-body">
                 
                                     
@@ -128,12 +131,12 @@
                         <asp:HyperLink runat="server" ID="HypStay" NavigateUrl="yourstay.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-home"></i></span>How's Your Stay</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypProblemReport" NavigateUrl="ProblemReport.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-ban"></i></span>Report a Problem</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypPlaces" NavigateUrl="Places.aspx" CssClass="button btn-social  span-left"><span><i class="fa fa-location-arrow"></i></span>Nearby Restaurants</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="HypRewards" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span></asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="HypRewards" CssClass="button btn-social  span-left"><span><i class="fa fa-gift"></i></span><asp:Literal ID="LitRewards" runat="server"></asp:Literal></asp:HyperLink>
                         <asp:HyperLink runat="server" ID="HypPhone" NavigateUrl="~/Web.config" CssClass="button btn-social  span-left"><span><i class="fa fa-phone"></i></span>Call Frontdesk</asp:HyperLink>
                 	</div><!-- end section -->
                     <asp:Panel ID="PnlLogin" runat="server">
                         <div class="spacer-t30 spacer-b30">
-                    	    <div class="tagline"><span>Tell Us About Your Experience</span></div><!-- .tagline -->
+                    	    <div class="tagline"><span>Your Information</span></div><!-- .tagline -->
                         </div>
                         
                         <div class="section">
@@ -165,13 +168,14 @@
                                 <span class="field-icon"><i class="fa fa-envelope"></i></span>
                             </label>
                         </div>
-                    
+                        <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Submit" />
                 	<!-- end section -->                                                           
                    </asp:Panel> 
                 </div><!-- end .form-body section -->
                 <div class="form-footer">
                 	
-                    <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Submit" />
+                    
+                    <center><img src="images/logohotel.png" /></center>
                 </div><!-- end .form-footer section -->
                 </asp:Panel>
             </form>

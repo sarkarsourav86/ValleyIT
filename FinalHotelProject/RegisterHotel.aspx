@@ -229,7 +229,8 @@
                                         <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                     </label>
                                 </div>
-                                <div class="section">
+                                <asp:Panel ID="PnlBrand" runat="server" Visible="false">
+                                    <div class="section">
                                     <label class="field prepend-icon">
 
                                        Select Franchise Brand
@@ -240,6 +241,8 @@
                                         <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                     </label>
                                 </div>
+                                </asp:Panel>
+                                
                                 <div class="section">
                                     <label class="field prepend-icon">
 

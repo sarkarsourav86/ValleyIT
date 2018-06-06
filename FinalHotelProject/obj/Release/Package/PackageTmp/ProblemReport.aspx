@@ -150,8 +150,8 @@
         <div class="smart-forms smart-container wrap-2">
 
             <div class="form-header header-primary">
-                <img src="images/logohotel.png" />
-                <h4>Report A Problem -
+                
+                <h4 style="text-align:center">Report A Problem -
                     <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
 
             </div>
@@ -315,7 +315,7 @@
                                             <input type="radio" name="housekeeping" id="housekeeping_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -386,7 +386,7 @@
                                             <input type="radio" name="internet" id="internet_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -457,7 +457,7 @@
                                             <input type="radio" name="maintain" id="maintain_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -530,7 +530,7 @@
                                             <input type="radio" name="common" id="common_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -602,7 +602,7 @@
                                             <input type="radio" name="room" id="room_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -673,7 +673,7 @@
                                             <input type="radio" name="helpdesk" id="frontdesk_2" value="2">
                                             <span class="smart-option smart-radio">
                                                 <span class="smart-option-ui">
-                                                    <i class="iconc"></i>Not Satisfied with it
+                                                    <i class="iconc"></i>Not Satisfied
                                                 </span>
                                             </span>
                                         </label>
@@ -729,26 +729,29 @@
                     <!-- end .notification section -->
 
                     <!-- end .notification section -->
+                      <asp:Panel ID="PnlLoginBtnContainer" runat="server">
+                    
+                        <a href="#" data-smart-modal="#smart-modal1" style="width: 20%" class="button btn-primary smartforms-modal-trigger">Report</a>
 
+                    
+                    <!-- end .form-footer section -->
+                </asp:Panel>
+                <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
+                    
+
+                        <asp:Button ID="LoginBtnSubmit" Width="20%" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Report" />
+
+                    
+                    <!-- end .form-footer section -->
+                </asp:Panel>
                 </div>
                 <!-- end .form-body section -->
                 <div class="smartforms-px smart-forms">
                 </div>
-                <asp:Panel ID="PnlLoginBtnContainer" runat="server">
-                    <div class="form-footer">
-                        <a href="#" data-smart-modal="#smart-modal1" class="button btn-primary smartforms-modal-trigger">Report</a>
-
-                    </div>
-                    <!-- end .form-footer section -->
-                </asp:Panel>
-                <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
-                    <div class="form-footer">
-
-                        <asp:Button ID="LoginBtnSubmit" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Report" />
-
-                    </div>
-                    <!-- end .form-footer section -->
-                </asp:Panel>
+                <div class="form-footer">
+                    <center><img src="images/logohotel.png" /></center>
+                </div>
+              
             </form>
 
         </div>
