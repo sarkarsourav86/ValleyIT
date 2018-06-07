@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Smart Forms - Contact Form </title>
+    <title>Register Hotel - MyGuestXp </title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

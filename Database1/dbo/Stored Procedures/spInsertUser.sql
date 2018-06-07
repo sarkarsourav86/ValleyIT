@@ -1,4 +1,5 @@
 ﻿CREATE Procedure [dbo].[spInsertUser] 
+@UserIdString varchar(MAX),
 @LastName nvarchar(50),
 @RoomNo nvarchar(50),
 @CheckOutDate datetime,
@@ -12,7 +13,7 @@ select @res =count(*) from [dbo].[Hotel] where Property=@HotelID
 IF @res>0
 	Begin
 		select @id=Id from Hotel where Property=@HotelID
-		insert into [dbo].[Users] values (@LastName,@RoomNo,@CheckOutDate,@Email,@id)
+		insert into [dbo].[Users] values (@LastName,@RoomNo,@CheckOutDate,@Email,@id,@UserIdString)
 		SELECT SCOPE_IDENTITY()
 	End
 ELSE

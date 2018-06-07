@@ -171,7 +171,7 @@ namespace FinalHotelProject
         }
         private void InsertUserInfo()
         {
-            user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text };
+            user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text, UserIdString = Guid.NewGuid().ToString("N") };
             Decimal userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {

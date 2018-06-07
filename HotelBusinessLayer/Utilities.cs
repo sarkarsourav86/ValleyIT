@@ -81,7 +81,7 @@ namespace HotelBusinessLayer
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
                     smtp.UseDefaultCredentials = false; // [3] Changed this
                     smtp.Credentials = new System.Net.NetworkCredential(mail.From.ToString(), password);  // [4] Added this. Note, first parameter is NOT string.
-                    smtp.Host = "smtp.gmail.com";
+                    smtp.Host = "smtp-mail.outlook.com";
 
                     //recipient address
                     mail.To.Add(new MailAddress(email.ToAddress));

@@ -12,6 +12,7 @@ namespace HotelDBApp
     public class User
     {
         public Decimal UserID { get; set; }
+        public String UserIdString { get; set; }
         public String LastName { get; set; }
         public String RoomNo { get; set; }
         public DateTime CheckOutDate { get; set; }
@@ -20,7 +21,7 @@ namespace HotelDBApp
         public static Decimal InsertUserInfo(User user)
         {
             SqlCommand cmd = new SqlCommand("spInsertUser");
-            
+            cmd.Parameters.AddWithValue("@UserIdString", user.UserIdString);
             cmd.Parameters.AddWithValue("@LastName", user.LastName);
             cmd.Parameters.AddWithValue("@RoomNo", user.RoomNo);
             cmd.Parameters.AddWithValue("@CheckOutDate", user.CheckOutDate);

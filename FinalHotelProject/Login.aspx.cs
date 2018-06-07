@@ -36,9 +36,16 @@ namespace FinalHotelProject
         {
             if (Session["Hotel"] != null)
             {
-                HypRewards.NavigateUrl = hotel != null ? hotel.RewardsLink : ((Hotel)Session["Hotel"]).RewardsLink;
-                LitRewards.Text = hotel != null ? hotel.RewardsName : ((Hotel)Session["Hotel"]).RewardsName;
+                Hotel tempHotel = (Hotel)Session["Hotel"];
+                if (!String.IsNullOrEmpty(tempHotel.RewardsLink))
+                {
+                    HypRewards.NavigateUrl = hotel != null ? hotel.RewardsLink : tempHotel.RewardsLink;
+                    LitRewards.Text = hotel != null ? hotel.RewardsName : tempHotel.RewardsName;
+                }
+                else HypRewards.Visible = false;
+                
             }
+            
         }
         private void SetHotelFromUrl()
         {
@@ -112,7 +119,7 @@ namespace FinalHotelProject
         }
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
-            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID() };
+            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID(),UserIdString=Guid.NewGuid().ToString("N") };
             Decimal userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {
