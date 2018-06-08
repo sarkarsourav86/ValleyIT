@@ -31,7 +31,10 @@ namespace FinalHotelProject
         }
         private bool HasValidUserId()
         {
-            return Request.QueryString["user"] != null;
+            String id = Request.QueryString["user"];
+            bool isValidQueryString= Request.QueryString["user"] != null;
+            bool isValidId = HotelDBApp.User.ValidateUserId(id)>0?true:false;
+            return isValidQueryString && isValidId;
         }
         private bool HasValidHotelId()
         {

@@ -82,6 +82,8 @@
     <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome\FontAwesome.otf" />
     <None Include="packages.config" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\banner.jpg" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\logohotel.png" />
     <Content Include="images\SuccessCheck.png" />

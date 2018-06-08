@@ -31,6 +31,14 @@ namespace HotelDBApp
             return (System.Decimal)DBOperations.InsertAndReturn(cmd);
             
         }
+        public static int ValidateUserId(String ID)
+        {
+            SqlCommand cmd = new SqlCommand("spValidateUserById");
+            cmd.Parameters.AddWithValue("@UserIdString", ID);
+            
+            cmd.CommandType = CommandType.StoredProcedure;
+            return int.Parse(DBOperations.InsertAndReturn(cmd).ToString());
+        }
         public static User GetUserInfo(Decimal ID)
         {
             SqlCommand cmd = new SqlCommand("spFetchUsers");

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="ExperienceHotelApp-Web.config Connection String" description="ExperienceHotelApp Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:experiencehotelapp.database.windows.net,1433;Initial Catalog=ExperienceHotelApp;Persist Security Info=False;User ID=guestxp;Password=2Gr3atful;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Valley1\\Documents\\ValleyIT\\FinalHotelProject\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ExperienceHotelApp']/@connectionString" />
-  </parameter>
-</parameters>
