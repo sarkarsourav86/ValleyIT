@@ -70,7 +70,7 @@ namespace FinalHotelProject
         }
         private User GetUser()
         {
-            Decimal userID = GetUserId();
+            String userID = Request.QueryString["user"];
             return HotelDBApp.User.GetUserInfo(userID);
             //do some db operations
             //return Request.QueryString["user"];

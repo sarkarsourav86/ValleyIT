@@ -120,7 +120,7 @@ namespace FinalHotelProject
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
             user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID(),UserIdString=Guid.NewGuid().ToString("N") };
-            Decimal userId = HotelDBApp.User.InsertUserInfo(user);
+            int userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {
                 SetSession(userId);
@@ -133,7 +133,7 @@ namespace FinalHotelProject
             DateTime.TryParse(value, out result);
             return result;
         }
-        private void SetSession(Decimal userId)
+        private void SetSession(int userId)
         {
             user.UserID = userId;
             Session["User"] = user;

@@ -134,7 +134,7 @@ namespace FinalHotelProject
                 PnlLoginBtnContainer.Visible = false;
             }
         }
-        private void SetSession(Decimal ID)
+        private void SetSession(int ID)
         {
             user.UserID = ID;
             Session["User"] = user;
@@ -172,7 +172,7 @@ namespace FinalHotelProject
         private void InsertUserInfo()
         {
             user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text, UserIdString = Guid.NewGuid().ToString("N") };
-            Decimal userId = HotelDBApp.User.InsertUserInfo(user);
+            int userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {
                 SetSession(userId);

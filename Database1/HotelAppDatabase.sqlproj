@@ -86,6 +86,7 @@
     <Build Include="dbo\Tables\BrandTable.sql" />
     <Build Include="dbo\Stored Procedures\spFetchFranchise.sql" />
     <Build Include="dbo\Stored Procedures\spFetchFranchiseBrands.sql" />
+    <Build Include="dbo\Stored Procedures\spValidateUserById.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />
