@@ -16,7 +16,7 @@
 as
 Begin
 	declare @checkKey int
-	select @checkKey= count(*) from [dbo].[Hotel] where [Property]=@HotelId
+	select @checkKey= count(*) from [dbo].[Hotel] where Property=@HotelId
 	IF @checkKey =1
 	begin
 		declare @id int

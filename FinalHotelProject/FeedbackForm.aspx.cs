@@ -44,7 +44,13 @@ namespace FinalHotelProject
         {
             Submit.Text = HdnRating.Value;
             Feedback feedback = CreateFeedback();
-            if(Feedback.InsertFeedback(feedback)>0)
+            if (feedback == null)
+            {
+                PnlSuccessFailure.Visible = true;
+                PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
+                LblStatus.Text = "Something went wrong. Please try again!";
+            }
+            else if(Feedback.InsertFeedback(feedback)>0)
             {
                 Sendemail();
                 PnlFieldContainer.Visible = false;
@@ -60,9 +66,9 @@ namespace FinalHotelProject
             }
             
         }
-        private Decimal GetUserId()
+        private String GetUserId()
         {
-            return Convert.ToDecimal(Request.QueryString["user"]);
+            return Request.QueryString["user"];
         }
         private String GetHotelId()
         {
@@ -89,23 +95,30 @@ namespace FinalHotelProject
         }
         private Feedback CreateFeedback()
         {
-            return new Feedback()
+            
+            User user = GetUser();
+            if (user != null)
             {
-                UserID = GetUserId(),
-                HotelID = GetHotelId(),
-                BreakfastFeedback = 0,
-                CommonFeedback = 0,
-                FrontDeskFeedback = 0,
-                HotelRating = Convert.ToInt16(HdnRating.Value),
-                HousekeepingFeedback = 0,
-                MaintenanceFeedback = 0,
-                ParkingFeedback = 0,
-                PoolFeedback = 0,
-                ReservationFeedback = 0,
-                RoomFeedback = 0,
-                WiFiFeedback = 0,
-                Comments = TxtComments.Text
-            };
+                return new Feedback()
+                {
+                    UserID = user.UserID,
+                    HotelID = GetHotelId(),
+                    BreakfastFeedback = 0,
+                    CommonFeedback = 0,
+                    FrontDeskFeedback = 0,
+                    HotelRating = Convert.ToInt16(HdnRating.Value),
+                    HousekeepingFeedback = 0,
+                    MaintenanceFeedback = 0,
+                    ParkingFeedback = 0,
+                    PoolFeedback = 0,
+                    ReservationFeedback = 0,
+                    RoomFeedback = 0,
+                    WiFiFeedback = 0,
+                    Comments = TxtComments.Text
+                };
+            }
+            else return null;
+            
         }
     }
 }

@@ -125,6 +125,7 @@ namespace FinalHotelProject
             {
                 SetSession(userId);
                 TogglePanels(true);
+                //HotelBusinessLayer.Utilities.SendEmail()
             }
         }
         private DateTime ToDateTime(String value)

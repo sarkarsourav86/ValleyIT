@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Smart Forms - Feedback Form </title>
+    <title>MyGuestXp - Feedback</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118035317-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -89,8 +90,8 @@
         <div class="smart-forms smart-container wrap-3">
 
             <div class="form-header header-primary">
-                <img src="images/logohotel.png" />
-                <h4>Your feedback</h4>
+                
+                <h4 style="text-align:center">Your feedback</h4>
             </div>
             <!-- end .form-header section -->
             <div id="map"></div>
@@ -119,13 +120,13 @@
                     <div class="form-body">
 
                         
-                        <div class="spacer spacer-b20"></div>
+                        
 
                         <div class="section">
 
                             <span class="rating block">
 
-                                <span class="lbl-text" style="font-size: x-large">Rate Your Hotel</span>
+                                <span class="lbl-text" style="font-size: x-large">Rate Your Stay</span>
 
                                 <input class="rating-input" onclick="generateReviewLink()" id="five-stars" type="radio" value="5" name="product-rate">
 
@@ -134,7 +135,7 @@
                                 <input class="rating-input" value="4" onclick="generateReviewLink()" id="four-stars" type="radio" name="product-rate">
                                 <label class="rating-star" for="four-stars"><i class="fa fa-star"></i></label>
 
-                                <input class="rating-input" id="three-stars" data-target="#myModal" value="3" type="radio" name="product-rate">
+                                <input class="rating-input" id="three-stars" value="3" type="radio" name="product-rate">
                                 <label class="rating-star" for="three-stars"><i class="fa fa-star"></i></label>
 
                                 <input class="rating-input" id="two-stars" value="2" type="radio" name="product-rate">
@@ -144,7 +145,21 @@
                                 <label class="rating-star" for="one-star"><i class="fa fa-star"></i></label>
 
                             </span>
-
+                            <div class="spacer spacer-b20"></div>
+                            <label for="problemtypes" class="field-label">Did you face any problems?</label>
+                            <label class="field select">
+                            <select name="problemtypes" id="problemtypes">
+                                <option value="0" selected>--Select--</option>
+                                <option value="1" class="smartfm-ctrl" data-show-id="ctr_housekeeping">Housekeeping</option>
+                                <option value="2" class="smartfm-ctrl" data-show-id="ctr_internet">WiFi &amp; Internet</option>
+                                <option value="3" class="smartfm-ctrl" data-show-id="ctr_maintain">Maintenance</option>
+                                <option value="4" class="smartfm-ctrl" data-show-id="ctr_common">Common Area</option>
+                                <option value="5" class="smartfm-ctrl" data-show-id="ctr_room">My Room</option>
+                                <option value="6" class="smartfm-ctrl" data-show-id="ctr_frontdesk">Front Desk Staff</option>
+                            </select>
+                            <i class="arrow double"></i>
+                        </label>
+                            <div class="spacer spacer-b20"></div>
                             <label for="TxtComments" class="field-label">Additional Comments</label>
                             <label id="myModal" class="field prepend-icon">
                                 
@@ -161,16 +176,16 @@
                         <div class="spacer spacer-b25"></div>
 
 
-
+                        <asp:Button CssClass="button btn-primary" OnClick="Submit_Click" Text="Submit Feedback" runat="server" ID="Submit" OnClientClick="fillHiddenFields()" />
 
                     </div>
                     <!-- end .form-body section -->
-                    <div class="form-footer">
-
-                        <asp:Button CssClass="button btn-primary" OnClick="Submit_Click" Text="Submit Feedback" runat="server" ID="Submit" OnClientClick="fillHiddenFields()" />
-                    </div>
+                    
                     <!-- end .form-footer section -->
                 </asp:Panel>
+                <div class="form-footer">
+                    <center><a href="http://www.myguestxp.com/"><img src="images/logohotel.png" /></a></center>
+                </div>
             </form>
 
         </div>
@@ -180,6 +195,29 @@
 
     <div></div>
     <!-- end section -->
+<script type="text/javascript">
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    $(document).ready(()=> {
+        var star = getParameterByName('star');
+        star = parseInt(star);
+        if (!isNaN(star)) {
+            if (star > 0 && star < 6) {
+                $('input:radio[name=product-rate]')[5-star].checked = true;
+            }
+        }
+        
+        //alert(star);
+    });
+    
+</script>
 <script>
     var placeId;
     function initMap() {
