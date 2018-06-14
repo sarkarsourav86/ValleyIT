@@ -346,7 +346,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file"  name="housekeeping_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <input type="file"  name="housekeeping_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="housekeeping_comment" class="field-label">Additional Comments</label>

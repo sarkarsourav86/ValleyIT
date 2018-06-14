@@ -5,12 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>MyGuestXp - Feedback</title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <script src="js/jquery-1.9.1.min.js"></script>
+    <link href="plugins/dropify/css/dropify.min.css" rel="stylesheet" />
+    <link href="css/smart-addons.css" rel="stylesheet" />
+    
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118035317-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -19,33 +23,25 @@
 
         gtag('config', 'UA-118035317-1');
     </script>
-    <script src="js/jquery-1.9.1.min.js"></script>
+   
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.formShowHide.min.js"></script>
+    <script src="js/smartforms-modal.min.js"></script>
+    <script src="js/jquery-ui-custom.min.js"></script>
+    
+    <script src="plugins/dropify/js/dropify.min.js"></script>
     <script type="text/javascript">
         function fillHiddenFields() {
-            var value = $("input:radio[name='room']:checked").val();
-            $('#HdnRoom').val(value);
-            value = $("input:radio[name='frontdesk']:checked").val();
-            $('#HdnFrontdesk').val(value);
-            value = $("input:radio[name='reservation']:checked").val();
-            $('#HdnReservation').val(value);
-            value = $("input:radio[name='housekeeping']:checked").val();
-            $('#HdnHousekeeping').val(value);
-            value = $("input:radio[name='breakfast']:checked").val();
-            $('#HdnBreakfast').val(value);
-            value = $("input:radio[name='wifi']:checked").val();
-            $('#HdnWifi').val(value);
-            value = $("input:radio[name='maintenance']:checked").val();
-            $('#HdnMaintenance').val(value);
-            value = $("input:radio[name='pool']:checked").val();
-            $('#HdnPool').val(value);
-            value = $("input:radio[name='common']:checked").val();
-            $('#HdnCommon').val(value);
-            value = $("input:radio[name='parking']:checked").val();
-            $('#HdnParking').val(value);
+            value = $('#problemtypes').val();
+            $('#HdnProblemType').val(value);
+            value = $("#problemtypes option:selected").text();
+            $('#HdnProblemTypeText').val(value);
+            
             value = $("input:radio[name='product-rate']:checked").val();
             $('#HdnRating').val(value);
             value = $('additional_comment').val();
             $('#HdnAddComments').val(value);
+
         }
     </script>
     <style>
@@ -95,18 +91,11 @@
             </div>
             <!-- end .form-header section -->
             <div id="map"></div>
-            <form id="feedback" runat="server">
+            <form id="feedback" enctype="multipart/form-data"  runat="server">
+
                 <asp:HiddenField ID="HdnPlacetoSearch" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnRoom" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnFrontdesk" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnReservation" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnHousekeeping" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnBreakfast" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnWifi" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnMaintenance" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnPool" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnCommon" runat="server"></asp:HiddenField>
-                <asp:HiddenField ID="HdnParking" runat="server"></asp:HiddenField>
+                <asp:HiddenField ID="HdnProblemType" runat="server"></asp:HiddenField>
+                <asp:HiddenField ID="HdnProblemTypeText" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnRating" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnAddComments" runat="server"></asp:HiddenField>
                 <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
@@ -128,11 +117,11 @@
 
                                 <span class="lbl-text" style="font-size: x-large">Rate Your Stay</span>
 
-                                <input class="rating-input" onclick="generateReviewLink()" id="five-stars" type="radio" value="5" name="product-rate">
+                                <input class="rating-input" id="five-stars" type="radio" value="5" name="product-rate">
 
                                 <label class="rating-star" for="five-stars"><i class="fa fa-star"></i></label>
 
-                                <input class="rating-input" value="4" onclick="generateReviewLink()" id="four-stars" type="radio" name="product-rate">
+                                <input class="rating-input" value="4" id="four-stars" type="radio" name="product-rate">
                                 <label class="rating-star" for="four-stars"><i class="fa fa-star"></i></label>
 
                                 <input class="rating-input" id="three-stars" value="3" type="radio" name="product-rate">
@@ -159,7 +148,13 @@
                             </select>
                             <i class="arrow double"></i>
                         </label>
-                            <div class="spacer spacer-b20"></div>
+                            <div class="spacer-b20"></div>
+                            <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="review_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="80" data-max-file-size="10M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
+                            <div class="spacer-b20"></div>
                             <label for="TxtComments" class="field-label">Additional Comments</label>
                             <label id="myModal" class="field prepend-icon">
                                 
@@ -253,6 +248,15 @@
         });
     }
     </script>
-    
+    <script type="text/javascript">
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
+        });
+    </script>
 </body>
 </html>

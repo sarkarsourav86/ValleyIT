@@ -31,8 +31,8 @@ namespace FinalHotelProject
         }
         private bool HasValidUserId()
         {
-            String id = Request.QueryString["user"];
-            bool isValidQueryString= Request.QueryString["user"] != null;
+            String id = Request.QueryString["user"]!=null? Request.QueryString["user"] :String.Empty;
+            bool isValidQueryString= !String.IsNullOrEmpty(id);
             bool isValidId = HotelDBApp.User.ValidateUserId(id)>0?true:false;
             return isValidQueryString && isValidId;
         }
@@ -44,6 +44,7 @@ namespace FinalHotelProject
         {
             Submit.Text = HdnRating.Value;
             Feedback feedback = CreateFeedback();
+            HotelDBApp.Image image = GetImage("review_file");
             if (feedback == null)
             {
                 PnlSuccessFailure.Visible = true;
@@ -52,7 +53,7 @@ namespace FinalHotelProject
             }
             else if(Feedback.InsertFeedback(feedback)>0)
             {
-                Sendemail();
+                Sendemail(image);
                 PnlFieldContainer.Visible = false;
                 PnlSuccessFailure.Visible = true;
                 PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
@@ -65,6 +66,18 @@ namespace FinalHotelProject
                 LblStatus.Text = "Something went wrong. Please try again!";
             }
             
+        }
+        private HotelDBApp.Image GetImage(String name)
+        {
+            System.IO.Stream upload = null;
+            HotelDBApp.Image image = null;
+            if ((upload = Request.Files[name].InputStream) != null && Request.Files[name].ContentLength > 0)
+            {
+
+                image = new HotelDBApp.Image() { UploadedImage = upload, Name = Request.Files[name].FileName };
+            }
+
+            return image;
         }
         private String GetUserId()
         {
@@ -88,10 +101,10 @@ namespace FinalHotelProject
             //do some db operations
             //return Request.QueryString["hotelid"];
         }
-        private void Sendemail()
+        private void Sendemail(HotelDBApp.Image image)
         {
-            Email email = new Email() { Subject="A Review Has Been Submitted", Comments=TxtComments.Text, CheckoutDate=user.CheckOutDate,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email };
-            HotelBusinessLayer.Utilities.SendEmail(email,true);
+            Email email = new Email() { Subject="A Review Has Been Submitted", Comments=TxtComments.Text, CheckoutDate=user.CheckOutDate,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email,ProblemText= HdnProblemTypeText.Value };
+            HotelBusinessLayer.Utilities.SendEmail(email,true,image);
         }
         private Feedback CreateFeedback()
         {
@@ -114,6 +127,7 @@ namespace FinalHotelProject
                     ReservationFeedback = 0,
                     RoomFeedback = 0,
                     WiFiFeedback = 0,
+                    ProblemType = int.Parse(HdnProblemType.Value),
                     Comments = TxtComments.Text
                 };
             }

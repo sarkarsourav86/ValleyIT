@@ -14,6 +14,7 @@
     [Parking]      NCHAR (10)   NULL,
     [Rating]       NCHAR (10)   NULL,
     [Comments] VARCHAR(MAX) NULL, 
+    [Problem] VARCHAR(50) NULL, 
     CONSTRAINT [PK_FeedbackTable] PRIMARY KEY CLUSTERED ([FeedbackId] ASC),
     CONSTRAINT [FK_FeedbackTable_Hotel] FOREIGN KEY ([HotelId]) REFERENCES [dbo].[Hotel] ([Id]) on delete cascade,
     CONSTRAINT [FK_FeedbackTable_UsersTable] FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([UserID])

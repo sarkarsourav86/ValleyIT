@@ -25,6 +25,7 @@ namespace HotelDBApp
         public int CommonFeedback { get; set; }
         public int ParkingFeedback { get; set; }
         public int HotelRating { get; set; }
+        public int ProblemType { get; set; }
         public String Comments { get; set; }
         public static int InsertFeedback(Feedback feedback)
         {
@@ -43,6 +44,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@ParkingFeedback", feedback.ParkingFeedback);
             cmd.Parameters.AddWithValue("@HotelRating", feedback.HotelRating);
             cmd.Parameters.AddWithValue("@comments", feedback.Comments);
+            cmd.Parameters.AddWithValue("@problemtype", feedback.ProblemType);
             cmd.CommandType = CommandType.StoredProcedure;
             return DBOperations.UpdateOrInsert(cmd);
 
