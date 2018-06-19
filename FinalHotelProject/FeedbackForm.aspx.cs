@@ -12,18 +12,36 @@ namespace FinalHotelProject
     {
         Hotel hotel;
         User user;
+        int star;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!(HasValidUserId() && HasValidHotelId()))
+            bool userid = HasValidUserId();
+            bool hotelid = HasValidHotelId();
+            
+            if (!(userid && hotelid))
             {
+               
                 PnlFieldContainer.Visible = false;
+                ShowError("This link has expired");
             }
             else
             {
                 hotel = GetHotel();
                 user = GetUser();
                 SetSearchCriteria();
+                if(ShouldRedirectBasedonStars())
+                {
+                    SubmitFeedback(true);
+                    Response.Redirect(Request.QueryString["navigateURL"]);
+                }
             }
+        }
+        private bool ShouldRedirectBasedonStars()
+        {
+            
+            int.TryParse(Request.QueryString["star"], out int star);
+            this.star = star;
+            return star >= 4 ? true : false;
         }
         private void SetSearchCriteria()
         {
@@ -33,39 +51,54 @@ namespace FinalHotelProject
         {
             String id = Request.QueryString["user"]!=null? Request.QueryString["user"] :String.Empty;
             bool isValidQueryString= !String.IsNullOrEmpty(id);
-            bool isValidId = HotelDBApp.User.ValidateUserId(id)>0?true:false;
+            bool isValidId = HotelDBApp.User.ValidateUserId(id,true)>0?true:false;
             return isValidQueryString && isValidId;
         }
         private bool HasValidHotelId()
         {
             return Request.QueryString["hotelid"] != null;
         }
-        protected void Submit_Click(object sender, EventArgs e)
+        private void SubmitFeedback(bool isQuick=false)
         {
-            Submit.Text = HdnRating.Value;
+            
+            
             Feedback feedback = CreateFeedback();
-            HotelDBApp.Image image = GetImage("review_file");
-            if (feedback == null)
+            if (isQuick)
             {
-                PnlSuccessFailure.Visible = true;
-                PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
-                LblStatus.Text = "Something went wrong. Please try again!";
-            }
-            else if(Feedback.InsertFeedback(feedback)>0)
-            {
-                Sendemail(image);
-                PnlFieldContainer.Visible = false;
-                PnlSuccessFailure.Visible = true;
-                PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
-                LblStatus.Text = "Thanks for your feedback!";
+                Feedback.InsertFeedback(feedback);
             }
             else
             {
-                PnlSuccessFailure.Visible = true;
-                PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
-                LblStatus.Text = "Something went wrong. Please try again!";
+                HotelDBApp.Image image = GetImage("review_file");
+                if (feedback == null)
+                {
+                    ShowError("Something went wrong. Please try again!");
+                }
+                else if (Feedback.InsertFeedback(feedback) > 0)
+                {
+                    Sendemail(image);
+                    PnlFieldContainer.Visible = false;
+                    PnlSuccessFailure.Visible = true;
+                    PnlSuccessFailure.CssClass = "notification alert-success spacer-t10";
+                    LblStatus.Text = "Thanks for your feedback!";
+                }
+                else
+                {
+
+                    ShowError("Something went wrong. Please try again!");
+                }
             }
             
+        }
+        protected void Submit_Click(object sender, EventArgs e)
+        {
+            SubmitFeedback();
+        }
+        private void ShowError(String message)
+        {
+            PnlSuccessFailure.Visible = true;
+            PnlSuccessFailure.CssClass = "notification alert-error spacer-t10";
+            LblStatus.Text = message;
         }
         private HotelDBApp.Image GetImage(String name)
         {
@@ -119,7 +152,7 @@ namespace FinalHotelProject
                     BreakfastFeedback = 0,
                     CommonFeedback = 0,
                     FrontDeskFeedback = 0,
-                    HotelRating = Convert.ToInt16(HdnRating.Value),
+                    HotelRating = int.TryParse(HdnRating.Value,out int res)? res: star,
                     HousekeepingFeedback = 0,
                     MaintenanceFeedback = 0,
                     ParkingFeedback = 0,
@@ -127,7 +160,7 @@ namespace FinalHotelProject
                     ReservationFeedback = 0,
                     RoomFeedback = 0,
                     WiFiFeedback = 0,
-                    ProblemType = int.Parse(HdnProblemType.Value),
+                    ProblemType = int.TryParse(HdnRating.Value, out res) ? res : 0,
                     Comments = TxtComments.Text
                 };
             }

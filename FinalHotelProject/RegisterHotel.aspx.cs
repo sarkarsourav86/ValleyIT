@@ -73,7 +73,7 @@ namespace FinalHotelProject
         }
         private bool ValidateEmail()
         {
-            return HdnEmail.Value == PaymentEmail;
+            return HdnEmail.Value.ToLower() == PaymentEmail.ToLower();
         }
 
         public String GetID()

@@ -31,11 +31,11 @@ namespace HotelDBApp
             return int.Parse(DBOperations.InsertAndReturn(cmd).ToString());
             
         }
-        public static int ValidateUserId(String ID)
+        public static int ValidateUserId(String ID,Boolean checkReviewed=false)
         {
             SqlCommand cmd = new SqlCommand("spValidateUserById");
             cmd.Parameters.AddWithValue("@UserIdString", ID);
-            
+            if(checkReviewed) cmd.Parameters.AddWithValue("@CheckReviewed", 1);
             cmd.CommandType = CommandType.StoredProcedure;
             return int.Parse(DBOperations.InsertAndReturn(cmd).ToString());
         }

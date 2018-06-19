@@ -6,6 +6,7 @@
     [Email]        VARCHAR (50) NULL,
     [HotelID]      INT NOT NULL,
     [UserIdString] VARCHAR(MAX) NULL, 
+    [HasReviewed] BIT NULL, 
     CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserID] ASC),
 	CONSTRAINT [FK_User_Hotel] FOREIGN KEY ([HotelID]) REFERENCES [dbo].[Hotel] ([Id]) on Delete cascade
 );
