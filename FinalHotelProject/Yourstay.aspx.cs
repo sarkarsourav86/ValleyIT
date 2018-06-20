@@ -121,6 +121,8 @@ namespace FinalHotelProject
                 email.ProblemValue = FeedbackValue[problem.FeedbackValue];
                 email.CheckoutDate = user.CheckOutDate;
                 email.Comments = problem.IncedentDescription;
+                email.Phone = user.Phone;
+                email.UserEmail = user.Email;
                 image = GetImage("file");
                 Utilities.SendEmail(email,false,image);
             }
@@ -171,7 +173,7 @@ namespace FinalHotelProject
         }
         private void InsertUserInfo()
         {
-            user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text, UserIdString = Guid.NewGuid().ToString("N") };
+            user = new User() { RoomNo = TxtRoom.Text, CheckOutDate = Convert.ToDateTime(TxtDate.Text), Email = TxtEmail.Text, HotelID = GetHotel(), LastName = TxtUserLastName.Text, UserIdString = Guid.NewGuid().ToString("N"),Phone=TxtPhone.Text };
             int userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {

@@ -44,8 +44,9 @@ namespace FinalHotelProject
             //DateTime newDateTime = TimeZoneInfo.ConvertTime(existingDateTime, timeZoneInfo);
             
             DateTime startDate = DateTime.Now;
-            DateTime endDate = startDate.AddDays(1);
+            //DateTime endDate = startDate.AddDays(1);
             //DateTime endDate = startDate.AddSeconds(30);
+            DateTime endDate = startDate.AddHours(12);
             System.Timers.Timer myTimer = new System.Timers.Timer();
             // Set the Interval to 5 seconds (5000 milliseconds).
             

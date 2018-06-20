@@ -114,7 +114,11 @@ namespace FinalHotelProject
         }
         private void SendEmail(String linkId,String toAddress)
         {
-            String body = String.Format("Your hotel link is <a href={0}>{0}</a>",CreateLink(linkId));
+
+
+            String body = String.Format("<p>Here is the unique link for your hotel <a href={0}>{0}</a></p>. <p>This link will be for the name of the hotel registered. To avoidconfusing your guests please don’t use the link for any other hotel.</p><p>Please give this unique link to your IT person or WiFi/HSIA Vendor to put this link as the redirect page orlanding page.</p><p>Once that is done you will start receiving instant feedback to the email you registered with.</p>", CreateLink(linkId)); 
+            //String body = String.Format("<h3>Your hotel link is <a href={0}>{0}</a></h3>",CreateLink(linkId));
+            
             String subject = "Your Hotel Link";
             Utilities.SendEmail(CreateEmail(subject, toAddress, body));
         }

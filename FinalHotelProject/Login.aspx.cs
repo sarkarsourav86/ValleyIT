@@ -133,7 +133,7 @@ namespace FinalHotelProject
         }
         protected void BtnCheckin_Click(object sender, EventArgs e)
         {
-            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID(),UserIdString=Guid.NewGuid().ToString("N") };
+            user = new HotelDBApp.User() { LastName = TxtLastname.Text, CheckOutDate = ToDateTime(TxtDate.Text), Email = TxtEmail.Text, RoomNo = TxtRoom.Text, HotelID = GetHotelID()==null? "ND1": GetHotelID(),UserIdString=Guid.NewGuid().ToString("N"),Phone=TxtPhone.Text };
             int userId = HotelDBApp.User.InsertUserInfo(user);
             if (userId != -100)
             {

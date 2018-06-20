@@ -18,6 +18,7 @@ namespace HotelDBApp
         public DateTime CheckOutDate { get; set; }
         public String Email { get; set; }
         public String HotelID { get; set; }
+        public String Phone { get; set; }
         public static int InsertUserInfo(User user)
         {
             SqlCommand cmd = new SqlCommand("spInsertUser");
@@ -27,6 +28,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@CheckOutDate", user.CheckOutDate);
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@HotelID", user.HotelID);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
             cmd.CommandType = CommandType.StoredProcedure;
             return int.Parse(DBOperations.InsertAndReturn(cmd).ToString());
             
@@ -50,7 +52,7 @@ namespace HotelDBApp
             if (ds.Tables[0].Rows.Count == 1)
             {
                 row = ds.Tables[0].Rows[0];
-                user = new User() { UserID = int.Parse(row["UserID"].ToString()), LastName = row["LastName"].ToString(), RoomNo = row["RoomNo"].ToString(), CheckOutDate = Convert.ToDateTime(row["CheckOutDate"]),Email=row["Email"].ToString(),HotelID=row["HotelID"].ToString(),UserIdString=ID };
+                user = new User() { UserID = int.Parse(row["UserID"].ToString()), LastName = row["LastName"].ToString(), RoomNo = row["RoomNo"].ToString(), CheckOutDate = Convert.ToDateTime(row["CheckOutDate"]),Email=row["Email"].ToString(),HotelID=row["HotelID"].ToString(),UserIdString=ID,Phone= row["Phone"].ToString() };
             }
             return user;
         }

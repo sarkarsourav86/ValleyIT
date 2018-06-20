@@ -90,7 +90,7 @@ namespace HotelBusinessLayer
                     mail.IsBodyHtml = true;
                     mail.Subject= String.IsNullOrEmpty(email.Subject) ? "A Problem has been Reported": email.Subject;
                     //String link = String.Format("FeedbackForm.aspx?hotelid={0}", item["HotelID"].ToString());
-                    string st = !isRating ? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Description: {5}</p>", email.ProblemType, email.ProblemValue, email.RoomNo, email.CustName, email.CheckoutDate, email.Comments) : String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Checkout Date {3}</p><p>Problem Type: {4}</p><p>Description: {5}</p>", email.ProblemValue, email.CustName, email.UserEmail, email.CheckoutDate,email.ProblemText, email.Comments);
+                    string st = !isRating ? String.Format("<strong>{0}---{1}</strong><p>Room No. {2}</p><p>Cust Last Name {3}</p><p>Checkout Date {4}</p><p>Cust Email {5}</p><p>Cust Phone {6}</p><p>Description: {7}</p>", email.ProblemType, email.ProblemValue, email.RoomNo, email.CustName, email.CheckoutDate,email.UserEmail,email.Phone, email.Comments) : String.Format("<strong>--A {0} Star Feedback Has been Reported</strong><p>Name: {1}</p><p>Customer Email: {2}</p><p>Customer Phone: {6}</p><p>Checkout Date {3}</p><p>Problem Type: {4}</p><p>Description: {5}</p>", email.ProblemValue, email.CustName, email.UserEmail, email.CheckoutDate,email.ProblemText, email.Comments,email.Phone);
                     if (image != null)
                     {
                         System.Net.Mail.Attachment attachment;

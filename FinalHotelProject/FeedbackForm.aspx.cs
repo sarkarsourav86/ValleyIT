@@ -136,7 +136,7 @@ namespace FinalHotelProject
         }
         private void Sendemail(HotelDBApp.Image image)
         {
-            Email email = new Email() { Subject="A Review Has Been Submitted", Comments=TxtComments.Text, CheckoutDate=user.CheckOutDate,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email,ProblemText= HdnProblemTypeText.Value };
+            Email email = new Email() { Subject="A Review Has Been Submitted", Comments=TxtComments.Text, CheckoutDate=user.CheckOutDate,CustName=user.LastName,ToAddress=hotel.Email,ProblemValue=HdnRating.Value,UserEmail=user.Email,ProblemText= HdnProblemTypeText.Value,Phone=user.Phone };
             HotelBusinessLayer.Utilities.SendEmail(email,true,image);
         }
         private Feedback CreateFeedback()
@@ -161,7 +161,8 @@ namespace FinalHotelProject
                     RoomFeedback = 0,
                     WiFiFeedback = 0,
                     ProblemType = int.TryParse(HdnRating.Value, out res) ? res : 0,
-                    Comments = TxtComments.Text
+                    Comments = TxtComments.Text,
+                    AboutUs=HdnAbout.Value
                 };
             }
             else return null;

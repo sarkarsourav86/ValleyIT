@@ -36,7 +36,8 @@
             $('#HdnProblemType').val(value);
             value = $("#problemtypes option:selected").text();
             $('#HdnProblemTypeText').val(value);
-
+            value = $("#aboutus option:selected").text();
+            $('#HdnAbout').val(value);
             value = $("input:radio[name='product-rate']:checked").val();
             $('#HdnRating').val(value);
             value = $('additional_comment').val();
@@ -98,6 +99,7 @@
                 <asp:HiddenField ID="HdnProblemTypeText" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnRating" runat="server"></asp:HiddenField>
                 <asp:HiddenField ID="HdnAddComments" runat="server"></asp:HiddenField>
+                <asp:HiddenField ID="HdnAbout" runat="server"></asp:HiddenField>
                 <asp:Panel runat="server" Visible="false" ID="PnlSuccessFailure">
 
                     <p>
@@ -165,6 +167,19 @@
                                 <input type="file" name="review_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="80" data-max-file-size="10M">
                                 <p class="help-block">Upload .jpg or .png files</p>
                             </div>
+                            <div class="spacer-b20"></div>
+                            <label for="aboutus" class="field-label">How did you know about us?</label>
+                            <label class="field select">
+                                <select name="aboutus" id="aboutus">
+                                    <option value="none" selected>--Select--</option>
+                                    <option value="Google" class="smartfm-ctrl" data-show-id="ctr_housekeeping">Google</option>
+                                    <option value="TripAdvisor" class="smartfm-ctrl" data-show-id="ctr_internet">TripAdvisor</option>
+                                    <option value="Expedia" class="smartfm-ctrl" data-show-id="ctr_maintain">Expedia</option>
+                                    <option value="Other" class="smartfm-ctrl" data-show-id="ctr_common">Other</option>
+                                    
+                                </select>
+                                <i class="arrow double"></i>
+                            </label>
 
 
                         </div>

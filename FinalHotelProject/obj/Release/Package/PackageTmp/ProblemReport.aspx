@@ -235,7 +235,13 @@
                                                 <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                             </label>
                                         </div>
+                                        <div class="section">
+                                            <label class="field prepend-icon">
 
+                                                <asp:TextBox ID="TxtPhone" runat="server" CssClass="gui-input" placeholder="Phone Number"></asp:TextBox>
+                                                <span class="field-icon"><i class="fa fa-phone"></i></span>
+                                            </label>
+                                        </div>
                                         <div class="smartforms-modal-footer">
 
                                             <asp:Button OnClientClick="fillHiddenFields()" OnClick="Submit_Click" runat="server" ID="NoLoginSubmit" CssClass="button btn-primary" Text="Send" />

@@ -13,7 +13,8 @@
 @ParkingFeedback int,
 @HotelRating int,
 @comments varchar(MAX),
-@problemtype int
+@problemtype int,
+@aboutus varchar(50)
 as
 Begin
 	declare @checkKey int
@@ -23,7 +24,7 @@ Begin
 		declare @id int
 		select @id=  Id from Hotel where Property=@HotelId
 		update users set HasReviewed=1 where UserID=@UserId
-		insert into [dbo].[FeedbackTable] values(@Id,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments,@problemtype)
+		insert into [dbo].[FeedbackTable] values(@Id,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments,@problemtype,@aboutus)
 
 	end
 End

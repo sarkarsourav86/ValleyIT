@@ -176,6 +176,13 @@
                                 <span class="field-icon"><i class="fa fa-envelope"></i></span>
                             </label>
                         </div>
+                        <div class="section">
+                            <label class="field prepend-icon">
+                            
+                                <asp:TextBox runat="server" ID="TxtPhone" CssClass="gui-input" placeholder="Phone Number"></asp:TextBox>
+                                <span class="field-icon"><i class="fa fa-phone"></i></span>
+                            </label>
+                        </div>
                         <asp:Button ID="BtnCheckin" runat="server" OnClick="BtnCheckin_Click" CssClass="button btn-primary" Text="Submit" />
                 	<!-- end section -->                                                           
                    </asp:Panel> 

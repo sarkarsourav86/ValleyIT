@@ -4462,8 +4462,16 @@
     <Content Include="Admin\vendors\validator\index.html" />
     <Content Include="Admin\vendors\validator\multifield.js" />
     <Content Include="Admin\vendors\validator\validator.js" />
+    <Content Include="images\1_1.jpg" />
     <Content Include="images\1.jpg" />
     <Content Include="images\banner.jpg" />
+    <Content Include="images\email\1.png" />
+    <Content Include="images\email\2.png" />
+    <Content Include="images\email\3.png" />
+    <Content Include="images\email\4.png" />
+    <Content Include="images\email\5.png" />
+    <Content Include="images\email\6.png" />
+    <Content Include="images\email\7.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\logohotel.png" />
     <Content Include="images\SuccessCheck.png" />
