@@ -27,20 +27,21 @@ namespace FinalHotelProject
         {
             String server = System.Configuration.ConfigurationManager.AppSettings["serverName"];
             String FormattedUrl = String.Format("{0}RegisterHotel.aspx?id={1}", url, id);
-            String line1 = "<p>Once your payment is confirmed, you will receive a link in your provided email address.</p>";
-            String Step1 = String.Format("<p>Step 1. Click on the Hotel Registration Link you received in your email.</p><img src='{0}images/email/1.png' />",server);
+            String Step8 = String.Format("<p><h3>Please click here to register <a href='{0}'>{1}</a></h3></p>", FormattedUrl, FormattedUrl);
+            
+            String Step1 = String.Format("<p>Step 1. Click on the Hotel Registration Link you received in your email.</p>{1}",server, Step8);
             String Step2 = String.Format("<p>Step 2. Select Your Franchise (Choice, Hilton, Marriott, etc.) or pick Independent if you are not affiliated with any franchise.</p><img src='{0}images/email/2.png' />",server);
             String Step3 = String.Format("<p>Step 3. Enter your hotel name. The field should auto populate once you start typing it. Use Chrome browser preferably. Verify the address before you accept the option provided.</p><img src='{0}images/email/3.png' />",server);
             String Step4 = String.Format("<p>Step 4. Enter the same email address you have used for payment.</p><img src='{0}images/email/4.png' />",server);
             String Step5 = String.Format("<p>Step 5. Enter the FRONT DESK phone number.</p><img src='{0}images/email/5.png' />",server);
             String Step6 = String.Format("<p>Step 6. Enter name of billing manager or contact.</p><img src='{0}images/email/6.png' />",server);
             String Step7 = String.Format("<p>Step 7. Click on Register to submit the form.</p><img src='{0}images/email/7.png' />",server);
-            String Step8 = String.Format("<p><h2>Please click here to register <a href='{0}'>{1}</a></h2></p>", FormattedUrl, FormattedUrl);
+            
             
             return new Email()
             {
                 Subject = "Confirm Registration",
-                Body = $"{line1}{Step1}{Step2}{Step3}{Step4}{Step5}{Step6}{Step7}{Step8}",
+                Body = $"{Step1}{Step2}{Step3}{Step4}{Step5}{Step6}{Step7}",
                 ToAddress = email };
         }
         public void SendEmail(Email email)
