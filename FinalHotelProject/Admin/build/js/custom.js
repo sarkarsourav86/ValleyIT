@@ -411,8 +411,8 @@ if (typeof NProgress != 'undefined') {
 		
 		for (var i = 0; i < 30; i++) {
 		  chart_plot_02_data.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
-		}
-		
+        }
+        console.log('my data is' + chart_plot_02_data)
 		
 		var chart_plot_01_settings = {
           series: {
@@ -491,7 +491,7 @@ if (typeof NProgress != 'undefined') {
 			legend: {
 				position: "ne",
 				margin: [0, -25],
-				noColumns: 0,
+				noColumns: 100,
 				labelBoxBorderColor: null,
 				labelFormatter: function(label, series) {
 					return label + '&nbsp;&nbsp;';

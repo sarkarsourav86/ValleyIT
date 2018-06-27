@@ -139,6 +139,15 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.WebControls.TextBox place;
         
         /// <summary>
+        /// TxtPaymentEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPaymentEmail;
+        
+        /// <summary>
         /// TxtEmail control.
         /// </summary>
         /// <remarks>

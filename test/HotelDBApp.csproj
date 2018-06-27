@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="DBOperations.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Feedback.cs" />

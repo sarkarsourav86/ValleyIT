@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Mail;
 
 
@@ -31,6 +32,14 @@ namespace HotelBusinessLayer
         {
             
             return session != null;
+        }
+        public static String MakePassword()
+        {
+            int length = 8;
+            Random random = new Random();
+            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
         public static void SendEmail(Email email,bool isRating=false,HotelDBApp.Image image=null)
         {

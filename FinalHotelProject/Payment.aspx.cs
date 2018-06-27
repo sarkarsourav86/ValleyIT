@@ -36,12 +36,13 @@ namespace FinalHotelProject
             String Step5 = String.Format("<p>Step 5. Enter the FRONT DESK phone number.</p><img src='{0}images/email/5.png' />",server);
             String Step6 = String.Format("<p>Step 6. Enter name of billing manager or contact.</p><img src='{0}images/email/6.png' />",server);
             String Step7 = String.Format("<p>Step 7. Click on Register to submit the form.</p><img src='{0}images/email/7.png' />",server);
-            
-            
+            String Step9 = String.Format("<p>After your property is registered, you'll receive a unique link. This link will be for the name of the hotel registered. To avoid confusing your guests please don’t use the link for any other hotel.</p>");
+            String Step10 = String.Format("<p>Please give this unique link to your IT person or WiFi/HSIA Vendor to put this link as the redirect page or landing page.</p>");
+            String Step11 = "<p>Once that is done you will start receiving instant feedback to the email you registered with.</p>";
             return new Email()
             {
                 Subject = "Confirm Registration",
-                Body = $"{Step1}{Step2}{Step3}{Step4}{Step5}{Step6}{Step7}",
+                Body = $"{Step1}{Step2}{Step3}{Step4}{Step5}{Step6}{Step7}{Step9}{Step10}{Step11}",
                 ToAddress = email };
         }
         public void SendEmail(Email email)

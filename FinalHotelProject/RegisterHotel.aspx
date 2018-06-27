@@ -206,7 +206,7 @@
         <div class="smart-forms smart-container wrap-0">
 
             <div class="form-header header-primary">
-                <h4><i class="fa fa-comments"></i>Get in touch</h4>
+                <h4><i class="fa fa-comments"></i>Register Property</h4>
                 
             </div>
             <!-- end .form-header section -->
@@ -255,16 +255,22 @@
                                 <div class="section">
                                     <label class="field prepend-icon">
 
-                                        <asp:TextBox ID="place" placeholder="Enter Place Name..." CssClass="gui-input" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="place" placeholder="Enter Property Name..." CssClass="gui-input" runat="server"></asp:TextBox>
                                         <span class="field-icon"><i class="fa fa-user"></i></span>
                                     </label>
                                 </div>
                                 <!-- end section -->
-
                                 <div class="section">
                                     <label class="field prepend-icon">
 
-                                        <asp:TextBox ID="TxtEmail" runat="server" CssClass="gui-input" placeholder="example@domain.com..."></asp:TextBox>
+                                        <asp:TextBox ID="TxtPaymentEmail" runat="server" CssClass="gui-input" placeholder="Payment Email Id..."></asp:TextBox>
+                                        <span class="field-icon"><i class="fa fa-envelope"></i></span>
+                                    </label>
+                                </div>
+                                <div class="section">
+                                    <label class="field prepend-icon">
+
+                                        <asp:TextBox ID="TxtEmail" runat="server" CssClass="gui-input" placeholder="Feedback Email Id..."></asp:TextBox>
                                         <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                     </label>
                                 </div>
