@@ -112,11 +112,11 @@ namespace FinalHotelProject
                 FranchiseBrand = DdlFranchiseBrands.Visible ? int.Parse(DdlFranchiseBrands.SelectedValue) : 0
             };
         }
-        private Admin CreateNewAdmin(Hotel hotel)
+        private HotelDBApp.Admin CreateNewAdmin(Hotel hotel)
         {
-            return new Admin() { UserName=hotel.Email,HotelId=hotel.ID,Password=Utilities.MakePassword(),Role="SuperAdmin"};
+            return new HotelDBApp.Admin() { UserName=hotel.Email,HotelId=hotel.ID,Password=Utilities.MakePassword(),Role="SuperAdmin"};
         }
-        private void SendEmail(String linkId,String[] toAddress,Admin admin)
+        private void SendEmail(String linkId,String[] toAddress, HotelDBApp.Admin admin)
         {
             String footer = System.Configuration.ConfigurationManager.AppSettings["emailfooter"];
             String link = String.Format(" <a href={0}>{0}</a>", CreateLink(linkId));
@@ -143,8 +143,8 @@ namespace FinalHotelProject
                     LblError.Text = "Your hotel has been registered!";
                     PnlMain.Visible = false;
                     //Utilities.SendEmail()
-                    Admin admin = CreateNewAdmin(hotel);
-                    Admin.AddAdmin(admin);
+                    HotelDBApp.Admin admin = CreateNewAdmin(hotel);
+                    HotelDBApp.Admin.AddAdmin(admin);
                     
                     SendEmail(hotel.ID,new String[] { hotel.Email,TxtPaymentEmail.Text }, admin);
                 }

@@ -75,6 +75,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\production\Home.aspx" />
+    <Content Include="Admin\production\Login.aspx" />
     <Content Include="css\css-img\Thumbs.db" />
     <Content Include="debug.log" />
     <Content Include="FeedbackForm.aspx" />
@@ -965,6 +967,7 @@
     <Content Include="Admin\vendors\validator\.gitignore" />
     <Content Include="Admin\vendors\validator\README.md" />
     <Content Include="Admin\vendors\validator\validator.jquery.json" />
+    <Content Include="Admin\production\Admin.Master" />
     <None Include="packages.config" />
     <Content Include="Admin\build\css\custom.css" />
     <Content Include="Admin\build\css\custom.min.css" />
@@ -4655,6 +4658,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\production\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FeedbackForm.aspx.cs">
       <DependentUpon>FeedbackForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1584,7 +1584,7 @@ if (typeof NProgress != 'undefined') {
 			  startDate: moment().subtract(29, 'days'),
 			  endDate: moment(),
 			  minDate: '01/01/2012',
-			  maxDate: '12/31/2015',
+			  maxDate: '12/31/2019',
 			  dateLimit: {
 				days: 60
 			  },
@@ -1629,7 +1629,8 @@ if (typeof NProgress != 'undefined') {
 			});
 			$('#reportrange').on('apply.daterangepicker', function(ev, picker) {
 			  console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-			});
+              $('#PlcLinegraphComplaints_TxtTest').val(picker.startDate.format('MMMM D, YYYY'));
+            });
 			$('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
 			  console.log("cancel event fired");
 			});

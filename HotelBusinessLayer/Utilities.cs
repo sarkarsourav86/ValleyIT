@@ -1,10 +1,11 @@
 ﻿using HotelDBApp;
 using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Mail;
-
+using System.Data;
 
 namespace HotelBusinessLayer
 {
@@ -28,6 +29,21 @@ namespace HotelBusinessLayer
             
             {4,"Needs Immediate Attention" }
         };
+        public static Login ValidateLogin(Login login)
+        {
+            Login returnedLogin = null;
+            SqlCommand cmd = new SqlCommand("spValidateLogin");
+            cmd.Parameters.AddWithValue("@username", login.UserName);
+            cmd.Parameters.AddWithValue("@password", login.Password);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            DataTable dt = DBOperations.FetchValues(cmd).Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                returnedLogin = new Login() { UserName = login.UserName, Password = login.Password, Role = dt.Rows[0]["Role"].ToString(), HotelId = int.Parse(dt.Rows[0]["PropertyId"].ToString()) };
+            }
+            //int.TryParse(DBOperations.InsertAndReturn(cmd).ToString(),out int res);
+            return returnedLogin;
+        }
         public static Boolean HasUserCheckedIn(Object session)
         {
             
