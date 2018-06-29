@@ -82,19 +82,26 @@ namespace FinalHotelProject
         }
         private String[] FormatAddress(String address)
         {
-            int length = address.Split(',').Length;
-            String firstLine= address;
-            String city = address.Split(',')[length - 3].Trim();
-            String state= address.Split(',')[length - 2].Trim().Split(' ')[0];
-            String zip= address.Split(',')[length - 2].Trim().Split(' ')[1];
-            String country = address.Split(',')[length-1].Trim();
-            return new String[] { firstLine, city, state,zip,country };
+            try
+            {
+                int length = address.Split(',').Length;
+                String firstLine = address;
+                String city = address.Split(',')[length - 3].Trim();
+                String state = address.Split(',')[length - 2].Trim().Split(' ')[0];
+                String zip = address.Split(',')[length - 2].Trim().Split(' ')[1];
+                String country = address.Split(',')[length - 1].Trim();
+                return new String[] { firstLine, city, state, zip, country };
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
 
         }
         private HotelDBApp.Hotel CreateHotel()
         {
             String [] address=FormatAddress(HdnAddress.Value);
-            return new HotelDBApp.Hotel() {
+            return address!=null? new HotelDBApp.Hotel() {
                 Email = HdnEmail.Value,
                 Address_Line1 = address[0],
                 City = address[1],
@@ -110,7 +117,7 @@ namespace FinalHotelProject
                 PaymentId = PaymentId,
                 Franchise = int.Parse(DdlFranchise.SelectedValue),
                 FranchiseBrand = DdlFranchiseBrands.Visible ? int.Parse(DdlFranchiseBrands.SelectedValue) : 0
-            };
+            }:null;
         }
         private HotelDBApp.Admin CreateNewAdmin(Hotel hotel)
         {
@@ -136,7 +143,14 @@ namespace FinalHotelProject
             if(ValidateEmail())
             {
                 HotelDBApp.Hotel hotel = CreateHotel();
-                if(Hotel.RegisterHotel(hotel)>0)
+                if (hotel == null)
+                {
+                    PnlError.Visible = true;
+                    PnlError.CssClass = "notification alert-error spacer-t10";
+                    LblError.Text = "The Address Provided was Wrong. Please re-type it and select one from the drop-down!";
+                    place.Text = String.Empty;
+                }
+                else if(Hotel.RegisterHotel(hotel)>0)
                 {
                     PnlError.Visible = true;
                     PnlError.CssClass = "notification alert-success spacer-t10";

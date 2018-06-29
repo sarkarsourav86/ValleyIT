@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\production\Home.aspx" />
+    <Content Include="Admin\production\js\chart\Chart.min.js" />
     <Content Include="Admin\production\Login.aspx" />
     <Content Include="css\css-img\Thumbs.db" />
     <Content Include="debug.log" />
@@ -968,6 +969,7 @@
     <Content Include="Admin\vendors\validator\README.md" />
     <Content Include="Admin\vendors\validator\validator.jquery.json" />
     <Content Include="Admin\production\Admin.Master" />
+    <Content Include="Admin\production\Web.config" />
     <None Include="packages.config" />
     <Content Include="Admin\build\css\custom.css" />
     <Content Include="Admin\build\css\custom.min.css" />
@@ -4779,6 +4781,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
