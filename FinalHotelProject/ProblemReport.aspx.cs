@@ -24,7 +24,10 @@ namespace FinalHotelProject
             Maintenance,
             CommonArea,
             Room,
-            FrontDesk
+            FrontDesk,
+            Food,
+            Fitness,
+            Parking
         }
         
         protected void Page_Load(object sender, EventArgs e)
@@ -157,7 +160,22 @@ namespace FinalHotelProject
                 incedent = IncedentTypes.WiFiInternet;
                 additionalComments = Hdninternet_comment.Value;
             }
-                
+            else if (HdnProblemType.Value == ((int)IncedentTypes.Food).ToString())
+            {
+                incedent = IncedentTypes.Food;
+                additionalComments = Hdnfood_comment.Value;
+            }
+            else if (HdnProblemType.Value == ((int)IncedentTypes.Fitness).ToString())
+            {
+                incedent = IncedentTypes.Fitness;
+                additionalComments = Hdnfitness_comment.Value;
+            }
+            else if (HdnProblemType.Value == ((int)IncedentTypes.Parking).ToString())
+            {
+                incedent = IncedentTypes.Parking;
+                additionalComments = Hdnparking_comment.Value;
+            }
+
             else incedent = IncedentTypes.none;
             return incedent;
         }
@@ -199,7 +217,22 @@ namespace FinalHotelProject
                 feedbackValue = HdnWifi.Value;
                 image = GetImage("internet_file");
             }
-                
+            else if (incedent == IncedentTypes.Food)
+            {
+                feedbackValue = HdnFood.Value;
+                image = GetImage("food_file");
+            }
+            else if (incedent == IncedentTypes.Fitness)
+            {
+                feedbackValue = HdnFitness.Value;
+                image = GetImage("fitness_file");
+            }
+            else if (incedent == IncedentTypes.Parking)
+            {
+                feedbackValue = HdnParking.Value;
+                image = GetImage("parking_file");
+            }
+
             return Convert.ToInt32(feedbackValue);
         }
         private void SetSession(int ID)

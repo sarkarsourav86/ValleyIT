@@ -35,7 +35,7 @@ namespace FinalHotelProject.Admin.production
             }
             else
             {
-                Response.Redirect("map.hml");
+                Response.Redirect("Home.aspx");
             }
         }
         protected void BtnLogin_Click(object sender, EventArgs e)

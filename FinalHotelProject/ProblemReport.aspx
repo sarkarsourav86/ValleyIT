@@ -109,7 +109,7 @@
     <script type="text/javascript">
 
         function fillHiddenFields() {
-            
+
             var value = $("input:radio[name='room']:checked").val();
             $('#HdnRoom').val(value);
             value = $("input:radio[name='helpdesk']:checked").val();
@@ -125,8 +125,17 @@
 
             value = $("input:radio[name='common']:checked").val();
             $('#HdnCommon').val(value);
-            value = $('#problemtypes').val();
 
+            value = $("input:radio[name='food']:checked").val();
+            $('#HdnFood').val(value);
+
+            value = $("input:radio[name='fitness']:checked").val();
+            $('#HdnFitness').val(value);
+
+            value = $("input:radio[name='parking']:checked").val();
+            $('#HdnParking').val(value);
+
+            value = $('#problemtypes').val();
             $('#HdnProblemType').val(value);
             value = $('#housekeeping_comment').val();
             $('#Hdnhousekeeping_comment').val(value);
@@ -140,6 +149,12 @@
             $('#Hdnroom_comment').val(value);
             value = $('#frontdesk_comment').val();
             $('#Hdnfrontdesk_comment').val(value);
+            value = $('#parking_comment').val();
+            $('#Hdnparking_comment').val(value);
+            value = $('#fitness_comment').val();
+            $('#Hdnfitness_comment').val(value);
+            value = $('#food_comment').val();
+            $('#Hdnfood_comment').val(value);
 
 
         }
@@ -158,18 +173,19 @@
         <div class="smart-forms smart-container wrap-2">
 
             <div class="form-header header-primary">
-                
-                <h4 style="text-align:center">Report A Problem -
+
+                <h4 style="text-align: center">Report A Problem -
                     <asp:Label runat="server" ID="LblHotelName"></asp:Label></h4>
 
             </div>
             <!-- end .form-header section -->
             <ul class="breadcrumb">
-                
-                <li><asp:HyperLink runat="server" ID="HypHome">Home</asp:HyperLink></li>
+
+                <li>
+                    <asp:HyperLink runat="server" ID="HypHome">Home</asp:HyperLink></li>
                 <li>Report a Problem</li>
             </ul>
-            <form id="form1" enctype="multipart/form-data"  runat="server">
+            <form id="form1" enctype="multipart/form-data" runat="server">
                 <div id="smart-modal1" class="smartforms-modal" role="alert">
                     <asp:HiddenField ID="HdnProblemType" runat="server"></asp:HiddenField>
 
@@ -184,6 +200,9 @@
                     <asp:HiddenField ID="HdnMaintenance" runat="server"></asp:HiddenField>
 
                     <asp:HiddenField ID="HdnCommon" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="HdnFood" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="HdnFitness" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="HdnParking" runat="server"></asp:HiddenField>
 
                     <asp:HiddenField ID="Hdnhousekeeping_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdninternet_comment" runat="server"></asp:HiddenField>
@@ -191,6 +210,9 @@
                     <asp:HiddenField ID="Hdncommon_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdnroom_comment" runat="server"></asp:HiddenField>
                     <asp:HiddenField ID="Hdnfrontdesk_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnfood_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnfitness_comment" runat="server"></asp:HiddenField>
+                    <asp:HiddenField ID="Hdnparking_comment" runat="server"></asp:HiddenField>
 
                     <asp:Panel runat="server" ID="PnlModalContainer" CssClass="smartforms-modal-container">
 
@@ -296,6 +318,9 @@
                                 <option value="4" class="smartfm-ctrl" data-show-id="ctr_common">Common Area</option>
                                 <option value="5" class="smartfm-ctrl" data-show-id="ctr_room">My Room</option>
                                 <option value="6" class="smartfm-ctrl" data-show-id="ctr_frontdesk">Front Desk Staff</option>
+                                <option value="7" class="smartfm-ctrl" data-show-id="ctr_food">Food Area</option>
+                                <option value="8" class="smartfm-ctrl" data-show-id="ctr_fitness">Spa/Fitness</option>
+                                <option value="9" class="smartfm-ctrl" data-show-id="ctr_parking">Parking Area</option>
                             </select>
                             <i class="arrow double"></i>
                         </label>
@@ -352,7 +377,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file"  name="housekeeping_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
+                                            <input type="file" name="housekeeping_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="housekeeping_comment" class="field-label">Additional Comments</label>
@@ -423,7 +448,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file" name="internet_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <input type="file" name="internet_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="internet_comment" class="field-label">Additional Comments</label>
@@ -494,7 +519,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file" name="maintain_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <input type="file" name="maintain_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="maintain_comment" class="field-label">Additional Comments</label>
@@ -567,7 +592,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file" name="common_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <input type="file" name="common_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="common_comment" class="field-label">Additional Comments</label>
@@ -639,7 +664,7 @@
                                         </label>
                                         <div class="form-group">
                                             <label for="exampleInputFile" class="field-label">Upload Image</label>
-                                            <input type="file" name="room_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="2M">
+                                            <input type="file" name="room_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
                                             <p class="help-block">Upload .jpg or .png files</p>
                                         </div>
                                         <label for="room_comment" class="field-label">Additional Comments</label>
@@ -730,6 +755,219 @@
                         <!-- end section -->
                         <!-- end frm-row section -->
                     </div>
+                    <div id="ctr_food" class="hiddenbox">
+
+                        <div class="frm-row">
+                            <div class="section colm colm12">
+
+                                <div class="option-group field">
+                                    <div class="smart-option-group smart-option-list group-vertical">
+                                        <label for="food_0" class="option">
+                                            <input type="radio" checked name="food" id="food_0" value="0">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>No Comments
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="food_1" class="option">
+                                            <input type="radio" name="food" id="food_1" value="1">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="food_2" class="option">
+                                            <input type="radio" name="food" id="food_2" value="2">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Not Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="food_3" class="option">
+                                            <input type="radio" name="food" id="food_3" value="3">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Something is broken
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="food_4" class="option">
+                                            <input type="radio" name="food" id="food_4" value="4">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Needs Immediate Attention
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="food_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
+                                        <label for="frontdesk_comment" class="field-label">Additional Comments</label>
+                                        <label class="field prepend-icon">
+                                            <textarea class="gui-textarea" id="food_comment"></textarea>
+                                            <span class="field-icon"><i class="fa fa-comments"></i></span>
+                                            <span class="input-hint">Please leave a comment to help us serve you better</span>
+                                        </label>
+                                    </div>
+                                    <!--  smart-option-group -->
+                                </div>
+                                <!-- end .option-group section -->
+
+                            </div>
+                        </div>
+                        <!-- end frm-row section -->
+                        <!-- end section -->
+                        <!-- end frm-row section -->
+                    </div>
+                    <div id="ctr_fitness" class="hiddenbox">
+
+                        <div class="frm-row">
+                            <div class="section colm colm12">
+
+                                <div class="option-group field">
+                                    <div class="smart-option-group smart-option-list group-vertical">
+                                        <label for="fitness_0" class="option">
+                                            <input type="radio" checked name="fitness" id="fitness_0" value="0">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>No Comments
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="fitness_1" class="option">
+                                            <input type="radio" name="fitness" id="fitness_1" value="1">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="fitness_2" class="option">
+                                            <input type="radio" name="fitness" id="fitness_2" value="2">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Not Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="fitness_3" class="option">
+                                            <input type="radio" name="fitness" id="fitness_3" value="3">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Something is broken
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="fitness_4" class="option">
+                                            <input type="radio" name="fitness" id="fitness_4" value="4">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Needs Immediate Attention
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="fitness_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
+                                        <label for="frontdesk_comment" class="field-label">Additional Comments</label>
+                                        <label class="field prepend-icon">
+                                            <textarea class="gui-textarea" id="fitness_comment"></textarea>
+                                            <span class="field-icon"><i class="fa fa-comments"></i></span>
+                                            <span class="input-hint">Please leave a comment to help us serve you better</span>
+                                        </label>
+                                    </div>
+                                    <!--  smart-option-group -->
+                                </div>
+                                <!-- end .option-group section -->
+
+                            </div>
+                        </div>
+                        <!-- end frm-row section -->
+                        <!-- end section -->
+                        <!-- end frm-row section -->
+                    </div>
+                    <div id="ctr_parking" class="hiddenbox">
+
+                        <div class="frm-row">
+                            <div class="section colm colm12">
+
+                                <div class="option-group field">
+                                    <div class="smart-option-group smart-option-list group-vertical">
+                                        <label for="parking_0" class="option">
+                                            <input type="radio" checked name="parking" id="parking_0" value="0">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>No Comments
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="parking_1" class="option">
+                                            <input type="radio" name="parking" id="parking_1" value="1">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Everything is Great/ Very Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="parking_2" class="option">
+                                            <input type="radio" name="parking" id="parking_2" value="2">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Not Satisfied
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                        <label for="parking_3" class="option">
+                                            <input type="radio" name="parking" id="parking_3" value="3">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Something is broken
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <label for="parking_4" class="option">
+                                            <input type="radio" name="parking" id="parking_4" value="4">
+                                            <span class="smart-option smart-radio">
+                                                <span class="smart-option-ui">
+                                                    <i class="iconc"></i>Needs Immediate Attention
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile" class="field-label">Upload Image</label>
+                                            <input type="file" name="parking_file" class="dropify" data-allowed-file-extensions="jpg JPG jpeg png" data-height="100" data-max-file-size="10M">
+                                            <p class="help-block">Upload .jpg or .png files</p>
+                                        </div>
+                                        <label for="frontdesk_comment" class="field-label">Additional Comments</label>
+                                        <label class="field prepend-icon">
+                                            <textarea class="gui-textarea" id="parking_comment"></textarea>
+                                            <span class="field-icon"><i class="fa fa-comments"></i></span>
+                                            <span class="input-hint">Please leave a comment to help us serve you better</span>
+                                        </label>
+                                    </div>
+                                    <!--  smart-option-group -->
+                                </div>
+                                <!-- end .option-group section -->
+
+                            </div>
+                        </div>
+                        <!-- end frm-row section -->
+                        <!-- end section -->
+                        <!-- end frm-row section -->
+                    </div>
                     <!-- .hiddenbox -->
 
                     <!-- end section -->
@@ -743,21 +981,21 @@
                     <!-- end .notification section -->
 
                     <!-- end .notification section -->
-                      <asp:Panel ID="PnlLoginBtnContainer" runat="server">
-                    
+                    <asp:Panel ID="PnlLoginBtnContainer" runat="server">
+
                         <a href="#" data-smart-modal="#smart-modal1" style="width: 30%" class="button btn-primary smartforms-modal-trigger">Report</a>
 
-                    
-                    <!-- end .form-footer section -->
-                </asp:Panel>
-                <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
-                    
+
+                        <!-- end .form-footer section -->
+                    </asp:Panel>
+                    <asp:Panel ID="PnlNoLoginBtnContainer" Visible="false" runat="server">
+
 
                         <asp:Button ID="LoginBtnSubmit" Width="30%" OnClientClick="fillHiddenFields()" OnClick="LoginBtnSubmit_Click" CssClass="button btn-primary" runat="server" Text="Report" />
 
-                    
-                    <!-- end .form-footer section -->
-                </asp:Panel>
+
+                        <!-- end .form-footer section -->
+                    </asp:Panel>
                 </div>
                 <!-- end .form-body section -->
                 <div class="smartforms-px smart-forms">
@@ -765,7 +1003,7 @@
                 <div class="form-footer">
                     <center><a href="http://www.myguestxp.com/"><img src="images/logohotel.png" /></a></center>
                 </div>
-              
+
             </form>
 
         </div>

@@ -18,7 +18,10 @@ namespace HotelBusinessLayer
             {3,"Maintenance" },
             {4,"Common Area" },
             {5,"Room" },
-            {6,"Front Desk Staff" }
+            {6,"Front Desk Staff" },
+            {7,"Food Area" },
+            {8,"Spa/Fitness" },
+            {9,"Parking Area" }
         };
         public static Dictionary<int, String> FeedbackOptionsList = new Dictionary<int, string>()
         {

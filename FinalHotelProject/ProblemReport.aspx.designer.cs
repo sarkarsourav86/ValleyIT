@@ -103,6 +103,33 @@ namespace FinalHotelProject {
         protected global::System.Web.UI.WebControls.HiddenField HdnCommon;
         
         /// <summary>
+        /// HdnFood control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnFood;
+        
+        /// <summary>
+        /// HdnFitness control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnFitness;
+        
+        /// <summary>
+        /// HdnParking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnParking;
+        
+        /// <summary>
         /// Hdnhousekeeping_comment control.
         /// </summary>
         /// <remarks>
@@ -155,6 +182,33 @@ namespace FinalHotelProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField Hdnfrontdesk_comment;
+        
+        /// <summary>
+        /// Hdnfood_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnfood_comment;
+        
+        /// <summary>
+        /// Hdnfitness_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnfitness_comment;
+        
+        /// <summary>
+        /// Hdnparking_comment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdnparking_comment;
         
         /// <summary>
         /// PnlModalContainer control.

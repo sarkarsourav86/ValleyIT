@@ -20,6 +20,7 @@ namespace HotelDBApp
         public DateTime IncedentTime { get; set; }
         public Decimal UserID { get; set; }
         public int FeedbackValue { get; set; }
+        public int IsSolved { get; set; }
         public static int ReportProblem(Incedent incedent)
         {
             SqlCommand cmd = new SqlCommand("spReportProblem");
@@ -33,6 +34,14 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@FeedbackValue", incedent.FeedbackValue);
             return DBOperations.UpdateOrInsert(cmd);
 
+        }
+        public static System.Data.DataSet FetchProblems(int HotelId,int isRestricted=0)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchProblemsByHotelId");
+            cmd.Parameters.AddWithValue("@hotelid", HotelId);
+            cmd.Parameters.AddWithValue("@top", isRestricted);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            return DBOperations.FetchValues(cmd);
         }
 
     }

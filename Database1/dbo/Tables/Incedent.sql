@@ -7,6 +7,7 @@
     [IncedentTime]        DATETIME      NULL,
     [UserID]              INT  NULL,
     [FeedbackValue]       INT           NULL,
+    [IsResolved] BIT NULL, 
     CONSTRAINT [PK_Incedent] PRIMARY KEY CLUSTERED ([IncedentID] ASC),
     CONSTRAINT [FK_Incedent_Feedback_options] FOREIGN KEY ([FeedbackValue]) REFERENCES [dbo].[Feedback_options] ([ID]),
     CONSTRAINT [FK_Incedent_Hotel] FOREIGN KEY ([HotelID]) REFERENCES [dbo].[Hotel] ([Id]) on Delete cascade,

@@ -90,6 +90,7 @@
     <Build Include="dbo\Tables\PropertyAdmins.sql" />
     <Build Include="dbo\Stored Procedures\spInsertAdmin.sql" />
     <Build Include="dbo\Stored Procedures\spValidateLogin.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchProblemsByHotelId.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

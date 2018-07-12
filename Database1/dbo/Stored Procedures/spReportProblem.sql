@@ -16,6 +16,6 @@ AS
 		declare @countRows int
 		--select @countRows=count(*)+1 from [dbo].Incedent where [HotelId]=@HotelId
 		
-		insert into [dbo].Incedent values(@IncedentType,@IncedentDescription,@RoomNo,@id,@IncedentTime,@UserID,@FeedbackValue)
+		insert into [dbo].Incedent values(@IncedentType,@IncedentDescription,@RoomNo,@id,@IncedentTime,@UserID,@FeedbackValue,0)
 	end
 
