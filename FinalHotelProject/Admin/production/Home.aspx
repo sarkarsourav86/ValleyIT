@@ -1,5 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/production/Admin.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="FinalHotelProject.Admin.production.LinegraphComplaints" %>
 
+<asp:Content ID="Content0" ContentPlaceHolderID="PlcUserStatus" runat="server">
+    <asp:UpdatePanel runat="server" ID="UpnlUserStatus">
+        <ContentTemplate>
+            <div class="row top_tiles">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                        <div class="count">179</div>
+                        <h3>New Sign ups</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-comments-o"></i></div>
+                        <div class="count">179</div>
+                        <h3>New Sign ups</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                        <div class="count">179</div>
+                        <h3>New Sign ups</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                        <div class="count">179</div>
+                        <h3>New Sign ups</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer0" EventName="Tick" />
+        </Triggers>
+
+    </asp:UpdatePanel>
+    <asp:Timer ID="Timer2" runat="server" Interval="60000" OnTick="Timer2_Tick"></asp:Timer>
+
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="PlcLinegraphComplaints" runat="server">
     <div class="row">
         <div class="col-md-12">
@@ -183,7 +229,7 @@
         })
     </script>
 </asp:Content>
-<asp:Content runat="server" ContentPlaceHolderID="CPIncedents">
+<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="CPIncedents">
     <div class="row">
         <div class="col-md-4">
             <div class="x_panel">

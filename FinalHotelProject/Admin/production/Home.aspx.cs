@@ -29,5 +29,10 @@ namespace FinalHotelProject.Admin.production
         {
             LoadIncedents();
         }
+
+        protected void Timer2_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

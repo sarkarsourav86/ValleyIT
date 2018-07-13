@@ -13,6 +13,24 @@ namespace FinalHotelProject.Admin.production {
     public partial class LinegraphComplaints {
         
         /// <summary>
+        /// UpnlUserStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpnlUserStatus;
+        
+        /// <summary>
+        /// Timer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer2;
+        
+        /// <summary>
         /// TxtTest control.
         /// </summary>
         /// <remarks>

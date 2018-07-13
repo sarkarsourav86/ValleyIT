@@ -81,7 +81,13 @@ namespace HotelBusinessLayer
             //smtpClient.Send(mail);
             Execute(email,isRating,image);
         }
-        
+        public static void UserStatus(int HotelId)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchUserStatus");
+            cmd.Parameters.AddWithValue("@hotelid", HotelId);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+        }
         static void Execute(Email email,bool isRating, HotelDBApp.Image image)
         {
 

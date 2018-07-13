@@ -24,7 +24,7 @@ Begin
 		declare @id int
 		select @id=  Id from Hotel where Property=@HotelId
 		update users set HasReviewed=1 where UserID=@UserId
-		insert into [dbo].[FeedbackTable] values(@Id,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments,@problemtype,@aboutus)
+		insert into [dbo].[FeedbackTable] values(@Id,@UserId,@RoomFeedback,@FrontDeskFeedback,@ReservationFeedback,@HousekeepingFeedback,@BreakfastFeedback,@WiFiFeedback,@MaintenanceFeedback,@PoolFeedback,@CommonFeedback,@ParkingFeedback,@HotelRating,@comments,@problemtype,@aboutus,GETDATE())
 
 	end
 End

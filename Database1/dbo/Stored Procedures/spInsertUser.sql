@@ -14,7 +14,7 @@ select @res =count(*) from [dbo].[Hotel] where Property=@HotelID
 IF @res>0
 	Begin
 		select @id=Id from Hotel where Property=@HotelID
-		insert into [dbo].[Users] values (@LastName,@RoomNo,@CheckOutDate,@Email,@id,@UserIdString,0,@Phone)
+		insert into [dbo].[Users] values (@LastName,@RoomNo,@CheckOutDate,@Email,@id,@UserIdString,0,@Phone,GETDATE())
 		SELECT SCOPE_IDENTITY()
 	End
 ELSE
