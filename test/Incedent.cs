@@ -35,6 +35,7 @@ namespace HotelDBApp
             return DBOperations.UpdateOrInsert(cmd);
 
         }
+        
         public static System.Data.DataSet FetchProblems(int HotelId,int isRestricted=0)
         {
             SqlCommand cmd = new SqlCommand("spFetchProblemsByHotelId");

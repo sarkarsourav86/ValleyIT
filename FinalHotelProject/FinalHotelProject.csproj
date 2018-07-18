@@ -78,6 +78,8 @@
     <Content Include="Admin\production\Home.aspx" />
     <Content Include="Admin\production\js\chart\Chart.min.js" />
     <Content Include="Admin\production\Login.aspx" />
+    <Content Include="Admin\production\ReportedProblems.aspx" />
+    <Content Include="Admin\production\Services\Reports.asmx" />
     <Content Include="css\css-img\Thumbs.db" />
     <Content Include="debug.log" />
     <Content Include="FeedbackForm.aspx" />
@@ -970,6 +972,7 @@
     <Content Include="Admin\vendors\validator\validator.jquery.json" />
     <Content Include="Admin\production\Admin.Master" />
     <Content Include="Admin\production\Web.config" />
+    <Content Include="Admin\production\Smaller.Master" />
     <None Include="packages.config" />
     <Content Include="Admin\build\css\custom.css" />
     <Content Include="Admin\build\css\custom.min.css" />
@@ -4681,6 +4684,24 @@
     </Compile>
     <Compile Include="Admin\production\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\ReportedProblems.aspx.cs">
+      <DependentUpon>ReportedProblems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\ReportedProblems.aspx.designer.cs">
+      <DependentUpon>ReportedProblems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\Services\Reports.asmx.cs">
+      <DependentUpon>Reports.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Smaller.Master.cs">
+      <DependentUpon>Smaller.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Smaller.Master.designer.cs">
+      <DependentUpon>Smaller.Master</DependentUpon>
     </Compile>
     <Compile Include="FeedbackForm.aspx.cs">
       <DependentUpon>FeedbackForm.aspx</DependentUpon>

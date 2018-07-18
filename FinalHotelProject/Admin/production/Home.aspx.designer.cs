@@ -22,13 +22,58 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.UpdatePanel UpnlUserStatus;
         
         /// <summary>
-        /// Timer2 control.
+        /// LblNumOfUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer2;
+        protected global::System.Web.UI.WebControls.Label LblNumOfUsers;
+        
+        /// <summary>
+        /// LblNumOfGoodReviews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNumOfGoodReviews;
+        
+        /// <summary>
+        /// LblNumOfBadReviews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNumOfBadReviews;
+        
+        /// <summary>
+        /// LblCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblCompleted;
+        
+        /// <summary>
+        /// Timer0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer0;
+        
+        /// <summary>
+        /// HdnHotelId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnHotelId;
         
         /// <summary>
         /// TxtTest control.

@@ -7,32 +7,32 @@
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                        <div class="count">179</div>
-                        <h3>New Sign ups</h3>
+                        <div class="count"><asp:Label ID="LblNumOfUsers" runat="server"></asp:Label></div>
+                        <h3>Users Signed In Today</h3>
                         <p>Lorem ipsum psdea itgum rixt.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-comments-o"></i></div>
-                        <div class="count">179</div>
-                        <h3>New Sign ups</h3>
+                        <div class="count"><asp:Label ID="LblNumOfGoodReviews" runat="server"></asp:Label></div>
+                        <h3>Good Reviews</h3>
                         <p>Lorem ipsum psdea itgum rixt.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                        <div class="count">179</div>
-                        <h3>New Sign ups</h3>
+                        <div class="count"><asp:Label ID="LblNumOfBadReviews" runat="server"></asp:Label></div>
+                        <h3>Bad Reviews</h3>
                         <p>Lorem ipsum psdea itgum rixt.</p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                        <div class="count">179</div>
-                        <h3>New Sign ups</h3>
+                        <div class="count"><asp:Label ID="LblCompleted" runat="server"></asp:Label></div>
+                        <h3>Completed Requests</h3>
                         <p>Lorem ipsum psdea itgum rixt.</p>
                     </div>
                 </div>
@@ -43,10 +43,12 @@
         </Triggers>
 
     </asp:UpdatePanel>
-    <asp:Timer ID="Timer2" runat="server" Interval="60000" OnTick="Timer2_Tick"></asp:Timer>
+    
+    <asp:Timer ID="Timer0" runat="server" Interval="1000" OnTick="Timer0_Tick"></asp:Timer>
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="PlcLinegraphComplaints" runat="server">
+    <asp:HiddenField ID="HdnHotelId" runat="server" />
     <div class="row">
         <div class="col-md-12">
             <div class="x_panel">
@@ -54,10 +56,16 @@
                     <h2>Transaction Summary <small>
                         <asp:TextBox ID="TxtTest" runat="server"></asp:TextBox></small></h2>
                     <div class="filter">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <select id="myselect" class="form-control">
+                            
+                            <option value="week">Last 7 Days</option>
+                            <option value="month">Last 30 Days</option>
+                            <option value="year">This Year</option>
+                            
+                          </select>
                         </div>
+                        
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -159,39 +167,114 @@
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <script src="js/chart/Chart.min.js"></script>
     <script>
+        
+        /*function plotMychart(data) {
+            console.log('hello');
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#777';
+
+            let massPopChart = new Chart(myChart, {
+                type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                data: {
+                    labels: {} ,
+                    datasets: [{
+                        label: 'Good Reviews',
+                        data: {},
+                        backgroundColor:'green',
+                        
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: '#000'
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Largest Cities In Massachusetts',
+                        fontSize: 25
+                    },
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            fontColor: '#000'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 50,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        }
+                    },
+                    tooltips: {
+                        enabled: true
+                    }
+                }
+            });
+        }*/
+        function GetReports(isDays) {
+            if (!isDays) {
+                var selection = $('#myselect').val();
+            }
+            else
+                selection = "week";
+                
+            var id = $("#" + '<%= HdnHotelId.ClientID %>').val();
+            
+            FinalHotelProject.Admin.production.Services.Reports.GetReviews(selection, id,
+                (result) =>
+                {
+                    console.log(result);
+                    //plotMychart(result)
+                    console.log(result.Labels);
+                    massPopChart.data.labels = result.Labels;
+                    massPopChart.data.datasets[0].data = result.Data;
+                    massPopChart.data.datasets[1].data = result.Data2;
+                    massPopChart.update();
+                    
+                });
+        }
+        function GetStudentByIdSuccessCallback(result) {
+            //console.log(results);
+        }
+        $('#myselect').change(function () {
+            GetReports();
+        });
         let myChart = document.getElementById('myChart').getContext('2d');
-        console.log('working');
+
         // Global Options
         Chart.defaults.global.defaultFontFamily = 'Lato';
         Chart.defaults.global.defaultFontSize = 18;
         Chart.defaults.global.defaultFontColor = '#777';
 
         let massPopChart = new Chart(myChart, {
-            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
             data: {
-                labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+                labels: [],
                 datasets: [{
-                    label: 'Population',
-                    data: [
-                        617594,
-                        181045,
-                        153060,
-                        106519,
-                        105162,
-                        95072
-                    ],
-                    //backgroundColor:'green',
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 99, 132, 0.6)'
-                    ],
+                    label: 'Good Reviews',
+                    data: [],
+                    
+
                     borderWidth: 1,
-                    borderColor: '#777',
+                    borderColor: 'green',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000'
+                },
+                {
+                    label: 'Bad Reviews',
+                    data: [],
+
+
+                    borderWidth: 1,
+                    borderColor: 'red',
                     hoverBorderWidth: 3,
                     hoverBorderColor: '#000'
                 }]
@@ -199,7 +282,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Largest Cities In Massachusetts',
+                    text: 'Feedback for Hotel',
                     fontSize: 25
                 },
                 legend: {
@@ -222,12 +305,20 @@
                 }
             }
         });
+        
+        GetReports(true);
+
+        function GetStudentByIdSuccessCallback(result) {
+            document.getElementById("txtName").value = result["Name"];
+            document.getElementById("txtGender").value = result["Gender"];
+            document.getElementById("txtTotalMarks").value = result["TotalMarks"];
+        }
+
+        function GetStudentByIdFailedCallback(errors) {
+            alert(errors.get_message());
+        }
     </script>
-    <script>
-        $(document).ready(function () {
-            console.log("i am still running");
-        })
-    </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="CPIncedents">
     <div class="row">

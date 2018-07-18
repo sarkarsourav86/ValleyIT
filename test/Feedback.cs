@@ -51,5 +51,14 @@ namespace HotelDBApp
             return DBOperations.UpdateOrInsert(cmd);
 
         }
+        public static DataSet FetchFeedbackById(string hotelId,DateTime start,DateTime end)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchReviewWithIdandDate");
+            cmd.Parameters.AddWithValue("@hotelid", int.Parse(hotelId));
+            cmd.Parameters.AddWithValue("@start", start);
+            cmd.Parameters.AddWithValue("@end", end);
+            cmd.CommandType = CommandType.StoredProcedure;
+            return DBOperations.FetchValues(cmd);
+        }
     }
 }

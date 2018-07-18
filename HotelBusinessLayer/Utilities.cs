@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Data;
 
+
 namespace HotelBusinessLayer
 {
     public class Utilities
@@ -81,13 +82,15 @@ namespace HotelBusinessLayer
             //smtpClient.Send(mail);
             Execute(email,isRating,image);
         }
-        public static void UserStatus(int HotelId)
+        public static Dictionary<string,int> UserStatus(int HotelId)
         {
             SqlCommand cmd = new SqlCommand("spFetchUserStatus");
             cmd.Parameters.AddWithValue("@hotelid", HotelId);
             cmd.CommandType = CommandType.StoredProcedure;
-            
+            DataRow dr=DBOperations.FetchValues(cmd).Tables[0].Rows[0];
+            return new Dictionary<string, int>() { {"users",int.Parse(dr["Users"].ToString()) },{"good", int.Parse(dr["Good"].ToString()) }, { "bad", int.Parse(dr["Bad"].ToString()) }, { "resolved", int.Parse(dr["Resolved"].ToString()) } };
         }
+        
         static void Execute(Email email,bool isRating, HotelDBApp.Image image)
         {
 

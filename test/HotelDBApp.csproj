@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="ChartData.cs" />
     <Compile Include="DBOperations.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Feedback.cs" />
