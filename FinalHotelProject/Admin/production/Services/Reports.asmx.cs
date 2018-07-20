@@ -7,6 +7,7 @@ using HotelDBApp;
 using System.Data;
 using System.Globalization;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace FinalHotelProject.Admin.production.Services
 {
@@ -20,7 +21,7 @@ namespace FinalHotelProject.Admin.production.Services
     [System.Web.Script.Services.ScriptService]
     public class Reports : System.Web.Services.WebService
     {
-
+        
         [WebMethod]
         public HotelDBApp.ChartData GetReviews(string selection,String id)
         {
@@ -76,16 +77,28 @@ namespace FinalHotelProject.Admin.production.Services
 
         }
         [WebMethod]
-        public DataSet GetProblems(string id)
+        public List<Incedent> GetProblems(string id)
         {
             DataSet ds = null;
             if (int.TryParse(id,out int convertedId))
             {
                 ds = Incedent.FetchProblems(convertedId);
             }
-                
-
-            return ds;
+            List<Incedent> incedents = ds.Tables[0].AsEnumerable()
+                .Select(x =>
+                new Incedent()
+                {
+                    RoomNo = x["RoomNo"].ToString(),
+                    IncedentTime = DateTime.Parse(x["IncedentTime"].ToString()),
+                    IncedentTypeStr = x["Type"].ToString(),
+                    FeedbackStr = x["Problem"].ToString(),
+                    IncedentDescription = x["IncedentDescription"].ToString(),
+                    IsSolved = bool.Parse(x["IsResolved"].ToString()),
+                    IncedentID=x["IncedentID"].ToString()
+                }).ToList<Incedent>();
+            //string result = JsonConvert.SerializeObject(DatatableToDictionary(ds, "Title"), Newtonsoft.Json.Formatting.Indented);
+            return incedents;
         }
+        
     }
 }

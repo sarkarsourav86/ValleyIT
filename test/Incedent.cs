@@ -14,13 +14,17 @@ namespace HotelDBApp
         public String IncedentID { get; set; }
         public String HashedHotelID { get; set; }
         public int IncedentType { get; set; }
+        public string IncedentTypeStr { get; set; }
         public String IncedentDescription { get; set; }
         public String RoomNo { get; set; }
         public String HotelID { get; set; }
+        public string Color { get; set; }
         public DateTime IncedentTime { get; set; }
         public Decimal UserID { get; set; }
         public int FeedbackValue { get; set; }
-        public int IsSolved { get; set; }
+        public string FeedbackStr { get; set; }
+        public bool IsSolved { get; set; }
+        
         public static int ReportProblem(Incedent incedent)
         {
             SqlCommand cmd = new SqlCommand("spReportProblem");

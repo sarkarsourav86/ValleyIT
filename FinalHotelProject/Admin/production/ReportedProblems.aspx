@@ -25,17 +25,19 @@
                   </div>
                   <div class="x_content">
                     <p class="text-muted font-13 m-b-30">
-                      DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                     have something better here!
                     </p>
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
+                          <th>RoomNo</th>
+                          <th>Incedent Type</th>
+                          <th>Incedent Description</th>
+                          <th>Incedent Time</th>
+                          <th>Problem</th>
+                          <th>IsResolved</th>
+                          <th>Edit</th>
+                          
                         </tr>
                       </thead>
 
@@ -77,7 +79,39 @@
     <script>
         var loadTable = () => {
             var id=$('#CPDatatable_HdnHotelId').val();
-            FinalHotelProject.Admin.production.Services.Reports.GetProblems(id)
+            FinalHotelProject.Admin.production.Services.Reports.GetProblems(id, (result) => {
+                $('#datatable').DataTable(
+                    {
+                        data: result,
+                        
+                        "pageLength": 10,
+                        columns: [
+                        { 'data': 'RoomNo' },
+                        { 'data': 'IncedentTypeStr' },
+                        { 'data': 'IncedentDescription' },
+                        { 'data': 'IncedentTime' },
+                        { 'data': 'FeedbackStr' },
+                        {
+                            'data': 'IsSolved',
+                            'render': (val) =>
+                            {
+                                if (val === true) return 'Yes';
+                                else if(val===false) return 'No'
+                            }
+                        },
+                        {
+                            'data': 'IncedentID',
+                            'render': (val) =>
+                            {
+                                //return "<a href='mypage.aspx?id=`${val}`'>Edit</a>"
+                                return `<a href='mypage.aspx?id=${val}'>Edit</a>`;
+                            }
+                        }
+                        ]
+                            
+                            
+                    });
+            });
         }
         $(document).ready(function () {
             loadTable();

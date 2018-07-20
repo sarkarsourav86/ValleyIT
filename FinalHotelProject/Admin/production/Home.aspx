@@ -236,7 +236,8 @@
                     console.log(result.Labels);
                     massPopChart.data.labels = result.Labels;
                     massPopChart.data.datasets[0].data = result.Data;
-                    massPopChart.data.datasets[1].data = result.Data2;
+                    //massPopChart.data.datasets[1].data = result.Data2;
+                    massPopChart.data.datasets[1].data = [1,2,3,4,5,6,7];
                     massPopChart.update();
                     
                 });
@@ -248,7 +249,7 @@
             GetReports();
         });
         let myChart = document.getElementById('myChart').getContext('2d');
-
+        
         // Global Options
         Chart.defaults.global.defaultFontFamily = 'Lato';
         Chart.defaults.global.defaultFontSize = 18;
@@ -306,19 +307,97 @@
             }
         });
         
+        
         GetReports(true);
 
-        function GetStudentByIdSuccessCallback(result) {
-            document.getElementById("txtName").value = result["Name"];
-            document.getElementById("txtGender").value = result["Gender"];
-            document.getElementById("txtTotalMarks").value = result["TotalMarks"];
-        }
+        
 
         function GetStudentByIdFailedCallback(errors) {
             alert(errors.get_message());
         }
     </script>
     
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="CPCharts" runat="server">
+    <div class="row">
+                            <div class="col-md-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Weekly Summary <small>Activity shares</small></h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Settings 1</a>
+                                                    </li>
+                                                    <li><a href="#">Settings 2</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+
+                                        <div class="row" style="border-bottom: 1px solid #E0E0E0; padding-bottom: 5px; margin-bottom: 5px;">
+                                            <div class="col-md-7" style="overflow: hidden;">
+                                                <span class="sparkline_one" style="height: 160px; padding: 10px 25px;">
+                                                    <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                                                </span>
+                                                <h4 style="margin: 18px">Weekly sales progress</h4>
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <div class="row" style="text-align: center;">
+                                                    <div class="col-md-4">
+                                                        <canvas id="myPieChart"  ></canvas>
+                                                        <h4 style="margin: 0">Bounce Rates</h4>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <canvas class="canvasDoughnut" height="110" width="110" ></canvas>
+                                                        <h4 style="margin: 0">New Traffic</h4>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <canvas class="canvasDoughnut" height="110" width="110" ></canvas>
+                                                        <h4 style="margin: 0">Device Share</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <script>
+        let myPieChart = document.getElementById('myPieChart').getContext('2d');
+        let massPieChart = new Chart(myPieChart,
+            {
+                type: 'doughnut',
+                data: {
+                    datasets: [{ data: [1, 2, 3], backgroundColor: ['red', 'green', 'blue'] }],
+                    labels: ['hi', 'hello', 'how']
+                },
+                options: {
+                    
+                    legend: {
+                        display: false,
+                        
+                    },
+                    
+                    tooltips: {
+                        enabled: true
+                    }
+                }
+            }
+        );
+        $(document).ready(() => {
+            
+        })
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="CPIncedents">
     <div class="row">
