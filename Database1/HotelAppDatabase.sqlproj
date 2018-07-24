@@ -93,6 +93,8 @@
     <Build Include="dbo\Stored Procedures\spFetchProblemsByHotelId.sql" />
     <Build Include="dbo\Stored Procedures\spFetchUserStatus.sql" />
     <Build Include="dbo\Stored Procedures\spFetchReviewWithIdandDate.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchProblemsForDonut.sql" />
+    <Build Include="dbo\Stored Procedures\spFetchFeedbackForDonut.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

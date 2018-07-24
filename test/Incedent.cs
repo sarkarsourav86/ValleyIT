@@ -24,7 +24,14 @@ namespace HotelDBApp
         public int FeedbackValue { get; set; }
         public string FeedbackStr { get; set; }
         public bool IsSolved { get; set; }
-        
+        public static System.Data.DataSet GetProblemsCount(int hotelid,DateTime startDate,string sp)
+        {
+            SqlCommand cmd = new SqlCommand(sp);
+            cmd.Parameters.AddWithValue("@hotelid", hotelid);
+            cmd.Parameters.AddWithValue("@startdate", startDate);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            return DBOperations.FetchValues(cmd);
+        }
         public static int ReportProblem(Incedent incedent)
         {
             SqlCommand cmd = new SqlCommand("spReportProblem");

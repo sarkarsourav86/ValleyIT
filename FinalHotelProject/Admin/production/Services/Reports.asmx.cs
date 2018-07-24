@@ -21,7 +21,7 @@ namespace FinalHotelProject.Admin.production.Services
     [System.Web.Script.Services.ScriptService]
     public class Reports : System.Web.Services.WebService
     {
-        
+        private Dictionary<string, string> dict = new Dictionary<string, string>() { { "feedback", "spFetchFeedbackForDonut" }, { "problem", "spFetchProblemsForDonut" } };
         [WebMethod]
         public HotelDBApp.ChartData GetReviews(string selection,String id)
         {
@@ -75,6 +75,33 @@ namespace FinalHotelProject.Admin.production.Services
             return new HotelDBApp.ChartData() { Data = dicGood.Values.ToArray(),Data2=dicBad.Values.ToArray(), Labels = dicGood.Keys.ToArray() };
 
 
+        }
+        [WebMethod]
+        public HotelDBApp.ChartData GetProblemsDonut(string id,string selection)
+        {
+            return donutHelper(id, selection, dict["problem"]);
+        }
+        [WebMethod]
+        public HotelDBApp.ChartData GetFeedbackDonut(string id, string selection)
+        {
+            return donutHelper(id, selection, dict["feedback"]);
+        }
+        private ChartData donutHelper(string id, string selection,string storedProc)
+        {
+            DateTime startdate = DateTime.Now;
+            if (selection == "month")
+            {
+                startdate = DateTime.Now.AddMonths(-1);
+            }
+            int.TryParse(id, out int res);
+            DataTable dt = Incedent.GetProblemsCount(res, startdate, storedProc).Tables[0];
+            ChartData data = new ChartData()
+            {
+                Colors = dt.AsEnumerable().Select((x) => x["color"].ToString()).ToArray(),
+                Labels = dt.AsEnumerable().Select((x) => x["type"].ToString()).ToArray(),
+                Data = dt.AsEnumerable().Select((x) => int.Parse(x["count"].ToString())).ToArray()
+            };
+            return data;
         }
         [WebMethod]
         public List<Incedent> GetProblems(string id)

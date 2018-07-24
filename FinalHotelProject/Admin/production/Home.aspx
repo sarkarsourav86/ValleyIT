@@ -44,7 +44,7 @@
 
     </asp:UpdatePanel>
     
-    <asp:Timer ID="Timer0" runat="server" Interval="1000" OnTick="Timer0_Tick"></asp:Timer>
+    <asp:Timer ID="Timer0" runat="server" Interval="300000" OnTick="Timer0_Tick"></asp:Timer>
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="PlcLinegraphComplaints" runat="server">
@@ -154,7 +154,7 @@
                                     </Triggers>
 
                                 </asp:UpdatePanel>
-                                <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick"></asp:Timer>
+                                <asp:Timer ID="Timer1" runat="server" Interval="300000" OnTick="Timer1_Tick"></asp:Timer>
                             </ul>
 
                         </div>
@@ -236,8 +236,8 @@
                     console.log(result.Labels);
                     massPopChart.data.labels = result.Labels;
                     massPopChart.data.datasets[0].data = result.Data;
-                    //massPopChart.data.datasets[1].data = result.Data2;
-                    massPopChart.data.datasets[1].data = [1,2,3,4,5,6,7];
+                    massPopChart.data.datasets[1].data = result.Data2;
+                    //massPopChart.data.datasets[1].data = [1,2,3,4,5,6,7];
                     massPopChart.update();
                     
                 });
@@ -256,7 +256,7 @@
         Chart.defaults.global.defaultFontColor = '#777';
 
         let massPopChart = new Chart(myChart, {
-            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
             data: {
                 labels: [],
                 datasets: [{
@@ -323,7 +323,7 @@
                             <div class="col-md-12">
                                 <div class="x_panel">
                                     <div class="x_title">
-                                        <h2>Weekly Summary <small>Activity shares</small></h2>
+                                        <h2>Monthly Summary <small>Activity shares</small></h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                             </li>
@@ -353,18 +353,15 @@
 
                                             <div class="col-md-5">
                                                 <div class="row" style="text-align: center;">
-                                                    <div class="col-md-4">
-                                                        <canvas id="myPieChart"  ></canvas>
-                                                        <h4 style="margin: 0">Bounce Rates</h4>
+                                                    <div class="col-md-6">
+                                                        <canvas id="myPieChart1"  ></canvas>
+                                                        <h4 style="margin: 0">Most Reported Problems</h4>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <canvas class="canvasDoughnut" height="110" width="110" ></canvas>
-                                                        <h4 style="margin: 0">New Traffic</h4>
+                                                    <div class="col-md-6">
+                                                        <canvas id="myPieChart2" ></canvas>
+                                                        <h4 style="margin: 0">Most Reported Problem Types</h4>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <canvas class="canvasDoughnut" height="110" width="110" ></canvas>
-                                                        <h4 style="margin: 0">Device Share</h4>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -373,8 +370,9 @@
                             </div>
                         </div>
     <script>
-        let myPieChart = document.getElementById('myPieChart').getContext('2d');
-        let massPieChart = new Chart(myPieChart,
+        let myPieChart1 = document.getElementById('myPieChart1').getContext('2d');
+        let myPieChart2 = document.getElementById('myPieChart2').getContext('2d');
+        let massPieChart1 = new Chart(myPieChart1,
             {
                 type: 'doughnut',
                 data: {
@@ -389,13 +387,59 @@
                     },
                     
                     tooltips: {
-                        enabled: true
+                        enabled: true,
+                        titleFontSize: 12,
+                        bodyFontSize: 12
+                    }
+                }
+            }
+        );
+        let massPieChart2 = new Chart(myPieChart2,
+            {
+                type: 'doughnut',
+                data: {
+                    datasets: [{ data: [1, 2, 3], backgroundColor: ['red', 'green', 'blue'] }],
+                    labels: ['hi', 'hello', 'how']
+                },
+                options: {
+
+                    legend: {
+                        display: false,
+
+                    },
+
+                    tooltips: {
+                        enabled: true,
+                        titleFontSize: 12,
+                        bodyFontSize: 12
                     }
                 }
             }
         );
         $(document).ready(() => {
+            var id = $("#" + '<%= HdnHotelId.ClientID %>').val();
+            var getProblemsCount = (id) => {
+                FinalHotelProject.Admin.production.Services.Reports.GetProblemsDonut(id,'month', (result) =>
+                {
+                    massPieChart1.data.datasets[0].data = result.Data;
+                    massPieChart1.data.datasets[0].backgroundColor = result.Colors;
+                    massPieChart1.data.labels = result.Labels;
+                    massPieChart1.update();
+
+                });
+            }
+            var getFeedbackCount = (id) => {
             
+                FinalHotelProject.Admin.production.Services.Reports.GetFeedbackDonut(id, 'month', (result) => {
+                    massPieChart2.data.datasets[0].data = result.Data;
+                    massPieChart2.data.datasets[0].backgroundColor = result.Colors;
+                    massPieChart2.data.labels = result.Labels;
+                    massPieChart2.update();
+
+                });
+            }
+            getProblemsCount(id);
+            getFeedbackCount(id);
         })
     </script>
 </asp:Content>
