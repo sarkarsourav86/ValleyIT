@@ -10,123 +10,96 @@
 namespace FinalHotelProject.Admin.production {
     
     
-    public partial class LinegraphComplaints {
+    public partial class EditProblems {
         
         /// <summary>
-        /// UpnlUserStatus control.
+        /// LblIncedentId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpnlUserStatus;
+        protected global::System.Web.UI.WebControls.Label LblIncedentId;
         
         /// <summary>
-        /// LblNumOfUsers control.
+        /// DdlIncedentType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNumOfUsers;
+        protected global::System.Web.UI.WebControls.DropDownList DdlIncedentType;
         
         /// <summary>
-        /// LblNumOfGoodReviews control.
+        /// DdlFeedbackValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNumOfGoodReviews;
+        protected global::System.Web.UI.WebControls.DropDownList DdlFeedbackValue;
         
         /// <summary>
-        /// LblNumOfBadReviews control.
+        /// TxtDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNumOfBadReviews;
+        protected global::System.Web.UI.WebControls.TextBox TxtDesc;
         
         /// <summary>
-        /// LblCompleted control.
+        /// LblRoomNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCompleted;
+        protected global::System.Web.UI.WebControls.Label LblRoomNo;
         
         /// <summary>
-        /// Timer0 control.
+        /// LblTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer0;
+        protected global::System.Web.UI.WebControls.Label LblTime;
         
         /// <summary>
-        /// HdnHotelId control.
+        /// TxtUname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HdnHotelId;
+        protected global::System.Web.UI.WebControls.TextBox TxtUname;
         
         /// <summary>
-        /// UPIncedents control.
+        /// TxtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UPIncedents;
+        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
         
         /// <summary>
-        /// RptIncedents control.
+        /// TxtPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptIncedents;
+        protected global::System.Web.UI.WebControls.TextBox TxtPhone;
         
         /// <summary>
-        /// Timer1 control.
+        /// DdlIsResolved control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer1;
-        
-        /// <summary>
-        /// RptRecentComments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptRecentComments;
-        
-        /// <summary>
-        /// RptRecentComments2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptRecentComments2;
-        
-        /// <summary>
-        /// RptCompleted control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptCompleted;
+        protected global::System.Web.UI.WebControls.DropDownList DdlIsResolved;
     }
 }

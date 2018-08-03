@@ -22,44 +22,28 @@ namespace FinalHotelProject.Admin.production.Services
     public class Reports : System.Web.Services.WebService
     {
         private Dictionary<string, string> dict = new Dictionary<string, string>() { { "feedback", "spFetchFeedbackForDonut" }, { "problem", "spFetchProblemsForDonut" } };
+        private Dictionary<string, DateTime[]> dictDaeTimeMapping = new Dictionary<string, DateTime[]>()
+        {
+            { "month",new DateTime[]{DateTime.Now.AddMonths(-1), DateTime.Now } },
+            { "week",new DateTime[]{DateTime.Now.AddDays(-7), DateTime.Now } },
+            { "year",new DateTime[]{DateTime.Now.AddYears(-1), DateTime.Now } }
+        };
         [WebMethod]
         public HotelDBApp.ChartData GetReviews(string selection,String id)
         {
-            DateTime end=DateTime.UtcNow; 
-            DateTime start = DateTime.Now;
-            String[] Labels= { };
-            String LabelFormat = String.Empty;
-            if (selection == "month")
-            {
-                start = DateTime.Now.AddMonths(-1);
-                Labels= Enumerable.Range(1, end.Subtract(start).Days)
-                          .Select(offset => start.AddDays(offset).ToShortDateString())
-                          .ToArray();
-                LabelFormat= "M/dd/yyyy";
-            }
-            else if (selection == "week")
-            {
-                start = DateTime.UtcNow.AddDays(-7);
-                Labels = Enumerable.Range(1, end.Subtract(start).Days)
-                          .Select(offset => start.AddDays(offset).ToShortDateString())
-                          .ToArray();
-                LabelFormat = "M/dd/yyyy";
-            }
-            else if (selection == "year")
-            {
-                start = DateTime.UtcNow.AddYears(-1);
-                Labels = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-                LabelFormat = "MMMM";
-            }
-            DataSet ds=Feedback.FetchFeedbackById(id, start, end);
+            dynamic MyLabels = GetLabels(selection);
+            DataSet ds=Feedback.FetchFeedbackById(id, MyLabels.Start, MyLabels.End);
             Dictionary<string, int> dicGood = new Dictionary<string, int>();
             Dictionary<string, int> dicBad = new Dictionary<string, int>();
 
-            foreach (string label in Labels)
+            foreach (string label in MyLabels.Labels)
             {
                 if (!String.IsNullOrEmpty(label))
-                    dicGood[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(LabelFormat) == label && int.Parse(x["Rating"].ToString()) > 3).Count();
-                    dicBad[label]= ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(LabelFormat) == label && int.Parse(x["Rating"].ToString()) <= 3).Count();
+                {
+                    dicGood[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) > 3).Count();
+                    dicBad[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) <= 3).Count();
+                }
+                    
                 //dicGood[label] = (from row in ds.Tables[0].AsEnumerable()
                 //where DateTime.Parse(row["ReviewTime"].ToString()).ToString(LabelFormat) == label
                 //select row).Count();
@@ -76,6 +60,7 @@ namespace FinalHotelProject.Admin.production.Services
 
 
         }
+        
         [WebMethod]
         public HotelDBApp.ChartData GetProblemsDonut(string id,string selection)
         {
@@ -126,6 +111,85 @@ namespace FinalHotelProject.Admin.production.Services
             //string result = JsonConvert.SerializeObject(DatatableToDictionary(ds, "Title"), Newtonsoft.Json.Formatting.Indented);
             return incedents;
         }
-        
+        [WebMethod]
+        public dynamic GetProblemsStarCounts(string id,string selection)
+        {
+            int.TryParse(id, out int hotelid);
+            if (dictDaeTimeMapping.Keys.Contains(selection))
+            {
+                DateTime end = dictDaeTimeMapping[selection][1];
+                DateTime start = dictDaeTimeMapping[selection][0];
+                return Incedent.FetchPRoblemForReport(hotelid, start, end);
+            }
+            else return null;
+
+        }
+        [WebMethod]
+        public dynamic GetProblemsCountForAPeriod(string id,string selection)
+        {
+            dynamic MyLabels = GetLabels(selection);
+            int.TryParse(id, out int hotelid);
+            DataSet ds = Incedent.GetProblemsFromDateRange(hotelid, MyLabels.Start,MyLabels.End);
+            Dictionary<string, int> dictMappedDateAndProblems = new Dictionary<string, int>();
+
+            foreach (string label in MyLabels.Labels)
+            {
+                if (!String.IsNullOrEmpty(label))
+                {
+                    int count = ds.Tables[0].AsEnumerable().Where(x => x.Field<DateTime>("date").ToString(MyLabels.LabelFormat) == label).Select(x => x.Field<int>("count")).Count();
+                    int numberToBeAdded = count == 0 ? 0 : ds.Tables[0].AsEnumerable().Where(x => x.Field<DateTime>("date").ToString(MyLabels.LabelFormat) == label).Select(x => x.Field<int>("count")).First();
+                    dictMappedDateAndProblems.Add(label, numberToBeAdded);
+
+                    //int? count = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["date"].ToString()).ToString(MyLabels.LabelFormat) == label).Select(x => x.Field<int>("count")).First();
+                    //dictMappedDateAndProblems[label] = count!=null?int.Parse(count.ToString()):0;
+                    //dicBad[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) <= 3).Count();
+                }
+
+                //dicGood[label] = (from row in ds.Tables[0].AsEnumerable()
+                //where DateTime.Parse(row["ReviewTime"].ToString()).ToString(LabelFormat) == label
+                //select row).Count();
+            }
+            return new ChartData()
+            {
+                Labels =dictMappedDateAndProblems.Keys.ToArray(),
+                Data = dictMappedDateAndProblems.Values.ToArray()
+            };
+        }
+        private dynamic GetLabels(string selection)
+        {
+            DateTime end = DateTime.UtcNow;
+            DateTime start = DateTime.Now;
+            String[] Labels = { };
+            String LabelFormat = String.Empty;
+            if (selection == "month")
+            {
+                start = DateTime.Now.AddMonths(-1);
+                Labels = Enumerable.Range(1, end.Subtract(start).Days)
+                          .Select(offset => start.AddDays(offset).ToShortDateString())
+                          .ToArray();
+                LabelFormat = "M/dd/yyyy";
+            }
+            else if (selection == "week")
+            {
+                start = DateTime.UtcNow.AddDays(-7);
+                Labels = Enumerable.Range(1, end.Subtract(start).Days)
+                          .Select(offset => start.AddDays(offset).ToShortDateString())
+                          .ToArray();
+                LabelFormat = "M/dd/yyyy";
+            }
+            else if (selection == "year")
+            {
+                start = DateTime.UtcNow.AddYears(-1);
+                Labels = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+                LabelFormat = "MMMM";
+            }
+            return new
+            {
+                Start = start,
+                End = end,
+                Labels = Labels,
+                LabelFormat = LabelFormat
+            };
+        }
     }
 }

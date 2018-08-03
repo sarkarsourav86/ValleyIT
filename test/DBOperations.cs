@@ -35,6 +35,15 @@ namespace HotelDBApp
                 return ds;
             }
         }
+        public static SqlDataReader FetchValuesWithDataReader(SqlCommand cmd)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                con.Open();
+                cmd.Connection = con;
+                return cmd.ExecuteReader();
+            }
+        }
         public static int UpdateOrInsert(SqlCommand cmd)
         {
             using (SqlConnection con = new SqlConnection(con_str))

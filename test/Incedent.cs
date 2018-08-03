@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using System.Data;
 
 namespace HotelDBApp
 {
@@ -32,6 +32,15 @@ namespace HotelDBApp
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             return DBOperations.FetchValues(cmd);
         }
+        public static DataSet GetProblemsFromDateRange(int hotelid,DateTime start,DateTime end)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchProblemsWithinDateRange");
+            cmd.Parameters.AddWithValue("@hotelid", hotelid);
+            cmd.Parameters.AddWithValue("@start", start);
+            cmd.Parameters.AddWithValue("@end", end);
+            cmd.CommandType= System.Data.CommandType.StoredProcedure;
+            return DBOperations.FetchValues(cmd);
+        }
         public static int ReportProblem(Incedent incedent)
         {
             SqlCommand cmd = new SqlCommand("spReportProblem");
@@ -47,13 +56,58 @@ namespace HotelDBApp
 
         }
         
-        public static System.Data.DataSet FetchProblems(int HotelId,int isRestricted=0)
+        public static System.Data.DataSet FetchProblems(int HotelId,int isRestricted=0,int isSolved=0)
         {
             SqlCommand cmd = new SqlCommand("spFetchProblemsByHotelId");
             cmd.Parameters.AddWithValue("@hotelid", HotelId);
             cmd.Parameters.AddWithValue("@top", isRestricted);
+            cmd.Parameters.AddWithValue("@isResolved", isSolved);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             return DBOperations.FetchValues(cmd);
+        }
+        public static List<object> FetchProblemByIncedentAndHotelId(int hotelid,int userid)
+        {
+            SqlCommand cmd = new SqlCommand("spFetchSingleProblemByHotelandId");
+            cmd.Parameters.AddWithValue("@hotelid", hotelid);
+            cmd.Parameters.AddWithValue("@incedentId", userid);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            DataTable dt= DBOperations.FetchValues(cmd).Tables[0];
+            Incedent incedent = new Incedent();
+            User user = new User();
+            List<object> result = null;
+            if (dt.Rows.Count > 0)
+            {
+
+                incedent.IncedentID = dt.Rows[0]["Id"].ToString();
+                incedent.IncedentType = int.Parse(dt.Rows[0]["Type"].ToString());
+                incedent.IncedentDescription = dt.Rows[0]["Descrp"].ToString();
+                incedent.RoomNo = dt.Rows[0]["Room"].ToString();
+                incedent.IncedentTime = DateTime.Parse(dt.Rows[0]["Time"].ToString());
+                incedent.FeedbackValue = int.Parse(dt.Rows[0]["FeedbackValue"].ToString());
+                incedent.IsSolved = bool.Parse(dt.Rows[0]["IsResolved"].ToString());
+                user.Email = dt.Rows[0]["Email"].ToString();
+                user.LastName = dt.Rows[0]["name"].ToString();
+                user.Phone = dt.Rows[0]["Phone"].ToString();
+                result = new List<object>() { user, incedent };
+            }
+            return result;
+        }
+        public static object FetchPRoblemForReport(int hotelid,DateTime start,DateTime end)
+        {
+            SqlCommand cmd = new SqlCommand("spCountReports");
+            cmd.Parameters.AddWithValue("@hotelid", hotelid);
+            cmd.Parameters.AddWithValue("@startdate", start);
+            cmd.Parameters.AddWithValue("@enddate", end);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            DataTable ds = DBOperations.FetchValues(cmd).Tables[0];
+            
+            
+            return new
+            {
+                Problems = ds.Rows[0][0].ToString(),
+                Stars = ds.Rows[0][1].ToString(),
+                Users = ds.Rows[0][2].ToString()
+            };
         }
 
     }

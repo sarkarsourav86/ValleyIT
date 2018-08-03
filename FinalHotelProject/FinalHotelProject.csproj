@@ -75,6 +75,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\production\EditProblems.aspx" />
     <Content Include="Admin\production\Home.aspx" />
     <Content Include="Admin\production\js\chart\Chart.min.js" />
     <Content Include="Admin\production\Login.aspx" />
@@ -4670,6 +4671,13 @@
     </Compile>
     <Compile Include="Admin\production\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\EditProblems.aspx.cs">
+      <DependentUpon>EditProblems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\EditProblems.aspx.designer.cs">
+      <DependentUpon>EditProblems.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\production\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

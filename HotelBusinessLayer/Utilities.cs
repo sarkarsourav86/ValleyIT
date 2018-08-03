@@ -33,6 +33,16 @@ namespace HotelBusinessLayer
             
             {4,"Needs Immediate Attention" }
         };
+        public static DataTable AddRowsToTable(DataTable dt,DataRow[] rows)
+        {
+            //DataTable dt = new DataTable();
+           
+            foreach (DataRow row in rows)
+            {
+                dt.ImportRow(row);
+            }
+            return dt;
+        }
         public static Login ValidateLogin(Login login)
         {
             Login returnedLogin = null;

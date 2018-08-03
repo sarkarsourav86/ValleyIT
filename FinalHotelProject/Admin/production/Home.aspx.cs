@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HotelDBApp;
 using HotelBusinessLayer;
+using System.Data;
 
 namespace FinalHotelProject.Admin.production
 {
@@ -15,7 +16,25 @@ namespace FinalHotelProject.Admin.production
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadItems();
+            LoadRecentCommentsAtBottom();
         }
+        private void LoadRecentCommentsAtBottom()
+        {
+            DataSet MainDs=Incedent.FetchProblems(logininfo.HotelId,10);
+            DataSet CompleedProblemsDs = Incedent.FetchProblems(logininfo.HotelId, 0,1);
+            /*DataRow[] FirstCommentDR = MainDs.Tables[0].AsEnumerable().Take(5).ToArray();
+            DataRow[] SecondCommentDR = MainDs.Tables[0].AsEnumerable().Skip(5).ToArray();
+            DataTable cloneTable = MainDs.Tables[0].Clone();
+            DataTable FirstCommentdt = Utilities.AddRowsToTable(cloneTable,FirstCommentDR);
+            DataTable SecondCommentdt = Utilities.AddRowsToTable(cloneTable,SecondCommentDR);*/
+            RptRecentComments.DataSource = MainDs;
+            RptRecentComments.DataBind();
+            RptRecentComments2.DataSource = MainDs;
+            RptRecentComments2.DataBind();
+            RptCompleted.DataSource = CompleedProblemsDs;
+            RptCompleted.DataBind();
+        }
+        
         private void LoadUserStatus()
         {
             if (logininfo != null)

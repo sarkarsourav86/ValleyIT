@@ -27,7 +27,7 @@
                     <p class="text-muted font-13 m-b-30">
                      have something better here!
                     </p>
-                    <table id="datatable" class="table table-striped table-bordered">
+                    <table id="problemTable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>RoomNo</th>
@@ -57,6 +57,7 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
+    
     <!-- iCheck -->
     <!-- Datatables -->
     
@@ -80,7 +81,7 @@
         var loadTable = () => {
             var id=$('#CPDatatable_HdnHotelId').val();
             FinalHotelProject.Admin.production.Services.Reports.GetProblems(id, (result) => {
-                $('#datatable').DataTable(
+                $('#problemTable').DataTable(
                     {
                         data: result,
                         
