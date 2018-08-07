@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HotelDBApp;
+using System.Data;
 
 namespace FinalHotelProject.Admin.production
 {
@@ -16,6 +17,19 @@ namespace FinalHotelProject.Admin.production
         {
             SetLoginInfo();
             SetFormValues();
+            LoadDropdowns(DdlFeedbackValue);
+            LoadDropdowns(DdlIncedentType);
+        }
+        private void LoadDropdowns(DropDownList ddl)
+        {
+            DataSet ds=DBOperations.FetchDropDownValues(ddl.ID);
+            ddl.DataSource = ds;
+            ddl.DataValueField = "value";
+            ddl.DataTextField = "text";
+            ddl.DataBind();
+            
+
+
         }
         private int GetProblemId()
         {
@@ -26,16 +40,22 @@ namespace FinalHotelProject.Admin.production
         private void SetFormValues()
         {
             List<object> result=Incedent.FetchProblemByIncedentAndHotelId(logininfo.HotelId, GetProblemId());
-            User user=(User)result[0];
-            Incedent incedent = (Incedent)result[1];
-            LblIncedentId.Text = incedent.IncedentID;
-            TxtDesc.Text = incedent.IncedentDescription;
-            LblRoomNo.Text = incedent.RoomNo;
-            LblTime.Text = incedent.IncedentTime.ToShortDateString();
-            DdlIsResolved.SelectedValue = incedent.IsSolved ? "1" : "0";
-            TxtEmail.Text = user.Email;
-            TxtUname.Text = user.LastName;
-            TxtPhone.Text = user.Phone;
+            if (result != null)
+            {
+                User user = (User)result[0];
+                Incedent incedent = (Incedent)result[1];
+                LblIncedentId.Text = incedent.IncedentID;
+                TxtDesc.Text = incedent.IncedentDescription;
+                LblRoomNo.Text = incedent.RoomNo;
+                LblTime.Text = incedent.IncedentTime.ToShortDateString();
+                DdlIsResolved.SelectedValue = incedent.IsSolved ? "1" : "0";
+                DdlIncedentType.SelectedValue = incedent.IncedentType.ToString();
+                DdlFeedbackValue.SelectedValue = incedent.FeedbackValue.ToString();
+                TxtEmail.Text = user.Email;
+                TxtUname.Text = user.LastName;
+                TxtPhone.Text = user.Phone;
+            }
+            
         } 
         private void SetLoginInfo()
         {

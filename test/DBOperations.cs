@@ -21,6 +21,26 @@ namespace HotelDBApp
                 return cmd.ExecuteScalar();
             }
         }
+        public static DataSet FetchDropDownValues(string dropDown)
+        {
+            Dictionary<string, string> dictDdl = new Dictionary<string, string>()
+            {
+                { "DdlFeedbackValue","select ID as value,FieldText as text from Feedback_options" },
+                {"DdlIncedentType","select TypeID as value,Type as text from IncedentTypes" }
+            };
+            SqlCommand cmd = new SqlCommand(dictDdl[dropDown]);
+            cmd.CommandType = CommandType.Text;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da;
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+
+                cmd.Connection = con;
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
         public static DataSet FetchValues(SqlCommand cmd)
         {
             DataSet ds=new DataSet();

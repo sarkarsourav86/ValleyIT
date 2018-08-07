@@ -538,7 +538,7 @@
                                     <p class="day"><%# DateTime.Parse(Eval("IncedentTime").ToString()).Day %></p>
                                 </a>
                                 <div class="media-body">
-                                    <a class="title" href="#"><%# Eval("Type") %></a>
+                                    <a class="title" href="EditProblems.aspx?Id=<%# Eval("IncedentID") %>"><%# Eval("Type") %></a>
                                     <p><strong style="color: <%# Eval("Color")%>"><%# Eval("Problem") %></strong> </p>
                                     <p><%# Eval("IncedentDescription") %></p>
                                 </div>
@@ -568,7 +568,7 @@
                                     <p class="day"><%# DateTime.Parse(Eval("IncedentTime").ToString()).Day %></p>
                                 </a>
                                 <div class="media-body">
-                                    <a class="title" href="#"><%# Eval("Type") %></a>
+                                    <a class="title" href="EditProblems.aspx?Id=<%# Eval("IncedentID") %>"><%# Eval("Type") %></a>
                                     <p><strong style="color: <%# Eval("Color")%>"><%# Eval("Problem") %></strong> </p>
                                     <p><%# Eval("IncedentDescription") %></p>
                                 </div>
@@ -597,7 +597,7 @@
                                     <p class="day"><%# DateTime.Parse(Eval("IncedentTime").ToString()).Day %></p>
                                 </a>
                                 <div class="media-body">
-                                    <a class="title" href="#"><%# Eval("Type") %></a>
+                                    <a class="title" href="EditProblems.aspx?Id=<%# Eval("IncedentID") %>"><%# Eval("Type") %></a>
                                     <p><strong style="color: <%# Eval("Color")%>"><%# Eval("Problem") %></strong> </p>
                                     <p><%# Eval("IncedentDescription") %></p>
                                 </div>
