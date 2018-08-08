@@ -65,6 +65,8 @@ namespace FinalHotelProject.Admin.production
                 HdnHotelId.Value = logininfo.HotelId.ToString();
                 LoadIncedents();
                 LoadUserStatus();
+                this.Master.HotelName = logininfo.HotelName;
+                this.Master.UserName= logininfo.UserName;
             }
             
         }

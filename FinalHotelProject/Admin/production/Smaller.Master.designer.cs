@@ -31,6 +31,33 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// LblHotelName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblHotelName;
+        
+        /// <summary>
+        /// LblUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblUserName;
+        
+        /// <summary>
+        /// LblTopUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTopUserName;
+        
+        /// <summary>
         /// CPDatatable control.
         /// </summary>
         /// <remarks>

@@ -12,5 +12,7 @@ namespace HotelDBApp
         public String Password { get; set; }
         public int HotelId { get; set; }
         public String Role { get; set; }
+        public string HotelName { get; set; }
+        
     }
 }

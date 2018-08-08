@@ -17,6 +17,7 @@ namespace FinalHotelProject.Admin.production
         {
             SetLoginInfo();
             SetFormValues();
+            SetLabels();
             LoadDropdowns(DdlFeedbackValue);
             LoadDropdowns(DdlIncedentType);
         }
@@ -30,6 +31,11 @@ namespace FinalHotelProject.Admin.production
             
 
 
+        }
+        private void SetLabels()
+        {
+            this.Master.UserName = logininfo.UserName;
+            this.Master.HotelName = logininfo.HotelName;
         }
         private int GetProblemId()
         {

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/production/Smaller.Master" AutoEventWireup="true" CodeBehind="ReportedProblems.aspx.cs" Inherits="FinalHotelProject.Admin.production.ReportedProblems" %>
+<%@ MasterType VirtualPath="~/Admin/production/Smaller.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CPDatatable" runat="server">
     
         <asp:HiddenField ID="HdnHotelId" runat="server" />

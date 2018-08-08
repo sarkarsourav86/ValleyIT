@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/production/Smaller.Master" AutoEventWireup="true" CodeBehind="EditProblems.aspx.cs" Inherits="FinalHotelProject.Admin.production.EditProblems" %>
-
+<%@ MasterType VirtualPath="~/Admin/production/Smaller.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CPDatatable" runat="server">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">

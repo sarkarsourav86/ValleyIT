@@ -20,5 +20,17 @@ namespace FinalHotelProject.Admin.production {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HdnHotelId;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new FinalHotelProject.Admin.production.Smaller Master {
+            get {
+                return ((FinalHotelProject.Admin.production.Smaller)(base.Master));
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/production/Admin.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="FinalHotelProject.Admin.production.LinegraphComplaints" %>
-
+<%@ MasterType VirtualPath="~/Admin/production/Admin.Master" %>
 <asp:Content ID="Content0" ContentPlaceHolderID="PlcUserStatus" runat="server">
     <asp:UpdatePanel runat="server" ID="UpnlUserStatus">
         <ContentTemplate>
