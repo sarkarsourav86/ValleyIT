@@ -20,19 +20,23 @@ namespace FinalHotelProject.Admin.production
         }
         private void LoadRecentCommentsAtBottom()
         {
-            DataSet MainDs=Incedent.FetchProblems(logininfo.HotelId,10);
-            DataSet CompleedProblemsDs = Incedent.FetchProblems(logininfo.HotelId, 0,1);
-            /*DataRow[] FirstCommentDR = MainDs.Tables[0].AsEnumerable().Take(5).ToArray();
-            DataRow[] SecondCommentDR = MainDs.Tables[0].AsEnumerable().Skip(5).ToArray();
-            DataTable cloneTable = MainDs.Tables[0].Clone();
-            DataTable FirstCommentdt = Utilities.AddRowsToTable(cloneTable,FirstCommentDR);
-            DataTable SecondCommentdt = Utilities.AddRowsToTable(cloneTable,SecondCommentDR);*/
-            RptRecentComments.DataSource = MainDs;
-            RptRecentComments.DataBind();
-            RptRecentComments2.DataSource = MainDs;
-            RptRecentComments2.DataBind();
-            RptCompleted.DataSource = CompleedProblemsDs;
-            RptCompleted.DataBind();
+            if(logininfo!=null)
+            {
+                DataSet MainDs = Incedent.FetchProblems(logininfo.HotelId, 10);
+                DataSet CompleedProblemsDs = Incedent.FetchProblems(logininfo.HotelId, 0, 1);
+                /*DataRow[] FirstCommentDR = MainDs.Tables[0].AsEnumerable().Take(5).ToArray();
+                DataRow[] SecondCommentDR = MainDs.Tables[0].AsEnumerable().Skip(5).ToArray();
+                DataTable cloneTable = MainDs.Tables[0].Clone();
+                DataTable FirstCommentdt = Utilities.AddRowsToTable(cloneTable,FirstCommentDR);
+                DataTable SecondCommentdt = Utilities.AddRowsToTable(cloneTable,SecondCommentDR);*/
+                RptRecentComments.DataSource = MainDs;
+                RptRecentComments.DataBind();
+                RptRecentComments2.DataSource = MainDs;
+                RptRecentComments2.DataBind();
+                RptCompleted.DataSource = CompleedProblemsDs;
+                RptCompleted.DataBind();
+            }
+           
         }
         
         private void LoadUserStatus()
@@ -66,7 +70,7 @@ namespace FinalHotelProject.Admin.production
                 LoadIncedents();
                 LoadUserStatus();
                 this.Master.HotelName = logininfo.HotelName;
-                this.Master.UserName= logininfo.UserName;
+                this.Master.UserName= logininfo.UserName.Split('@')[0];
             }
             
         }

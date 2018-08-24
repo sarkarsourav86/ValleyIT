@@ -13,6 +13,24 @@ namespace FinalHotelProject.Admin.production {
     public partial class EditProblems {
         
         /// <summary>
+        /// PnlStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlStatus;
+        
+        /// <summary>
+        /// LblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblStatus;
+        
+        /// <summary>
         /// LblIncedentId control.
         /// </summary>
         /// <remarks>

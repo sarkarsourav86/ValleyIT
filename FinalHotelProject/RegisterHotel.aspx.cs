@@ -100,6 +100,7 @@ namespace FinalHotelProject
         }
         private HotelDBApp.Hotel CreateHotel()
         {
+            
             String [] address=FormatAddress(HdnAddress.Value);
             return address!=null? new HotelDBApp.Hotel() {
                 Email = HdnEmail.Value,
@@ -116,7 +117,8 @@ namespace FinalHotelProject
                 Brand = HdnPlaceName.Value,
                 PaymentId = PaymentId,
                 Franchise = int.Parse(DdlFranchise.SelectedValue),
-                FranchiseBrand = DdlFranchiseBrands.Visible ? int.Parse(DdlFranchiseBrands.SelectedValue) : 0
+                TripAdvisorLink= GetTripAdvisorLink(TxtTripadvisor.Text.Trim()),
+            FranchiseBrand = DdlFranchiseBrands.Visible ? int.Parse(DdlFranchiseBrands.SelectedValue) : 0
             }:null;
         }
         private HotelDBApp.Admin CreateNewAdmin(Hotel hotel)
@@ -180,7 +182,10 @@ namespace FinalHotelProject
                 place.Text = String.Empty;
             }
         }
-
+        private string GetTripAdvisorLink(string url)
+        {
+            return HotelBusinessLayer.Utilities.GetTripAdvisorLink(url);
+        }
         protected void DdlFranchise_SelectedIndexChanged(object sender, EventArgs e)
         {
             

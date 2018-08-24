@@ -45,8 +45,8 @@ namespace FinalHotelProject
             
             DateTime startDate = DateTime.Now;
             //DateTime endDate = startDate.AddDays(1);
-            //DateTime endDate = startDate.AddSeconds(30);
-            DateTime endDate = startDate.AddHours(12);
+            DateTime endDate = startDate.AddHours(24);
+            //DateTime endDate = startDate.AddMinutes(0.5);
             System.Timers.Timer myTimer = new System.Timers.Timer();
             // Set the Interval to 5 seconds (5000 milliseconds).
             
@@ -135,8 +135,9 @@ namespace FinalHotelProject
                         //Formatted mail body
                         mail.IsBodyHtml = true;
                         String URL= server;
+                        
                         //String URL = host;
-                        String linkGood = String.Format("https://search.google.com/local/writereview?placeid={0}", item["PlaceId"].ToString());
+                        String linkGood = String.IsNullOrEmpty(item["TripAdvisor"].ToString())? String.Format("https://search.google.com/local/writereview?placeid={0}", item["PlaceId"].ToString()): item["TripAdvisor"].ToString();
                         String linkBad = String.Format("{0}FeedbackForm.aspx?hotelid={1}&user={2}&star=", URL,item["Property"].ToString(),item["UserIdString"].ToString());
                         String linkbad1 = String.Format("{0}1", linkBad);
                         String linkbad2 = String.Format("{0}2", linkBad);

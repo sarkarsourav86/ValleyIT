@@ -28,7 +28,7 @@
     <form id="form1" runat="server">
         <div class="container body">
             <div class="main_container">
-                <div class="col-md-3 left_col">
+                <div class="col-md-3 left_col menu_fixed">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
                             <a href="index.html" class="site_title"><span><asp:Label runat="server" ID="LblHotelName"></asp:Label></span></a>
@@ -60,10 +60,10 @@
                                 <h3>General</h3>
                                 <ul class="nav side-menu">
                                     <li><a href="Home.aspx"><i class="fa fa-home"></i>Home</a>
-                                    <li><a href="ReportedProblems.aspx"><i class="fa fa-home"></i>Reported Problems</a>
+                                    <li><a href="ReportedProblems.aspx"><i class="fa fa-file"></i>Reported Problems</a>
                                         
                                     </li>
-                                    <li><a href="#"><i class="fa fa-home"></i>Tasks</a>
+                                    <li><a href="#"><i class="fa fa-tasks"></i>Tasks</a>
                                     <%--<li><a><i class="fa fa-edit"></i>Forms <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>

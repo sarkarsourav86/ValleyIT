@@ -38,6 +38,7 @@ namespace HotelDBApp
         public int FranchiseBrand { get; set; }
         public String FranchiseBrandName { get; set; }
         public String RewardsLink { get; set; }
+        public string TripAdvisorLink { get; set; }
         public static Hotel GetHotel(String id)
         {
             //SqlCommand cmd = new SqlCommand("SELECT [Brand],[Property Name],[Property Address Line 1],[Property Address Line 2],[Property City],[Property State],[Property  Postal Code],[Property Telephone],[Property Fax],[Property Number of Rooms],[Property General Manager],[Property Contact Description],[Property Contact Name],[DummyEmail] from Hotel where [Property] = '"+ id+"'");
@@ -99,6 +100,7 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@paymentid", hotel.PaymentId);
             cmd.Parameters.AddWithValue("@franchiseId", hotel.Franchise);
             cmd.Parameters.AddWithValue("@franchiseBrandId", hotel.FranchiseBrand);
+            cmd.Parameters.AddWithValue("@tripadvisorlink", hotel.TripAdvisorLink);
             return Convert.ToInt16(DBOperations.InsertAndReturn(cmd));
              
         }

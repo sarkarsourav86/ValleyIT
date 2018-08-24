@@ -16,10 +16,14 @@ namespace FinalHotelProject.Admin.production
         protected void Page_Load(object sender, EventArgs e)
         {
             SetLoginInfo();
-            SetFormValues();
-            SetLabels();
-            LoadDropdowns(DdlFeedbackValue);
-            LoadDropdowns(DdlIncedentType);
+            if (!Page.IsPostBack)
+            {
+                SetFormValues();
+                SetLabels();
+                LoadDropdowns(DdlFeedbackValue);
+                LoadDropdowns(DdlIncedentType);
+            }
+            
         }
         private void LoadDropdowns(DropDownList ddl)
         {
@@ -34,7 +38,7 @@ namespace FinalHotelProject.Admin.production
         }
         private void SetLabels()
         {
-            this.Master.UserName = logininfo.UserName;
+            this.Master.UserName = logininfo.UserName.Split('@')[0];
             this.Master.HotelName = logininfo.HotelName;
         }
         private int GetProblemId()
@@ -66,6 +70,42 @@ namespace FinalHotelProject.Admin.production
         private void SetLoginInfo()
         {
             logininfo = (HotelDBApp.Login)Session["LoginInfo"];
+        }
+        private Incedent GetIncedentFromUpdatedValues()
+        {
+            Incedent incedent = new Incedent()
+            {
+                IncedentIDNum = int.Parse(LblIncedentId.Text),
+                IncedentDescription = TxtDesc.Text,
+                IncedentType=int.Parse(DdlIncedentType.SelectedValue),
+                FeedbackValue=int.Parse(DdlFeedbackValue.SelectedValue),
+                IsSolved=int.Parse(DdlIsResolved.SelectedValue)==1?true:false
+
+            };
+            return incedent;
+        }
+        private void ShowLabel(string message,string status)
+        {
+            Dictionary<string, string> dicLabels = new Dictionary<string, string>()
+            {
+                {"success","alert alert-success alert-dismissible fade in" },
+                {"error","alert alert-danger alert-dismissible fade in" }
+            };
+            PnlStatus.Visible = true;
+            PnlStatus.CssClass = dicLabels[status];
+            LblStatus.Text = message;
+        }
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (Incedent.UpdateProblem(GetIncedentFromUpdatedValues())>0)
+            {
+                ShowLabel("The Problem has been successfully updated!", "success");
+            }
+            else
+            {
+                ShowLabel("Something went wrong!", "error");
+            }
+            
         }
     }
 }

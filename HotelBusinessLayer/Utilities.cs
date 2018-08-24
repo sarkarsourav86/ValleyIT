@@ -43,6 +43,26 @@ namespace HotelBusinessLayer
             }
             return dt;
         }
+        public static string GetTripAdvisorLink(string url)
+        {
+            try
+            {
+                string start = "https://www.tripadvisor.com/";
+                string middle = "UserReviewEdit";
+                string Url2ndpart = url.Split('/')[3];
+                string[] stringSeparators = new string[] { "-Reviews-" };
+                string[] result = Url2ndpart.Split(stringSeparators, StringSplitOptions.None);
+                string[] stringSeparators2 = new string[] { "Hotel_Review" };
+                string id = result[0].Split(stringSeparators2, StringSplitOptions.None)[1];
+                string newUrl = string.Format("{0}UserReviewEdit{1}-{2}", start, id, result[1]);
+                return newUrl;
+            }
+            catch(Exception e)
+            {
+                return string.Empty;
+            }
+            
+        }
         public static Login ValidateLogin(Login login)
         {
             Login returnedLogin = null;

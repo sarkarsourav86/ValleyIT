@@ -10,7 +10,7 @@ namespace HotelDBApp
 {
     public class Incedent
     {
-        
+        public int IncedentIDNum { get; set; }
         public String IncedentID { get; set; }
         public String HashedHotelID { get; set; }
         public int IncedentType { get; set; }
@@ -91,6 +91,17 @@ namespace HotelDBApp
                 result = new List<object>() { user, incedent };
             }
             return result;
+        }
+        public static int UpdateProblem(Incedent incedent)
+        {
+            SqlCommand cmd = new SqlCommand("spUpdateProblem");
+            cmd.Parameters.AddWithValue("@incedentId", incedent.IncedentIDNum);
+            cmd.Parameters.AddWithValue("@description", incedent.IncedentDescription);
+            cmd.Parameters.AddWithValue("@incedentType", incedent.IncedentType);
+            cmd.Parameters.AddWithValue("@feedbackValue", incedent.FeedbackValue);
+            cmd.Parameters.AddWithValue("@isSolved", incedent.IsSolved);
+            cmd.CommandType = CommandType.StoredProcedure;
+            return DBOperations.UpdateOrInsert(cmd);
         }
         public static object FetchPRoblemForReport(int hotelid,DateTime start,DateTime end)
         {

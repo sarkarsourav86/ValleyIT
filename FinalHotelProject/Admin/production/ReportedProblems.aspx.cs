@@ -26,7 +26,7 @@ namespace FinalHotelProject.Admin.production
             if (logininfo != null)
             {
                 HdnHotelId.Value = logininfo.HotelId.ToString();
-                this.Master.HotelName = logininfo.HotelName;
+                this.Master.HotelName = logininfo.HotelName.Split('@')[0];
                 this.Master.UserName = logininfo.UserName;
             }
         }

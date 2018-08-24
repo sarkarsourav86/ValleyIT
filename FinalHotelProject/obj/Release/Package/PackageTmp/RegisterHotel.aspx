@@ -292,6 +292,13 @@
                                         <span class="field-icon"><i class="fa fa-user"></i></span>
                                     </label>
                                 </div>
+                                <div class="section">
+                                    <label class="field prepend-icon">
+
+                                        <asp:TextBox runat="server" ID="TxtTripadvisor" CssClass="gui-input" placeholder="Enter Tripadvisor Link..."></asp:TextBox>
+                                        <span class="field-icon"><i class="fa fa-link"></i></span>
+                                    </label>
+                                </div>
                                 <!-- end section -->
 
                             </div>

@@ -30,6 +30,7 @@
     [Franchise] INT NULL, 
 	
     [FranchiseBrand] INT NULL, 
+    [TripAdvisor] VARCHAR(MAX) NULL, 
     CONSTRAINT [PK_Hotel] PRIMARY KEY ([Id]) 
 );
 
