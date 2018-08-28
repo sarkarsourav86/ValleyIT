@@ -16,3 +16,5 @@ C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProj
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProject.csproj.CoreCompileInputs.cache
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProject.dll
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProject.pdb
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\AuthorizeNet.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\AuthorizeNet.xml

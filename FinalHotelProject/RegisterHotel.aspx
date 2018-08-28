@@ -329,6 +329,7 @@
                                                     <p>1. Go to <a target="_blank" href="https://www.tripadvisor.com/">TripAdvisor.com</a></p>
                                                     <p>2. Search for your property in the searchbox and click on Find hotels.</p>
                                                     <p>3. Copy your unique link from the address bar.</p>
+                                                    <p>4. Paste your link in the textbox.</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
