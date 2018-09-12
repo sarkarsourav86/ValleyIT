@@ -13,9 +13,35 @@ namespace FinalHotelProject
 {
     public partial class Payment : System.Web.UI.Page
     {
+        String hotelid=null;
+        decimal amount = 0.0m;
+        DateTime expiryDate;
         protected void Page_Load(object sender, EventArgs e)
         {
             GenerateYears();
+            expiryDate = GetExpiryDate();
+            amount = calculateamount();
+        }
+        private  DateTime GetExpiryDate()
+        {
+            hotelid = Request.QueryString["HotelId"];
+            if (!string.IsNullOrEmpty(hotelid))
+            {
+                DateTime res = HotelDBApp.Payment.GetExpiryDate(hotelid);
+                if (res == DateTime.MinValue)
+                    return DateTime.Now;
+                else
+                {
+                    if (res < DateTime.Now)
+                    {
+                        return DateTime.Now;
+                    }
+                    else return res;
+                }
+                
+            }
+            else return DateTime.Now;
+            
         }
         private void GenerateYears()
         {
@@ -23,16 +49,34 @@ namespace FinalHotelProject
             int currentYear = DateTime.Now.Year;
             for(int i = currentYear; i <= currentYear + 14; i++)
             {
-                DdlExpiry.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                DdlExpiry.Items.Add(new ListItem( i.ToString(), i.ToString().Substring(0,2)));
             }
+        }
+        private string GetExpiration()
+        {
+            return String.Format("{0}{1}", DdlCardMonth.SelectedValue, DdlExpiry.SelectedValue);
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            String id = TxtEmail.Text + Guid.NewGuid().ToString("N");
-            HotelDBApp.Payment payment = new HotelDBApp.Payment() {Email= TxtEmail.Text,Id=id,URL= Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/')) + "/" };
-            String paymentId=HotelDBApp.Payment.AddPayment(payment);
-            Email email = CreateEmail(paymentId, payment.Email, payment.URL);
-            SendEmail(email);
+            if (amount != 0.00m)
+            {
+                ANetApiResponse res = Run("2hUJrx4D6S", "68jgK54v4jD3W5rL", amount);
+                String id = TxtEmail.Text + Guid.NewGuid().ToString("N");
+                HotelDBApp.Payment payment = new HotelDBApp.Payment() { Amount=amount, SubscriptionEndDate=expiryDate,PaymentDate=DateTime.Now, Email = TxtEmail.Text,HotelId=hotelid, Id = id, URL = Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/')) + "/" };
+                String paymentId = HotelDBApp.Payment.AddPayment(payment);
+                if (string.IsNullOrEmpty(hotelid))
+                {
+                    Email email = CreateEmail(paymentId, payment.Email, payment.URL);
+                    SendEmail(email);
+                }
+                
+            }
+            else
+            {
+                LblPrice.Text = "Please select one of the Subscription Plans";
+                LblPrice.ForeColor = System.Drawing.Color.Red;
+            }
+            
         }
         public  Email CreateEmail(String id, String email, String url)
         {
@@ -60,7 +104,7 @@ namespace FinalHotelProject
         {
             HotelBusinessLayer.Utilities.SendEmail(email);
         }
-        public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
+        public  ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
         {
             Console.WriteLine("Charge Credit Card Sample");
 
@@ -76,18 +120,18 @@ namespace FinalHotelProject
 
             var creditCard = new creditCardType
             {
-                cardNumber = "4111111111111111",
-                expirationDate = "0725",
-                cardCode = "123"
+                cardNumber = TxtCardNo.Text.Trim(),
+                expirationDate = GetExpiration().Trim(),
+                cardCode = TxtSecNo.Text.Trim()
             };
 
             var billingAddress = new customerAddressType
             {
-                firstName = "John",
-                lastName = "Doe",
-                address = "123 My St",
-                city = "OurTown",
-                zip = "98004"
+                firstName = TxtFirstName.Text,
+                lastName = TxtLastName.Text,
+                address = TxtFrstAdd.Text,
+                city = TxtCity.Text,
+                zip = TxtZip.Text
             };
 
             //standard api call to retrieve response
@@ -162,7 +206,59 @@ namespace FinalHotelProject
 
             return response;
         }
+        private decimal calculateamount()
+        {
+            Dictionary<string, decimal> Rates = new Dictionary<string, decimal>() { { "0", 0.00m }, { "1", 0.75m }, { "2", 0.65m }, { "3", 0.50m } };
+            Dictionary<string, int> ExpiryMonths = new Dictionary<string, int>() { {"0",0 }, { "1", 1 }, { "2", 6 }, { "3", 12 } };
+            expiryDate = expiryDate.AddMonths(ExpiryMonths[Ddlyear.SelectedValue]);
+            int.TryParse(TxtNoOfRooms.Text.Trim(), out int res);
+            return res * Rates[Ddlyear.SelectedValue];
+        }
+        protected void Ddlyear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            amount = calculateamount();
+            if (TxtNoOfRooms.Text.Trim() == string.Empty)
+            {
+                LblPrice.Text = "Please enter the number of rooms";
+                LblPrice.ForeColor = System.Drawing.Color.Red;
+                LblExpiryDate.Text = string.Empty;
+                BtnSubmit.Enabled = false;
+            }
+            else if (amount != 0.00m)
+            {
+                BtnSubmit.Enabled = true;
+                LblPrice.Text = String.Format("Amount Payable ${0}", amount);
+                LblExpiryDate.Text = String.Format("Subscription Expires {0}", expiryDate);
+            }
+            else
+            {
+                LblPrice.Text = "Please select one of the Subscription Plans";
+                LblPrice.ForeColor = System.Drawing.Color.Red;
+                LblExpiryDate.Text = string.Empty;
+                BtnSubmit.Enabled = false;
+            }
+            
+        }
 
-
+        protected void TxtNoOfRooms_TextChanged(object sender, EventArgs e)
+        {
+            amount = calculateamount();
+            int number = 0;
+            if(!int.TryParse(TxtNoOfRooms.Text.Trim(),out number))
+            {
+                LblPrice.Text = "Please enter a valid number of rooms";
+                LblPrice.ForeColor = System.Drawing.Color.Red;
+                LblExpiryDate.Text = string.Empty;
+                BtnSubmit.Enabled = false;
+            }
+            else if(amount>0)
+            {
+                BtnSubmit.Enabled = true;
+                LblPrice.Text = String.Format("Amount Payable ${0}", amount);
+                LblExpiryDate.Text = String.Format("Subscription Expires {0}", expiryDate);
+            }
+            
+        }
     }
 }

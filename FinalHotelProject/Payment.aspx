@@ -31,7 +31,48 @@
 
             <form id="form1" runat="server">
                 <div class="form-body">
+                    <div class="spacer-b30">
+                        <div class="tagline"><span>Subscription Information </span></div>
+                        <!-- .tagline -->
+                    </div>
+                    <div class="frm-row">
+                        
+                        <div class="section colm colm12">
+                            <label for="Ddlyear" class="field select">
+                                <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="Ddlyear_SelectedIndexChanged" runat="server" ID="Ddlyear">
+                                    <asp:ListItem Value="0">Select subscription plan...</asp:ListItem>
+                                    <asp:ListItem Value="1">Monthly Rate Per Room $0.75 </asp:ListItem>
+                                    <asp:ListItem Value="2">6 Month Rate Per Room $0.65</asp:ListItem>
+                                    <asp:ListItem Value="3">Yearly Rate Per Room $0.50</asp:ListItem>
+                                    
+                                </asp:DropDownList>
+                                <i class="arrow double"></i>
+                            </label>
+                        </div>
+                        <div class="section colm colm12">
+                            <label for="TxtNoOfRooms" class="field">
+                                
+                                <asp:TextBox runat="server" AutoPostBack="true" OnTextChanged="TxtNoOfRooms_TextChanged" ID="TxtNoOfRooms" class="gui-input" placeholder="Number Of Rooms..."></asp:TextBox>
+                            </label>
+                        </div>
+                        <div class="section colm colm12">
+                            <label for="Ddlyear" class="field">
+                                
+                                <asp:Label runat="server" Font-Bold="true" ID="LblPrice"></asp:Label>
+                            </label>
+                        </div>
+                        <div class="section colm colm12">
+                            <label for="LblExpiryDate" class="field">
+                                
+                                <asp:Label runat="server" Font-Bold="true" ID="LblExpiryDate"></asp:Label>
+                            </label>
+                        </div>
+                        <!-- end section -->
+                        
+                        
+                        <!-- end section -->
 
+                    </div>
                     <div class="spacer-b30">
                         <div class="tagline"><span>Personal Information </span></div>
                         <!-- .tagline -->
