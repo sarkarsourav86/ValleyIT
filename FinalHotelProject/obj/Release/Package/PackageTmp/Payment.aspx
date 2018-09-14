@@ -187,16 +187,14 @@
 
                         <div class="section colm colm6">
                             <label class="field prepend-icon">
-                                <asp:TextBox runat="server"  ID="TxtSecNo" CssClass="gui-input" placeholder="Security number..."></asp:TextBox>
-                                <b class="tooltip tip-left-top"><em>This is a four diigit number at the back of your card </em></b>
+                                <asp:TextBox runat="server"  ID="TxtSecNo" CssClass="gui-input" placeholder="CVV..."></asp:TextBox>
+                                <b class="tooltip tip-left-top"><em>3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front. </em></b>
                                 <span class="field-icon"><i class="fa fa-barcode"></i></span>
                             </label>
                         </div>
                         <!-- end section -->
 
-                        <div class="section colm colm6">
-                            <p><a href="#" class="smart-link">What is this? </a></p>
-                        </div>
+                        
                         <!-- end section -->
 
                     </div>
@@ -518,8 +516,11 @@
                 <!-- end .form-body section -->
                 <div class="form-footer">
                     <%--<button type="submit" class="button btn-primary">Proceed to confirm </button>--%>
-                    <asp:Button ID="BtnSubmit" CssClass="button btn-primary" runat="server" OnClick="BtnSubmit_Click" Text="Proceed to confirm" />
+                    <center><asp:Button ID="BtnSubmit" CssClass="button btn-primary" runat="server" OnClick="BtnSubmit_Click" Text="Confirm Payment" /></center><br />
+                    <center><img src="images/logohotel.png" /></center>
+                    
                 </div>
+                
                 <!-- end .form-footer section -->
             </form>
 

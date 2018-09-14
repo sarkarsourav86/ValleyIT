@@ -4488,6 +4488,7 @@
     <Content Include="images\logohotel.png" />
     <Content Include="images\SuccessCheck.png" />
     <Content Include="Payment.aspx" />
+    <Content Include="PaymentWithCheckSecret.aspx" />
     <Content Include="Places.aspx" />
     <Content Include="plugins\dropify\fonts\dropify.eot" />
     <Content Include="plugins\dropify\fonts\dropify.ttf" />
@@ -4751,6 +4752,13 @@
     </Compile>
     <Compile Include="Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentWithCheckSecret.aspx.cs">
+      <DependentUpon>PaymentWithCheckSecret.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentWithCheckSecret.aspx.designer.cs">
+      <DependentUpon>PaymentWithCheckSecret.aspx</DependentUpon>
     </Compile>
     <Compile Include="Places.aspx.cs">
       <DependentUpon>Places.aspx</DependentUpon>

@@ -516,8 +516,11 @@
                 <!-- end .form-body section -->
                 <div class="form-footer">
                     <%--<button type="submit" class="button btn-primary">Proceed to confirm </button>--%>
-                    <asp:Button ID="BtnSubmit" CssClass="button btn-primary" runat="server" OnClick="BtnSubmit_Click" Text="Confirm Payment" />
+                    <center><asp:Button ID="BtnSubmit" CssClass="button btn-primary" runat="server" OnClick="BtnSubmit_Click" Text="Confirm Payment" /></center><br />
+                    <center><img src="images/logohotel.png" /></center>
+                    
                 </div>
+                
                 <!-- end .form-footer section -->
             </form>
 

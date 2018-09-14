@@ -19,7 +19,8 @@ namespace FinalHotelProject
         string paymentStatus;
         protected void Page_Load(object sender, EventArgs e)
         {
-            GenerateYears();
+            if(!Page.IsPostBack)
+                GenerateYears();
             //expiryDate = GetExpiryDate();
             amount = calculateamount();
         }
@@ -50,7 +51,7 @@ namespace FinalHotelProject
             int currentYear = DateTime.Now.Year;
             for(int i = currentYear; i <= currentYear + 14; i++)
             {
-                DdlExpiry.Items.Add(new ListItem( i.ToString(), i.ToString().Substring(0,2)));
+                DdlExpiry.Items.Add(new ListItem( i.ToString(), i.ToString().Substring(2)));
             }
         }
         private string GetExpiration()

@@ -43,6 +43,9 @@
                       },
                       TxtDate: {
                           required: true
+                      },
+                      TxtPhone: {
+                          required: true
                       }
 
                   },
@@ -60,6 +63,9 @@
                       },
                       TxtDate: {
                           required: 'Please enter checkout date'
+                      },
+                      TxtPhone: {
+                          required: 'Please enter your phone number'
                       }
                   },
                   highlight: function (element, errorClass, validClass) {
@@ -150,7 +156,7 @@
                         <div class="section">
                             <label class="field prepend-icon">
                             
-                                <asp:TextBox runat="server" ID="TxtLastname" CssClass="gui-input" placeholder="Enter Lastname"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="TxtLastname" CssClass="gui-input" placeholder="Enter Your Name"></asp:TextBox>
                                 <span class="field-icon"><i class="fa fa-user"></i></span>  
                             </label>
                         </div><!-- end section -->                    
