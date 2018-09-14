@@ -10,7 +10,20 @@
 
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link href="Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="Admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="Admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="Admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="Admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="Admin/vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
 
+    <link href="Admin/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="Admin/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 
     <!--[if lte IE 9]>
     	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>    
@@ -29,7 +42,7 @@
         gtag('config', 'UA-118035317-1');
     </script>
     <script src="js/jquery-1.9.1.min.js"></script>
-      <script src="js/jquery-ui-custom.min.js"></script>
+    <script src="js/jquery-ui-custom.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script type="text/javascript">
@@ -102,10 +115,10 @@
 
         });
 
-      </script>
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcW22Axg0u70M3Pobv9NtFCPXJacfcT8o&libraries=places&callback=initialize" async defer></script>
     <script type="text/javascript">
-        var map,infowindow;
+        var map, infowindow;
         function initialize() {
             var mapOptions = {
                 zoom: 10,
@@ -122,7 +135,7 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    
+
                     map.setCenter(pos);
                 }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -207,13 +220,15 @@
 
             <div class="form-header header-primary">
                 <h4><i class="fa fa-comments"></i>Register Property</h4>
-                
+
             </div>
             <!-- end .form-header section -->
             <asp:Panel runat="server" ID="PnlError" Visible="false" CssClass="notification alert-error spacer-t10">
-                    <p><asp:Label runat="server" ID="LblError" /> </p>
-                    <a href="#" class="close-btn">&times;</a>
-                </asp:Panel>
+                <p>
+                    <asp:Label runat="server" ID="LblError" />
+                </p>
+                <a href="#" class="close-btn">&times;</a>
+            </asp:Panel>
             <form id="form1" runat="server">
                 <asp:HiddenField runat="server" ID="HdnEmail" />
                 <asp:HiddenField runat="server" ID="HdnAddress" />
@@ -229,8 +244,7 @@
                             <div class="colm colm6">
                                 <div class="section">
                                     <label class="field prepend-icon">
-
-                                       Select Franchise
+                                        Select Franchise
                                     </label>
                                     <label class="field prepend-icon">
 
@@ -240,18 +254,17 @@
                                 </div>
                                 <asp:Panel ID="PnlBrand" runat="server" Visible="false">
                                     <div class="section">
-                                    <label class="field prepend-icon">
+                                        <label class="field prepend-icon">
+                                            Select Franchise Brand
+                                        </label>
+                                        <label class="field prepend-icon">
 
-                                       Select Franchise Brand
-                                    </label>
-                                    <label class="field prepend-icon">
-
-                                        <asp:DropDownList CssClass="gui-input" AutoPostBack="true" DataTextField="BrandName" DataValueField="Id" runat="server" ID="DdlFranchiseBrands" ></asp:DropDownList>
-                                        <span class="field-icon"><i class="fa fa-envelope"></i></span>
-                                    </label>
-                                </div>
+                                            <asp:DropDownList CssClass="gui-input" AutoPostBack="true" DataTextField="BrandName" DataValueField="Id" runat="server" ID="DdlFranchiseBrands"></asp:DropDownList>
+                                            <span class="field-icon"><i class="fa fa-envelope"></i></span>
+                                        </label>
+                                    </div>
                                 </asp:Panel>
-                                
+
                                 <div class="section">
                                     <label class="field prepend-icon">
 
@@ -295,9 +308,37 @@
                                 <div class="section">
                                     <label class="field prepend-icon">
 
-                                        <asp:TextBox runat="server" ID="TxtTripadvisor" CssClass="gui-input" placeholder="Enter Tripadvisor Link..."></asp:TextBox>
+                                        <asp:TextBox runat="server" data-toggle="modal" data-target=".bs-example-modal-sm" ID="TxtTripadvisor" CssClass="gui-input" placeholder="Enter Tripadvisor Link..."></asp:TextBox>
                                         <span class="field-icon"><i class="fa fa-link"></i></span>
+                                        
+
                                     </label>
+                                    
+                                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel2">Your TripAdvisor Link</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>How to get your TripAdvisor Link</h4>
+                                                    <p>1. Go to <a target="_blank" href="https://www.tripadvisor.com/">TripAdvisor.com</a></p>
+                                                    <p>2. Search for your property in the searchbox and click on Find hotels.</p>
+                                                    <p>3. Copy your unique link from the address bar.</p>
+                                                    <p>4. Paste your link in the textbox.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- end section -->
 
@@ -337,7 +378,20 @@
 
     <div></div>
     <!-- end section -->
-
+    <script src="Admin/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="Admin/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="Admin/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="Admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="Admin/vendors/iCheck/icheck.min.js"></script>
+    <script src="Admin/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="Admin/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="Admin/vendors/pnotify/dist/pnotify.nonblock.js"></script>
 </body>
 </html>
 

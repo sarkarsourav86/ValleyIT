@@ -16,10 +16,11 @@ namespace FinalHotelProject
         String hotelid=null;
         decimal amount = 0.0m;
         DateTime expiryDate;
+        string paymentStatus;
         protected void Page_Load(object sender, EventArgs e)
         {
             GenerateYears();
-            expiryDate = GetExpiryDate();
+            //expiryDate = GetExpiryDate();
             amount = calculateamount();
         }
         private  DateTime GetExpiryDate()
@@ -60,15 +61,27 @@ namespace FinalHotelProject
         {
             if (amount != 0.00m)
             {
-                ANetApiResponse res = Run("2hUJrx4D6S", "68jgK54v4jD3W5rL", amount);
-                String id = TxtEmail.Text + Guid.NewGuid().ToString("N");
-                HotelDBApp.Payment payment = new HotelDBApp.Payment() { Amount=amount, SubscriptionEndDate=expiryDate,PaymentDate=DateTime.Now, Email = TxtEmail.Text,HotelId=hotelid, Id = id, URL = Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/')) + "/" };
-                String paymentId = HotelDBApp.Payment.AddPayment(payment);
-                if (string.IsNullOrEmpty(hotelid))
+                //ANetApiResponse res = Run("2hUJrx4D6S", "68jgK54v4jD3W5rL", amount); //testing
+                ANetApiResponse res = Run("4XZ9RqmC8k6", "4U466w8dBYdwsM5f", amount);//production
+                if(paymentStatus=="success")
                 {
-                    Email email = CreateEmail(paymentId, payment.Email, payment.URL);
-                    SendEmail(email);
+                    String id = TxtEmail.Text + Guid.NewGuid().ToString("N");
+                    HotelDBApp.Payment payment = new HotelDBApp.Payment() { Amount = amount, SubscriptionEndDate = expiryDate, PaymentDate = DateTime.Now, Email = TxtEmail.Text, HotelId = hotelid, Id = id, URL = Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/')) + "/" };
+                    String paymentId = HotelDBApp.Payment.AddPayment(payment);
+                    if (string.IsNullOrEmpty(hotelid))
+                    {
+                        Email email = CreateEmail(paymentId, payment.Email, payment.URL);
+                        SendEmail(email);
+                    }
+                    LblPrice.Text = "Your transaction was successful";
+                    LblPrice.ForeColor = System.Drawing.Color.Green;
                 }
+                else
+                {
+                    LblPrice.Text = "Your transaction was unsuccessful";
+                    LblPrice.ForeColor = System.Drawing.Color.Red;
+                }
+                
                 
             }
             else
@@ -108,7 +121,8 @@ namespace FinalHotelProject
         {
             Console.WriteLine("Charge Credit Card Sample");
 
-            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+            //ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
 
             // define the merchant information (authentication / transaction id)
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
@@ -138,9 +152,10 @@ namespace FinalHotelProject
             var paymentType = new paymentType { Item = creditCard };
 
             // Add line Items
-            var lineItems = new lineItemType[2];
-            lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(15.00) };
-            lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(450.00) };
+            var lineItems = new lineItemType[1];
+            /*lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(15.00),  };
+            lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(450.00) };*/
+            lineItems[0] = new lineItemType { itemId = "1", name = "subscription",quantity=1, unitPrice = amount,description = Ddlyear.SelectedItem.Text };
 
             var transactionRequest = new transactionRequestType
             {
@@ -173,6 +188,7 @@ namespace FinalHotelProject
                         Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
                         Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
                         Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
+                        paymentStatus = "success";
                     }
                     else
                     {
@@ -182,6 +198,7 @@ namespace FinalHotelProject
                             Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
                             Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
                         }
+                        paymentStatus = "failed";
                     }
                 }
                 else
@@ -197,20 +214,21 @@ namespace FinalHotelProject
                         Console.WriteLine("Error Code: " + response.messages.message[0].code);
                         Console.WriteLine("Error message: " + response.messages.message[0].text);
                     }
+                    paymentStatus = "failed";
                 }
             }
             else
             {
-                Console.WriteLine("Null Response.");
+                paymentStatus = "failed";
             }
 
             return response;
         }
         private decimal calculateamount()
         {
-            Dictionary<string, decimal> Rates = new Dictionary<string, decimal>() { { "0", 0.00m }, { "1", 0.75m }, { "2", 0.65m }, { "3", 0.50m } };
+            Dictionary<string, decimal> Rates = new Dictionary<string, decimal>() { { "0", 0.00m }, { "1", 0.75m }, { "2", 0.65m*6 }, { "3", 0.50m*12 } };
             Dictionary<string, int> ExpiryMonths = new Dictionary<string, int>() { {"0",0 }, { "1", 1 }, { "2", 6 }, { "3", 12 } };
-            expiryDate = expiryDate.AddMonths(ExpiryMonths[Ddlyear.SelectedValue]);
+            expiryDate = GetExpiryDate().AddMonths(ExpiryMonths[Ddlyear.SelectedValue]).AddDays(-1);
             int.TryParse(TxtNoOfRooms.Text.Trim(), out int res);
             return res * Rates[Ddlyear.SelectedValue];
         }
@@ -229,7 +247,7 @@ namespace FinalHotelProject
             {
                 BtnSubmit.Enabled = true;
                 LblPrice.Text = String.Format("Amount Payable ${0}", amount);
-                LblExpiryDate.Text = String.Format("Subscription Expires {0}", expiryDate);
+                LblExpiryDate.Text = String.Format("Subscription Renewes {0}", expiryDate);
             }
             else
             {
@@ -256,7 +274,7 @@ namespace FinalHotelProject
             {
                 BtnSubmit.Enabled = true;
                 LblPrice.Text = String.Format("Amount Payable ${0}", amount);
-                LblExpiryDate.Text = String.Format("Subscription Expires {0}", expiryDate);
+                LblExpiryDate.Text = String.Format("Subscription Renewes {0}", expiryDate);
             }
             
         }

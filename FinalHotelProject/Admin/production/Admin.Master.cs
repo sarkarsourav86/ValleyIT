@@ -31,9 +31,14 @@ namespace FinalHotelProject.Admin.production
                 LblUserName.Text = value;
             }
         }
+        private void SetHyperlink()
+        {
+            HotelDBApp.Login login = (HotelDBApp.Login)Session["LoginInfo"];
+            HypPaymentLink.NavigateUrl = string.Format("http://theguestxp.com/payment.aspx?HotelId={0}", login.LongHotelId);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SetHyperlink();
         }
     }
 }

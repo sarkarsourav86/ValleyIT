@@ -63,7 +63,12 @@
                                     <li><a href="ReportedProblems.aspx"><i class="fa fa-file"></i>Reported Problems</a>
                                         
                                     </li>
-                                    <li><a href="#"><i class="fa fa-tasks"></i>Tasks</a>
+                                    <li><a href="#"><i class="fa fa-tasks"></i>Tasks</a></li>
+                                    <li>
+                                        <asp:HyperLink runat="server" ID="HypPaymentLink" target="_blank"><i class="fa fa-link"></i>Make A Payment</asp:HyperLink>
+                                        
+                                    </li>
+
                                     <%--<li><a><i class="fa fa-edit"></i>Forms <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>

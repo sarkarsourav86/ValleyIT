@@ -73,7 +73,7 @@ namespace HotelBusinessLayer
             DataTable dt = DBOperations.FetchValues(cmd).Tables[0];
             if (dt.Rows.Count > 0)
             {
-                returnedLogin = new Login() { UserName = login.UserName, Password = login.Password, Role = dt.Rows[0]["Role"].ToString(), HotelId = int.Parse(dt.Rows[0]["PropertyId"].ToString()), HotelName= dt.Rows[0]["Name"].ToString() };
+                returnedLogin = new Login() { UserName = login.UserName, Password = login.Password, Role = dt.Rows[0]["Role"].ToString(), HotelId = int.Parse(dt.Rows[0]["PropertyId"].ToString()), HotelName= dt.Rows[0]["Name"].ToString(),LongHotelId= dt.Rows[0]["LongId"].ToString() };
             }
             //int.TryParse(DBOperations.InsertAndReturn(cmd).ToString(),out int res);
             return returnedLogin;
