@@ -54,7 +54,7 @@
                 messages: {
 
                     TxtUserLastName: {
-                        required: 'Please enter your last name.'
+                        required: 'Please enter your name.'
                     },
                     TxtRoom: {
                         required: 'Please enter your room number.'
@@ -229,7 +229,7 @@
                                         <div class="section">
                                             <label class="field prepend-icon">
 
-                                                <asp:TextBox ID="TxtUserLastName" runat="server" CssClass="gui-input" placeholder="Enter lastname"></asp:TextBox>
+                                                <asp:TextBox ID="TxtUserLastName" runat="server" CssClass="gui-input" placeholder="Enter Name"></asp:TextBox>
                                                 <span class="field-icon"><i class="fa fa-user"></i></span>
                                             </label>
                                         </div>

@@ -56,8 +56,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <img src="../../images/logohotel.png" />
+                  <p>©2018 All Rights Reserved. MyGuestXp.</p>
                 </div>
               </div>
             </form>
@@ -92,8 +92,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <img src="../../images/logohotel.png" />
+                  <p>©2018 All Rights Reserved. MyGuestXp.</p>
                 </div>
               </div>
             </form>

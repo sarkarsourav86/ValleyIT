@@ -219,7 +219,8 @@
         <div class="smart-forms smart-container wrap-0">
 
             <div class="form-header header-primary">
-                <h4><i class="fa fa-comments"></i>Register Property</h4>
+                <img src="images/logohotel.png" />
+                <h4>Register Property</h4>
 
             </div>
             <!-- end .form-header section -->
