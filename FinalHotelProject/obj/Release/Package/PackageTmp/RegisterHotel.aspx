@@ -219,7 +219,7 @@
         <div class="smart-forms smart-container wrap-0">
 
             <div class="form-header header-primary">
-                <img src="images/logohotel.png" />
+                <%--<img src="images/logohotel.png" />--%>
                 <h4>Register Property</h4>
 
             </div>
@@ -366,7 +366,8 @@
                     <!-- end .form-body section -->
                     <div class="form-footer">
 
-                        <asp:Button runat="server" ID="BtnSubmit" CssClass="button btn-primary" Text="Register" OnClick="BtnSubmit_Click" />
+                        <center><asp:Button style="width:130px" runat="server" ID="BtnSubmit" CssClass="button btn-primary" Text="Register" OnClick="BtnSubmit_Click" /></center>
+                        <center><img src="images/logohotel.png" /></center>
                     </div>
                     <!-- end .form-footer section -->
                 </asp:Panel>

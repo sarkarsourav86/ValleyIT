@@ -80,6 +80,7 @@
   <ItemGroup>
     <Content Include="Admin\production\EditProblems.aspx" />
     <Content Include="Admin\production\Home.aspx" />
+    <Content Include="Admin\production\images\Kanye_West.png" />
     <Content Include="Admin\production\js\chart\Chart.min.js" />
     <Content Include="Admin\production\Login.aspx" />
     <Content Include="Admin\production\ReportedProblems.aspx" />

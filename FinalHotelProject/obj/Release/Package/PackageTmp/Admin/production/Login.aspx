@@ -8,9 +8,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gentelella Alela! | </title>
-
+    <title>Admin Portal - MyGuestXp</title>
+    <link href="../../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -33,7 +32,8 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form id="form1" runat="server">
-              <h1>Login Form</h1>
+              <h2 style="margin-bottom:50px;font-size:30px;">MyGuestXp Portal Login</h2>
+                
               <div>
                 <asp:TextBox runat="server" ID="TxtUsername"  CssClass="form-control" placeholder="Username" required />
               </div>
@@ -42,14 +42,14 @@
               </div>
               <div>
                 <asp:Button CssClass="btn btn-default submit" runat="server" ID="BtnLogin" OnClick="BtnLogin_Click" Text="Login"></asp:Button>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="reset_pass" href="#">Forgot your password?</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
+                <p class="change_link">Visit us at
+                  <a target="_blank" href="http://www.MyGuestXP.com" class="to_register"> www.MyGuestXP.com</a>
                 </p>
 
                 <div class="clearfix"></div>

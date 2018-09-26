@@ -14,15 +14,41 @@ namespace FinalHotelProject
     public partial class Payment : System.Web.UI.Page
     {
         String hotelid=null;
+        string HotelName;
         decimal amount = 0.0m;
         DateTime expiryDate;
         string paymentStatus;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ValidateHotelId())
+            {
+                PnlContainer.Visible = true;
+            }
+            else PnlContainer.Visible = false;
             if(!Page.IsPostBack)
                 GenerateYears();
             //expiryDate = GetExpiryDate();
             amount = calculateamount();
+        }
+        private bool ValidateHotelId()
+        {
+            hotelid = Request.QueryString["HotelId"];
+            if(string.IsNullOrEmpty(hotelid))
+            {
+                LblHotelName.Text = "New Payment";
+                return true;
+            }
+            else
+            {
+                HotelName = Hotel.ValidateHotel(hotelid);
+                if (!string.IsNullOrEmpty(HotelName))
+                {
+                    LblHotelName.Text = string.Format("Payment for {0}", HotelName);
+                    return true;
+                }
+                else return false;
+                
+            }
         }
         private  DateTime GetExpiryDate()
         {

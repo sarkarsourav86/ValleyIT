@@ -35,28 +35,32 @@ namespace FinalHotelProject.Admin.production.Services
             DataSet ds=Feedback.FetchFeedbackById(id, MyLabels.Start, MyLabels.End);
             Dictionary<string, int> dicGood = new Dictionary<string, int>();
             Dictionary<string, int> dicBad = new Dictionary<string, int>();
-
-            foreach (string label in MyLabels.Labels)
+            if (!string.IsNullOrEmpty(id))
             {
-                if (!String.IsNullOrEmpty(label))
+                foreach (string label in MyLabels.Labels)
                 {
-                    dicGood[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) > 3).Count();
-                    dicBad[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) <= 3).Count();
-                }
-                    
-                //dicGood[label] = (from row in ds.Tables[0].AsEnumerable()
-                //where DateTime.Parse(row["ReviewTime"].ToString()).ToString(LabelFormat) == label
-                //select row).Count();
-            }
-            /*Dictionary<string, string[]> result = new Dictionary<string, string[]>()
-            {
-                {"data",dic.Values.ToArray() },
-                {"label",dic.Keys.ToArray() }
-            };*/
-            //HotelDBApp.ChartData data=new HotelDBApp.ChartData() { Data = dic.Values.ToArray(), Labels = dic.Keys.ToArray() };
+                    if (!String.IsNullOrEmpty(label))
+                    {
+                        dicGood[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) > 3).Count();
+                        dicBad[label] = ds.Tables[0].AsEnumerable().Where(x => DateTime.Parse(x["ReviewTime"].ToString()).ToString(MyLabels.LabelFormat) == label && int.Parse(x["Rating"].ToString()) <= 3).Count();
+                    }
 
-            //return new JavaScriptSerializer().Serialize(data);
-            return new HotelDBApp.ChartData() { Data = dicGood.Values.ToArray(),Data2=dicBad.Values.ToArray(), Labels = dicGood.Keys.ToArray() };
+                    //dicGood[label] = (from row in ds.Tables[0].AsEnumerable()
+                    //where DateTime.Parse(row["ReviewTime"].ToString()).ToString(LabelFormat) == label
+                    //select row).Count();
+                }
+                /*Dictionary<string, string[]> result = new Dictionary<string, string[]>()
+                {
+                    {"data",dic.Values.ToArray() },
+                    {"label",dic.Keys.ToArray() }
+                };*/
+                //HotelDBApp.ChartData data=new HotelDBApp.ChartData() { Data = dic.Values.ToArray(), Labels = dic.Keys.ToArray() };
+
+                //return new JavaScriptSerializer().Serialize(data);
+                return new HotelDBApp.ChartData() { Data = dicGood.Values.ToArray(), Data2 = dicBad.Values.ToArray(), Labels = dicGood.Keys.ToArray() };
+            }
+            else return null;
+            
 
 
         }

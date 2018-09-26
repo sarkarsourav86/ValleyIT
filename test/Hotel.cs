@@ -81,6 +81,13 @@ namespace HotelDBApp
             cmd.Parameters.AddWithValue("@franchiseId",id);
             return DBOperations.FetchValues(cmd);
         }
+        public static string ValidateHotel(string hotelid)
+        {
+            SqlCommand cmd = new SqlCommand("spValidateHotel");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@hotelid", hotelid);
+            return Convert.ToString(DBOperations.InsertAndReturn(cmd));
+        }
         public static int RegisterHotel(Hotel hotel)
         {
             SqlCommand cmd = new SqlCommand("spRegisterHotel");

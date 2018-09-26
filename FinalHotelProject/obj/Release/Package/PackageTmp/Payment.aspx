@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Payment -MyGuestXp</title>
+    <title>Payment - MyGuestXp</title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">

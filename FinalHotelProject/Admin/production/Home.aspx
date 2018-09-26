@@ -11,7 +11,7 @@
                             <asp:Label ID="LblNumOfUsers" runat="server"></asp:Label>
                         </div>
                         <h3>Users Signed In Today</h3>
-                        <p>Lorem ipsum psdea itgum rixt.</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -21,7 +21,7 @@
                             <asp:Label ID="LblNumOfGoodReviews" runat="server"></asp:Label>
                         </div>
                         <h3>Good Reviews</h3>
-                        <p>Lorem ipsum psdea itgum rixt.</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -31,7 +31,7 @@
                             <asp:Label ID="LblNumOfBadReviews" runat="server"></asp:Label>
                         </div>
                         <h3>Bad Reviews</h3>
-                        <p>Lorem ipsum psdea itgum rixt.</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -41,7 +41,7 @@
                             <asp:Label ID="LblCompleted" runat="server"></asp:Label>
                         </div>
                         <h3>Completed Requests</h3>
-                        <p>Lorem ipsum psdea itgum rixt.</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="x_content">
                     <div class="col-md-9 col-sm-12 col-xs-12">
-                        <div class="demo-container" style="height: 430px">
+                        <div class="demo-container">
                             <%--<div id="chart_plot_02" class="demo-placeholder"></div>--%>
                             <canvas id="myChart" class="demo-placeholder"></canvas>
 

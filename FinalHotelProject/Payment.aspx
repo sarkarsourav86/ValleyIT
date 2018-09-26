@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Payment -MyGuestXp</title>
+    <title>Payment - MyGuestXp</title>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/smart-forms.css">
@@ -30,7 +31,10 @@
 
 
             <form id="form1" runat="server">
-                <div class="form-body">
+                <asp:Panel ID="PnlContainer" runat="server" Visible="false">
+                    <div><h3 style="text-align:center"><asp:Label ID="LblHotelName" runat="server"></asp:Label></h3></div>
+                    <div class="form-body">
+                       
                     <div class="spacer-b30">
                         <div class="tagline"><span>Subscription Information </span></div>
                         <!-- .tagline -->
@@ -520,6 +524,8 @@
                     <center><img src="images/logohotel.png" /></center>
                     
                 </div>
+                </asp:Panel>
+                
                 
                 <!-- end .form-footer section -->
             </form>
