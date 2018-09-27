@@ -31,7 +31,10 @@
 
 
             <form id="form1" runat="server">
-                <div class="form-body">
+                <asp:Panel ID="PnlContainer" runat="server" Visible="false">
+                    <div><h3 style="text-align:center"><asp:Label ID="LblHotelName" runat="server"></asp:Label></h3></div>
+                    <div class="form-body">
+                       
                     <div class="spacer-b30">
                         <div class="tagline"><span>Subscription Information </span></div>
                         <!-- .tagline -->
@@ -521,6 +524,8 @@
                     <center><img src="images/logohotel.png" /></center>
                     
                 </div>
+                </asp:Panel>
+                
                 
                 <!-- end .form-footer section -->
             </form>

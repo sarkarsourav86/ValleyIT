@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\production\EditProblems.aspx" />
+    <Content Include="Admin\production\ForgotPassword.aspx" />
     <Content Include="Admin\production\Home.aspx" />
     <Content Include="Admin\production\images\Kanye_West.png" />
     <Content Include="Admin\production\js\chart\Chart.min.js" />
@@ -976,7 +977,9 @@
     <Content Include="Admin\vendors\validator\README.md" />
     <Content Include="Admin\vendors\validator\validator.jquery.json" />
     <Content Include="Admin\production\Admin.Master" />
-    <Content Include="Admin\production\Web.config" />
+    <Content Include="Admin\production\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Admin\production\Smaller.Master" />
     <None Include="packages.config" />
     <Content Include="Admin\build\css\custom.css" />
@@ -4683,6 +4686,13 @@
     </Compile>
     <Compile Include="Admin\production\EditProblems.aspx.designer.cs">
       <DependentUpon>EditProblems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\production\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

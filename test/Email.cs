@@ -28,6 +28,13 @@ namespace HotelDBApp
             cmd.CommandType = CommandType.StoredProcedure;
             return DBOperations.FetchValues(cmd);
         }
+        public static bool ValidateAdminEmailId(string emailid)
+        {
+            SqlCommand cmd = new SqlCommand("select count(*) from PropertyAdmins where UserName=@emailid");
+            cmd.Parameters.AddWithValue("@emailid", emailid);
+            cmd.CommandType = CommandType.Text;
+            return Convert.ToInt16(DBOperations.InsertAndReturn(cmd).ToString())>0;
+        }
     }
     
 }
