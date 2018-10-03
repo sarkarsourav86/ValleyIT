@@ -56,6 +56,7 @@
     <Compile Include="Image.cs" />
     <Compile Include="Incedent.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="Password.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

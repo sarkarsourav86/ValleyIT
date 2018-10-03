@@ -22,6 +22,15 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.Panel PnlAlert;
         
         /// <summary>
+        /// LblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblStatus;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace FinalHotelProject.Admin.production {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PnlResetReq;
+        
+        /// <summary>
+        /// PnlValidEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlValidEmail;
         
         /// <summary>
         /// TxtEmail control.
@@ -67,21 +85,48 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.Panel PnlSubmitReq;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TxtEmailId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtEmailId;
         
         /// <summary>
-        /// Button1 control.
+        /// TxtResetCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox TxtResetCode;
+        
+        /// <summary>
+        /// TxtNewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNewPassword;
+        
+        /// <summary>
+        /// TxtConfirmNewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtConfirmNewPassword;
+        
+        /// <summary>
+        /// BtnResetPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnResetPassword;
     }
 }

@@ -85,6 +85,7 @@
     <Content Include="Admin\production\js\chart\Chart.min.js" />
     <Content Include="Admin\production\Login.aspx" />
     <Content Include="Admin\production\ReportedProblems.aspx" />
+    <Content Include="Admin\production\ResetPassword.aspx" />
     <Content Include="Admin\production\Services\Reports.asmx" />
     <Content Include="css\css-img\Thumbs.db" />
     <Content Include="debug.log" />
@@ -4714,6 +4715,13 @@
     </Compile>
     <Compile Include="Admin\production\ReportedProblems.aspx.designer.cs">
       <DependentUpon>ReportedProblems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\production\Services\Reports.asmx.cs">
       <DependentUpon>Reports.asmx</DependentUpon>

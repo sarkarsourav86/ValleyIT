@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -18,122 +18,153 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-  </head>
+</head>
 
-  <body class="nav-md">
+<body class="nav-md">
     <div class="container body">
-      <div class="main_container">
-        
+        <div class="main_container">
 
-        <!-- top navigation -->
-        
-        <!-- /top navigation -->
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Forgot Password?</h3>
-              </div>
+            <!-- top navigation -->
 
-              
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Forgot Password?</h3>
+                        </div>
+
+
+                    </div>
+                    <asp:Panel runat="server" ID="PnlAlert" Visible="false" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        
+                        <strong><asp:Label ID="LblStatus" runat="server"></asp:Label></strong>
+                    </asp:Panel>
+                    <div class="clearfix"></div>
+                    <form id="form1" runat="server" class="form-horizontal form-label-left">
+                        <asp:Panel runat="server" ID="PnlResetReq">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+
+                                        <div class="x_content">
+
+
+
+
+                                            <span class="section">Password Reset Request</span>
+                                            <asp:Panel runat="server" ID="PnlValidEmail" Visible="false" class="alert alert-error alert-dismissible fade in" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <strong>Email id couldn't be found in our system</strong>
+                                            </asp:Panel>
+
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                    Email <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <asp:TextBox runat="server" type="email" ID="TxtEmail" name="email" placeholder="Email Id" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <br />
+                                                    <asp:Button runat="server" ID="BtnRequest" CssClass="btn btn-primary" OnClick="BtnRequest_Click" Text="Request"></asp:Button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </asp:Panel>
+                        <asp:Panel ID="PnlSubmitReq" Visible="false" runat="server">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+
+                                        <div class="x_content">
+
+
+
+
+                                            <span class="section">Reset Password</span>
+
+
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                    Email <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <asp:TextBox runat="server" type="email" ID="TxtEmailId" placeholder="Email Id" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                    Password Reset Code <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <asp:TextBox runat="server" ID="TxtResetCode" placeholder="Password Reset Link" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                    New Password <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <asp:TextBox runat="server" TextMode="Password" ID="TxtNewPassword" placeholder="New Password" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                                    Confirm Password <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <asp:TextBox runat="server" TextMode="Password" ID="TxtConfirmNewPassword" placeholder="Email Id" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <br />
+                                                    <asp:Button runat="server" ID="BtnResetPassword" CssClass="btn btn-primary" OnClick="BtnRequest_Click" Text="Request"></asp:Button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </asp:Panel>
+
+                    </form>
+                </div>
             </div>
-              <asp:Panel runat="server" ID="PnlAlert" Visible="false" class="alert alert-success alert-dismissible fade in" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>The Password Reset Link has been emailed to you!</strong>
-              </asp:Panel>
-            <div class="clearfix"></div>
-            <form id="form1" runat="server" class="form-horizontal form-label-left">
-                <asp:Panel runat="server" ID="PnlResetReq">
-                    <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                  
-                      <div class="x_content">
+            <!-- /page content -->
 
-                    
-
-                      
-                          <span class="section">Password Reset Request</span>
-
-                      
-                          <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
-                            </label>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                              <asp:TextBox runat="server"  type="email" ID="TxtEmail" name="email" placeholder="Email Id" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
-                            </div>
-                          </div>
-                      
-                      
-                          <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <br />
-                              <asp:Button runat="server"  ID="BtnRequest" CssClass="btn btn-primary" OnClick="BtnRequest_Click" Text="Request"></asp:Button>
-                          
-                            </div>
-                          </div>
-                    
-                      </div>
-                    </div>
-                  </div>
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
                 </div>
-                </asp:Panel>
-                <asp:Panel ID="PnlSubmitReq" Visible="false" runat="server">
-                    <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                  
-                      <div class="x_content">
-
-                    
-
-                      
-                          <span class="section">Reset Password</span>
-
-                      
-                          <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
-                            </label>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                              <asp:TextBox runat="server"  type="email" ID="TextBox1" name="email" placeholder="Email Id" required CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
-                            </div>
-                          </div>
-                      
-                      
-                          <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <br />
-                              <asp:Button runat="server"  ID="Button1" CssClass="btn btn-primary" OnClick="BtnRequest_Click" Text="Request"></asp:Button>
-                          
-                            </div>
-                          </div>
-                    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </asp:Panel>
-                
-            </form>
-          </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
     </div>
 
     <!-- jQuery -->
@@ -149,6 +180,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
-  </body>
+
+</body>
 </html>

@@ -101,6 +101,9 @@
     <Build Include="dbo\Stored Procedures\spUpdateProblem.sql" />
     <Build Include="dbo\Stored Procedures\spGetExpiryDate.sql" />
     <Build Include="dbo\Stored Procedures\spValidateHotel.sql" />
+    <Build Include="dbo\Tables\ResetPassword.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertPasswordResetRequest.sql" />
+    <Build Include="dbo\Stored Procedures\spUpdatePassword.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />
