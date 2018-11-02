@@ -18,3 +18,5 @@ C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProj
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\obj\Release\FinalHotelProject.pdb
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\AuthorizeNet.dll
 C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\AuthorizeNet.xml
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\EPPlus.dll
+C:\Users\Valley1\Documents\ValleyIT\FinalHotelProject\bin\EPPlus.xml

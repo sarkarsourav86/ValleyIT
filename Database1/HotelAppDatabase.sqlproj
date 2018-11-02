@@ -104,6 +104,8 @@
     <Build Include="dbo\Tables\ResetPassword.sql" />
     <Build Include="dbo\Stored Procedures\spInsertPasswordResetRequest.sql" />
     <Build Include="dbo\Stored Procedures\spUpdatePassword.sql" />
+    <Build Include="dbo\Stored Procedures\spRptUserInfo.sql" />
+    <Build Include="dbo\Stored Procedures\spRptProblemswithUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

@@ -49,6 +49,9 @@
     <Reference Include="AuthorizeNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AuthorizeNet.1.9.5\lib\AuthorizeNet.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -56,10 +59,12 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="SendGrid, Version=9.8.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.9.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,8 +88,16 @@
     <Content Include="Admin\production\Home.aspx" />
     <Content Include="Admin\production\images\Kanye_West.png" />
     <Content Include="Admin\production\js\chart\Chart.min.js" />
+    <Content Include="Admin\production\js\plugin\dropify\css\demo.css" />
+    <Content Include="Admin\production\js\plugin\dropify\css\dropify.css" />
+    <Content Include="Admin\production\js\plugin\dropify\css\dropify.min.css" />
+    <Content Include="Admin\production\js\plugin\dropify\fonts\dropify.svg" />
+    <Content Include="Admin\production\js\plugin\dropify\js\dropify.js" />
+    <Content Include="Admin\production\js\plugin\dropify\js\dropify.min.js" />
     <Content Include="Admin\production\Login.aspx" />
+    <Content Include="Admin\production\Profile.aspx" />
     <Content Include="Admin\production\ReportedProblems.aspx" />
+    <Content Include="Admin\production\Reports.aspx" />
     <Content Include="Admin\production\ResetPassword.aspx" />
     <Content Include="Admin\production\Services\Reports.asmx" />
     <Content Include="css\css-img\Thumbs.db" />
@@ -982,6 +995,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Admin\production\Smaller.Master" />
+    <Content Include="Admin\production\js\plugin\dropify\fonts\dropify.eot" />
+    <Content Include="Admin\production\js\plugin\dropify\fonts\dropify.ttf" />
+    <Content Include="Admin\production\js\plugin\dropify\fonts\dropify.woff" />
     <None Include="packages.config" />
     <Content Include="Admin\build\css\custom.css" />
     <Content Include="Admin\build\css\custom.min.css" />
@@ -4709,12 +4725,26 @@
     <Compile Include="Admin\production\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\production\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\production\ReportedProblems.aspx.cs">
       <DependentUpon>ReportedProblems.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\production\ReportedProblems.aspx.designer.cs">
       <DependentUpon>ReportedProblems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\production\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\production\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\production\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>

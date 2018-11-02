@@ -24,6 +24,38 @@ namespace HotelDBApp
         public int FeedbackValue { get; set; }
         public string FeedbackStr { get; set; }
         public bool IsSolved { get; set; }
+        public static List<Incedent> GetIncedents(string hotelid)
+        {
+            int.TryParse(hotelid, out int res);
+            SqlCommand cmd = new SqlCommand("spRptProblemswithUsers");
+            cmd.Parameters.AddWithValue("@hotelid", res);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = DBOperations.FetchValues(cmd);
+            List<Incedent> list = new List<Incedent>();
+            if (ds != null)
+            {
+                DataTable dt = ds.Tables[0];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    list.Add(
+                        new Incedent()
+                        {
+                            RoomNo = dr.Field<string>("RoomNo"),
+                            IncedentTypeStr = dr.Field<string>("Problem"),
+                            FeedbackStr = dr.Field<string>("feedback"),
+                            
+                            
+                            IncedentDescription = dr.Field<string>("IncedentDescription"),
+                            
+                            IncedentTime = dr.Field<DateTime>("IncedentTime"),
+                            
+                            
+                        }
+                    );
+                }
+            }
+            return list;
+        }
         public static System.Data.DataSet GetProblemsCount(int hotelid,DateTime startDate,string sp)
         {
             SqlCommand cmd = new SqlCommand(sp);

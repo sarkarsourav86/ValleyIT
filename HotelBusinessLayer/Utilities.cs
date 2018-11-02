@@ -63,17 +63,17 @@ namespace HotelBusinessLayer
             }
             
         }
-        public static Login ValidateLogin(Login login)
+        public static List<Login> ValidateLogin(Login login)
         {
-            Login returnedLogin = null;
+            List<Login> returnedLogin = new List<Login>();
             SqlCommand cmd = new SqlCommand("spValidateLogin");
             cmd.Parameters.AddWithValue("@username", login.UserName);
             cmd.Parameters.AddWithValue("@password", login.Password);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             DataTable dt = DBOperations.FetchValues(cmd).Tables[0];
-            if (dt.Rows.Count > 0)
+            foreach(DataRow dr in dt.Rows)
             {
-                returnedLogin = new Login() { UserName = login.UserName, Password = login.Password, Role = dt.Rows[0]["Role"].ToString(), HotelId = int.Parse(dt.Rows[0]["PropertyId"].ToString()), HotelName= dt.Rows[0]["Name"].ToString(),LongHotelId= dt.Rows[0]["LongId"].ToString() };
+                returnedLogin.Add(new Login() { UserName = login.UserName, Password = login.Password, Role = dr["Role"].ToString(), HotelId = int.Parse(dr["PropertyId"].ToString()), HotelName= dr["Name"].ToString(),LongHotelId= dr["LongId"].ToString() });
             }
             //int.TryParse(DBOperations.InsertAndReturn(cmd).ToString(),out int res);
             return returnedLogin;

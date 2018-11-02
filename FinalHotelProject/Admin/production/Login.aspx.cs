@@ -40,17 +40,36 @@ namespace FinalHotelProject.Admin.production
         }
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            HotelDBApp.Login login = Utilities.ValidateLogin(new HotelDBApp.Login() { UserName = TxtUsername.Text, Password = TxtPwd.Text });
-            if (login!=null)
+            List<HotelDBApp.Login> login = Utilities.ValidateLogin(new HotelDBApp.Login() { UserName = TxtUsername.Text, Password = TxtPwd.Text });
+            if (login.Count==1)
             {
                 //Store in session
-                AddCookie(login);
-                SetSession(login);
+                
+                AddCookie(login[0]);
+                SetSession(login[0]);
                 ReturnToUrl();
                 
             }
-            else
+            else if(login.Count>1)
             {
+                Dictionary<string, HotelDBApp.Login> hotelDict = new Dictionary<string, HotelDBApp.Login>();
+                foreach (HotelDBApp.Login item in login)
+                {
+                    hotelDict.Add(item.HotelId.ToString(), item);
+                }
+                Session["Hotels"] = hotelDict;
+                AddCookie(login[0]);
+                SetSession(login[0]);
+                ReturnToUrl();
+                //PnlLogin.Visible = false;
+                //PnlAfterLogin.Visible = true;
+                //foreach (HotelDBApp.Login item in login)
+                //{
+                //    LinkButton link = new LinkButton();
+                //    link.+=
+                //    PnlAfterLogin.Controls.Add(new LinkButton() { Text = item.HotelName });
+                //}
+
                 //show error
             }
         }

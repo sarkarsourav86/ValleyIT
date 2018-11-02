@@ -58,6 +58,15 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.HyperLink HypPaymentLink;
         
         /// <summary>
+        /// DdlHotels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlHotels;
+        
+        /// <summary>
         /// LblTopUserName control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace FinalHotelProject.Admin.production {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblTopUserName;
+        
+        /// <summary>
+        /// LinkLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkLogout;
         
         /// <summary>
         /// PlcUserStatus control.

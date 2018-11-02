@@ -25,6 +25,10 @@ namespace FinalHotelProject.Admin.production
             {
                 ShowLabel(PnlAlert, "alert alert-success alert-dismissible fade in", "Your password has been successfully updated", LblStatus, true);
             }
+           else
+            {
+                ShowLabel(PnlAlert, "alert alert-error alert-dismissible fade in", "Either the entered email is wrong or your password reset link has expired", LblStatus, true);
+            }
             
         }
         protected void Page_Load(object sender, EventArgs e)

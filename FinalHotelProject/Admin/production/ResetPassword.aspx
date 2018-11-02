@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>MyGuestXp|Reset Password </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,12 @@
     <div class="container body">
         <div class="main_container">
 
-
+            <div class="col-md-3 left_col menu_fixed">
+                <div class="clearfix"></div>
+                <div class="navbar nav_title">
+                    <img class="profile_img" style="margin-left: 15px" src="../../images/logohotel.png" />
+                </div>
+            </div>
             <!-- top navigation -->
 
             <!-- /top navigation -->

@@ -32,7 +32,8 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form id="form1" runat="server">
-              <h2 style="margin-bottom:50px;font-size:30px;">MyGuestXp Portal Login</h2>
+             <asp:Panel ID="PnlLogin" runat="server" Visible="true">
+                 <h2 style="margin-bottom:50px;font-size:30px;">MyGuestXp Portal Login</h2>
                 
               <div>
                 <asp:TextBox runat="server" ID="TxtUsername"  CssClass="form-control" placeholder="Username" required />
@@ -45,6 +46,10 @@
                 <a class="reset_pass" href="#">Forgot your password?</a>
               </div>
 
+             </asp:Panel>
+              <asp:Panel ID="PnlAfterLogin" runat="server" Visible="false">
+                  <h2 style="margin-bottom:50px;font-size:30px;">Please Select your Hotel</h2>
+              </asp:Panel>
               <div class="clearfix"></div>
 
               <div class="separator">

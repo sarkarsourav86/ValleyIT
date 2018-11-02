@@ -16,6 +16,7 @@ namespace HotelDBApp
         public String LastName { get; set; }
         public String RoomNo { get; set; }
         public DateTime CheckOutDate { get; set; }
+        public DateTime CheckInDate { get; set; }
         public String Email { get; set; }
         public String HotelID { get; set; }
         public String Phone { get; set; }
@@ -40,6 +41,35 @@ namespace HotelDBApp
             if(checkReviewed) cmd.Parameters.AddWithValue("@CheckReviewed", 1);
             cmd.CommandType = CommandType.StoredProcedure;
             return int.Parse(DBOperations.InsertAndReturn(cmd).ToString());
+        }
+        public static List<User> ReturnUsers(string hotelid)
+        {
+            int.TryParse(hotelid, out int res);
+            SqlCommand cmd = new SqlCommand("spRptUserInfo");
+            cmd.Parameters.AddWithValue("@hotelid", res);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds=DBOperations.FetchValues(cmd);
+            List<User> userlist = new List<User>();
+            if (ds != null)
+            {
+                DataTable dt = ds.Tables[0];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    userlist.Add(
+                        new User()
+                        {
+                            UserID=dr.Field<int>("ID"),
+                            CheckInDate= dr.Field<DateTime>("CheckInDate"),
+                            CheckOutDate= dr.Field<DateTime>("CheckOutDate"),
+                            Email= dr.Field<string>("Email"),
+                            Phone= dr.Field<string>("Phone"),
+                            LastName= dr.Field<string>("Name"),
+                            RoomNo=dr.Field<string>("RoomNo")
+                        }
+                    );
+                }
+            }
+            return userlist;
         }
         public static User GetUserInfo(String ID)
         {

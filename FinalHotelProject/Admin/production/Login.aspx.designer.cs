@@ -22,6 +22,15 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// PnlLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlLogin;
+        
+        /// <summary>
         /// TxtUsername control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace FinalHotelProject.Admin.production {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnLogin;
+        
+        /// <summary>
+        /// PnlAfterLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlAfterLogin;
     }
 }
