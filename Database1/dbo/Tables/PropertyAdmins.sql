@@ -5,5 +5,6 @@
     [Password] VARCHAR(MAX) NULL, 
     [PropertyId] int NULL, 
     [Role] VARCHAR(50) NULL, 
+    [Image] VARBINARY(MAX) NULL, 
     CONSTRAINT [FK_PropertyAdmins_Hotel] FOREIGN KEY ([PropertyId]) REFERENCES hotel([Id]) 
 )

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -27,6 +28,17 @@ namespace FinalHotelProject.Admin.production
 
                 this.Master.HotelName = logininfo.HotelName;
                 this.Master.UserName = logininfo.UserName.Split('@')[0];
+            }
+        }
+
+        protected void BtnUpdateProfilePicture_Click(object sender, EventArgs e)
+        {
+            HttpPostedFile file = FileProfilePhoto.PostedFile;
+            if(file.ContentLength>0)
+            {
+                Stream stream = file.InputStream;
+                BinaryReader reader = new BinaryReader(stream);
+                byte[] bytes=reader.ReadBytes((int)stream.Length);
             }
         }
     }

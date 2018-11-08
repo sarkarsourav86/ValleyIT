@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Design <small>different form elements</small></h2>
+                    <h2>Update Profile Picture</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,7 +42,7 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           
-                          <asp:Button runat="server" ID="BtnUpdate" Text="Update" class="btn btn-success" />
+                          <asp:Button runat="server" ID="BtnUpdateProfilePicture" OnClick="BtnUpdateProfilePicture_Click" Text="Update" class="btn btn-success" />
                         </div>
                       </div>
 
@@ -56,7 +56,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Design <small>different form elements</small></h2>
+                    <h2>Update Password</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -83,21 +83,21 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Old Password <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TxtOldPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          <asp:TextBox TextMode="Password" runat="server" ID="TxtOldPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">New Password <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TxtNewPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          <asp:TextBox TextMode="Password" runat="server" ID="TxtNewPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">New Password <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TxtConfirmPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          <asp:TextBox TextMode="Password" runat="server" ID="TxtConfirmPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
                         </div>
                       </div>
                       
@@ -106,7 +106,7 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           
-                          <asp:Button runat="server" ID="Button1" Text="Update" class="btn btn-success" />
+                          <asp:Button runat="server" ID="BtnUpdatePassword" Text="Update" class="btn btn-success" />
                         </div>
                       </div>
 
@@ -119,7 +119,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Design <small>different form elements</small></h2>
+                    <h2>Add Users</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -143,24 +143,35 @@
 
                       
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Old Password <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email Id <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          <asp:TextBox runat="server" ID="TxtEmailId" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">New Password <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Select Role <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          
+                            <asp:DropDownList runat="server" ID="DdlRole" CssClass="form-control col-md-7 col-xs-12">
+                                <asp:ListItem Text="Admin" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="SuperAdmin" Value="1"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">New Password <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Password <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <asp:TextBox runat="server" ID="TextBox3" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                          <asp:TextBox TextMode="Password" runat="server" ID="TxtPassword" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Confirm Password <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <asp:TextBox TextMode="Password" runat="server" ID="TxtConfirmPassword" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
                         </div>
                       </div>
                       
@@ -169,7 +180,7 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           
-                          <asp:Button runat="server" ID="Button2" Text="Update" class="btn btn-success" />
+                          <asp:Button runat="server" ID="BtnAddUser" Text="Update" class="btn btn-success" />
                         </div>
                       </div>
 

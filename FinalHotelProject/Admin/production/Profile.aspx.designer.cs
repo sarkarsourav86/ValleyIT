@@ -31,13 +31,13 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.FileUpload FileProfilePhoto;
         
         /// <summary>
-        /// BtnUpdate control.
+        /// BtnUpdateProfilePicture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUpdate;
+        protected global::System.Web.UI.WebControls.Button BtnUpdateProfilePicture;
         
         /// <summary>
         /// TxtOldPwd control.
@@ -67,49 +67,58 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.TextBox TxtConfirmPwd;
         
         /// <summary>
-        /// Button1 control.
+        /// BtnUpdatePassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button BtnUpdatePassword;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TxtEmailId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtEmailId;
         
         /// <summary>
-        /// TextBox2 control.
+        /// DdlRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.DropDownList DdlRole;
         
         /// <summary>
-        /// TextBox3 control.
+        /// TxtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtPassword;
         
         /// <summary>
-        /// Button2 control.
+        /// TxtConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.TextBox TxtConfirmPassword;
+        
+        /// <summary>
+        /// BtnAddUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAddUser;
         
         /// <summary>
         /// Master property.

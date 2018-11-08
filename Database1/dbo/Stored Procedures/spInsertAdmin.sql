@@ -6,4 +6,4 @@
 AS
 	declare @hotelintid int
 	select @hotelintid=Id from Hotel where Property=@hotelid
-	insert into PropertyAdmins values(@username,@password,@hotelintid,@role)
+	insert into PropertyAdmins values(@username,@password,@hotelintid,@role,null)
