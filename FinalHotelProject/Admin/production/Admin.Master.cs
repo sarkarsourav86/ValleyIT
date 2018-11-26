@@ -43,8 +43,16 @@ namespace FinalHotelProject.Admin.production
         {
             
             if(!Page.IsPostBack) AddHotelChoice();
-            
+            SetProfilePicture();
             SetHyperlink();
+        }
+        private void SetProfilePicture()
+        {
+            string email = ((HotelDBApp.Login)Session["LoginInfo"]).UserName;
+            byte[] bytearray=HotelDBApp.UserProfile.GetProfilePhotoById(email);
+            string strBase64 = Convert.ToBase64String(bytearray);
+            ImgProfile.ImageUrl = string.Format("data:Image/png;base64,{0}", strBase64);
+            ImgLogout.ImageUrl= string.Format("data:Image/png;base64,{0}", strBase64);
         }
         private void AddHotelChoice()
         {

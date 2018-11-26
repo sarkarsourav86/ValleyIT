@@ -34,6 +34,14 @@ namespace FinalHotelProject.Admin.production
                 LblUserName.Text = value;
             }
         }
+        private void SetProfilePicture()
+        {
+            string email = ((HotelDBApp.Login)Session["LoginInfo"]).UserName;
+            byte[] bytearray = HotelDBApp.UserProfile.GetProfilePhotoById(email);
+            string strBase64 = Convert.ToBase64String(bytearray);
+            ImgProfile.ImageUrl = string.Format("data:Image/png;base64,{0}", strBase64);
+            ImgLogout.ImageUrl = string.Format("data:Image/png;base64,{0}", strBase64);
+        }
         private void SetHyperlink()
         {
             HotelDBApp.Login login = (HotelDBApp.Login)Session["LoginInfo"];
@@ -42,6 +50,7 @@ namespace FinalHotelProject.Admin.production
         protected void Page_Load(object sender, EventArgs e)
         {
             SetHyperlink();
+            SetProfilePicture();
         }
 
         protected void LinkLogout_Click(object sender, EventArgs e)

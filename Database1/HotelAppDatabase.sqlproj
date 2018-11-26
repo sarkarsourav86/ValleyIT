@@ -107,6 +107,9 @@
     <Build Include="dbo\Stored Procedures\spRptUserInfo.sql" />
     <Build Include="dbo\Stored Procedures\spRptProblemswithUsers.sql" />
     <Build Include="dbo\Stored Procedures\spUpdateProfilePicture.sql" />
+    <Build Include="dbo\Stored Procedures\spGetProfilePictureById.sql" />
+    <Build Include="dbo\Stored Procedures\spGetPassword.sql" />
+    <Build Include="dbo\Stored Procedures\spUpdatePasswordFromProfile.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

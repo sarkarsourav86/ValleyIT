@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HotelDBApp;
 
 namespace FinalHotelProject.Admin.production
 {
@@ -39,7 +40,22 @@ namespace FinalHotelProject.Admin.production
                 Stream stream = file.InputStream;
                 BinaryReader reader = new BinaryReader(stream);
                 byte[] bytes=reader.ReadBytes((int)stream.Length);
+                UserProfile.UpdateProfilePicture(bytes, logininfo.UserName);
             }
+        }
+
+        protected void BtnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            //get the old password
+            string oldpwd = Password.GetPassword(logininfo.UserName);
+            string TypedOldPassword = TxtOldPwd.Text;
+            string NewPassword = TxtNewPwd.Text;
+            string ConfirmNewPassword = TxtConfirmPassword.Text;
+            bool isOldPwdMatch = (oldpwd==TypedOldPassword);
+            bool isNewPwdMatch = (NewPassword == ConfirmNewPassword);
+            
+            //get the new
+            //get the confirm new
         }
     }
 }

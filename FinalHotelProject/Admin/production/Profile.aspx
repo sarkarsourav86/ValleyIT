@@ -94,7 +94,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">New Password <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Confirm New Password <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <asp:TextBox TextMode="Password" runat="server" ID="TxtConfirmPwd" CssClass="form-control col-md-7 col-xs-12"></asp:TextBox>
@@ -106,7 +106,7 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           
-                          <asp:Button runat="server" ID="BtnUpdatePassword" Text="Update" class="btn btn-success" />
+                          <asp:Button runat="server" OnClick="BtnUpdatePassword_Click" ID="BtnUpdatePassword" Text="Update" class="btn btn-success" />
                         </div>
                       </div>
 

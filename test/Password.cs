@@ -29,5 +29,22 @@ namespace HotelDBApp
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             return int.Parse(DBOperations.InsertAndReturn(cmd).ToString()) > 0 ? true : false;
         }
+        public static int UpdatePasswordFromProfile(string username,string password)
+        {
+            SqlCommand cmd = new SqlCommand("spUpdatePasswordFromProfile");
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            return DBOperations.UpdateOrInsert(cmd);
+
+        }
+        public static string GetPassword(string username)
+        {
+            SqlCommand cmd = new SqlCommand("spGetPassword");
+            cmd.Parameters.AddWithValue("@username", username);
+            
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            return DBOperations.InsertAndReturn(cmd).ToString();
+        }
     }
 }

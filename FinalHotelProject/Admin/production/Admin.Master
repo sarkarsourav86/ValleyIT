@@ -44,7 +44,7 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <%--<img src="images/img.jpg" alt="..." class="img-circle profile_img">--%>
-                                <img src="images/Kanye_West.png" alt="..." class="img-circle profile_img"/>
+                                <asp:Image runat="server" ID="ImgProfile" CssClass="img-circle profile_img" alt="..."  />
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
@@ -189,7 +189,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="images/Kanye_West.png" /><asp:Label ID="LblTopUserName" runat="server"></asp:Label>
+                                        <asp:Image runat="server" ID="ImgLogout"  /><asp:Label ID="LblTopUserName" runat="server"></asp:Label>
                    
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
