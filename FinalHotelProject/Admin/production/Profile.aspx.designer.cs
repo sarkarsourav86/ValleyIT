@@ -40,6 +40,24 @@ namespace FinalHotelProject.Admin.production {
         protected global::System.Web.UI.WebControls.Button BtnUpdateProfilePicture;
         
         /// <summary>
+        /// PnlPwdChangeStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlPwdChangeStatus;
+        
+        /// <summary>
+        /// LitLabelText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LitLabelText;
+        
+        /// <summary>
         /// TxtOldPwd control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,24 @@ namespace FinalHotelProject.Admin.production {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnUpdatePassword;
+        
+        /// <summary>
+        /// PnlAddUserStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlAddUserStatus;
+        
+        /// <summary>
+        /// LitAddUserStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LitAddUserStatus;
         
         /// <summary>
         /// TxtEmailId control.

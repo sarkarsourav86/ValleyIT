@@ -110,6 +110,7 @@
     <Build Include="dbo\Stored Procedures\spGetProfilePictureById.sql" />
     <Build Include="dbo\Stored Procedures\spGetPassword.sql" />
     <Build Include="dbo\Stored Procedures\spUpdatePasswordFromProfile.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertAdminFromProfile.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="dbo\Tables\Script.PreDeployment1.sql" />

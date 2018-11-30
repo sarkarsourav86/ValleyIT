@@ -43,19 +43,51 @@ namespace FinalHotelProject.Admin.production
                 UserProfile.UpdateProfilePicture(bytes, logininfo.UserName);
             }
         }
-
+        private void ShowLabelStatus(string message,string cssClass,Panel panel,Literal lit)
+        {
+            Dictionary<string, string> css = new Dictionary<string, string>() { { "success", "alert alert-success alert-dismissible fade in" },{"fail", "alert alert-danger alert-dismissible fade in" } };
+            panel.Visible = true;
+            panel.CssClass = css[cssClass];
+            lit.Text = message;
+        }
         protected void BtnUpdatePassword_Click(object sender, EventArgs e)
         {
             //get the old password
             string oldpwd = Password.GetPassword(logininfo.UserName);
             string TypedOldPassword = TxtOldPwd.Text;
             string NewPassword = TxtNewPwd.Text;
-            string ConfirmNewPassword = TxtConfirmPassword.Text;
+            string ConfirmNewPassword = TxtConfirmPwd.Text;
             bool isOldPwdMatch = (oldpwd==TypedOldPassword);
             bool isNewPwdMatch = (NewPassword == ConfirmNewPassword);
-            
+            if (!isOldPwdMatch)
+            {
+                ShowLabelStatus("The old password doesn't match with the typed one", "fail",PnlPwdChangeStatus, LitLabelText);
+                return;
+            }
+            if (!isNewPwdMatch)
+            {
+                ShowLabelStatus("New password and confirm paswword don't match", "fail", PnlPwdChangeStatus, LitLabelText);
+                return;
+            }
+            string username = logininfo.UserName;
+            if(Password.UpdatePasswordFromProfile(username, NewPassword) > 0)
+            {
+                ShowLabelStatus("Your password has been successfully updated", "success", PnlPwdChangeStatus, LitLabelText);
+            }
             //get the new
             //get the confirm new
+        }
+
+        protected void BtnAddUser_Click(object sender, EventArgs e)
+        {
+            string NewPassword = TxtPassword.Text;
+            string ConfirmNewPassword = TxtConfirmPassword.Text;
+            bool doPasswordsMatch = NewPassword == ConfirmNewPassword;
+            if (!doPasswordsMatch)
+            {
+                ShowLabelStatus("New password and confirm paswword don't match", "fail",PnlAddUserStatus,LitAddUserStatus);
+                return;
+            }
         }
     }
 }
