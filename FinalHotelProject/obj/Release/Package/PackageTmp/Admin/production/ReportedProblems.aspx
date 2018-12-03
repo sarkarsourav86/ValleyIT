@@ -36,7 +36,7 @@
 
                       
                     </table>
-                      <asp:Button ID="BtnDownloadExcelSheet" runat="server" OnClick="BtnDownloadExcelSheet_Click" />
+                      
                   </div>
                 </div>
               </div>

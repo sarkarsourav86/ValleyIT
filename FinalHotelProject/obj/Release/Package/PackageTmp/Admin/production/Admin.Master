@@ -22,6 +22,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- dropify -->
+    <link href="js/plugin/dropify/css/dropify.min.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -42,7 +44,7 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <%--<img src="images/img.jpg" alt="..." class="img-circle profile_img">--%>
-                                <img src="images/Kanye_West.png" alt="..." class="img-circle profile_img"/>
+                                <asp:Image runat="server" ID="ImgProfile" CssClass="img-circle profile_img" alt="..."  />
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
@@ -62,10 +64,9 @@
                             <div class="menu_section">
                                 <h3>General</h3>
                                 <ul class="nav side-menu">
-                                    <li><a href="Home.aspx"><i class="fa fa-home"></i>Home</a>
-                                    <li><a href="ReportedProblems.aspx"><i class="fa fa-file"></i>Reported Problems</a>
-                                        
-                                    </li>
+                                    <li><a href="Home.aspx"><i class="fa fa-home"></i>Home</a></li>
+                                    <li><a href="ReportedProblems.aspx"><i class="fa fa-ban"></i>Reported Problems</a></li>
+                                    <li><a href="Reports.aspx"><i class="fa fa-file"></i>Reports</a></li>
                                     
                                     <li>
                                         <asp:HyperLink runat="server" ID="HypPaymentLink" target="_blank"><i class="fa fa-link"></i>Make A Payment</asp:HyperLink>
@@ -188,7 +189,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="images/Kanye_West.png" /><asp:Label ID="LblTopUserName" runat="server"></asp:Label>
+                                        <asp:Image runat="server" ID="ImgLogout"  /><asp:Label ID="LblTopUserName" runat="server"></asp:Label>
                    
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
@@ -275,6 +276,16 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
-
+    <script src="js/plugin/dropify/js/dropify.min.js"></script>
+    <script type="text/javascript">
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
+        });
+    </script>
 </body>
 </html>

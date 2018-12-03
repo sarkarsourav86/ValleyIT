@@ -23,7 +23,8 @@ namespace HotelDBApp
             SqlCommand cmd = new SqlCommand("spGetProfilePictureById");
             cmd.Parameters.AddWithValue("@email", email);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            return (byte[]) DBOperations.InsertAndReturn(cmd);
+            object obj = DBOperations.InsertAndReturn(cmd);
+            return obj!=null? (byte[])obj:null;
 
         }
 
